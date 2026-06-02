@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Referenzen | [FIRMENNAME] [UNTERNEHMENSTYP]</title>
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/png" href="images/favicon-client.png">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/config.js"></script>
+  <script src="js/config-apply.js"></script>
+</head>
+<body>
+  <nav class="nav nav--scrolled" id="mainNav" aria-label="Hauptnavigation">
+    <div class="nav__inner">
+      <a href="index.html#hero" class="nav__wordmark" aria-label="Startseite">
+        <picture>
+          <source srcset="images/logo-client.webp" type="image/webp">
+          <img class="nav__logo" src="images/logo-client.png" alt="[FIRMENNAME]" data-config-alt="true" width="200" height="42" decoding="async">
+        </picture>
+      </a>
+      <ul class="nav__links" role="list">
+        <li><a href="index.html#leistungen">Leistungen</a></li>
+        <li><a href="index.html#kontakt">Kontakt</a></li>
+        <li><a href="impressum.html">Impressum</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="subpage-main container">
+    <header class="subpage-hero">
+      <h1>Unsere Referenzen</h1>
+      <p data-config="referenzenIntro">Auswahl abgeschlossener Projekte aus [ORT] und Umgebung.</p>
+    </header>
+    <section class="subpage-card">
+      <h2>Projektgalerie</h2>
+      <div class="referenzen-filter" role="tablist" aria-label="Projektkategorien">
+        <button class="btn btn--sm btn--secondary is-active" type="button" data-filter="all">Alle</button>
+        <button class="btn btn--sm btn--secondary" type="button" data-filter="bad">Bad</button>
+        <button class="btn btn--sm btn--secondary" type="button" data-filter="heizung">Heizung</button>
+        <button class="btn btn--sm btn--secondary" type="button" data-filter="haustechnik">Haustechnik</button>
+        <button class="btn btn--sm btn--secondary" type="button" data-filter="service">Service</button>
+      </div>
+
+      <div class="ref-gallery">
+        <article class="ref-card" data-category="bad">
+          <picture><source srcset="images/ref_1.webp" type="image/webp"><img data-lightbox src="images/ref_1.jpg" alt="Badsanierung mit bodengleicher Dusche" width="350" height="350" loading="lazy" decoding="async"></picture>
+          <span class="ref-card__tag">Bad</span>
+        </article>
+        <article class="ref-card" data-category="bad">
+          <picture><source srcset="images/ref_2.webp" type="image/webp"><img data-lightbox src="images/ref_2.jpg" alt="Modernes Badezimmer" width="350" height="350" loading="lazy" decoding="async"></picture>
+          <span class="ref-card__tag">Bad</span>
+        </article>
+        <article class="ref-card" data-category="heizung">
+          <picture><source srcset="images/ref_3.webp" type="image/webp"><img data-lightbox src="images/ref_3.jpg" alt="Heizungsinstallation" width="350" height="350" loading="lazy" decoding="async"></picture>
+          <span class="ref-card__tag">Heizung</span>
+        </article>
+        <article class="ref-card" data-category="haustechnik">
+          <picture><source srcset="images/ref_4.webp" type="image/webp"><img data-lightbox src="images/ref_4.jpg" alt="Sanitär- und Haustechnikarbeiten" width="350" height="350" loading="lazy" decoding="async"></picture>
+          <span class="ref-card__tag">Haustechnik</span>
+        </article>
+        <article class="ref-card" data-category="heizung">
+          <picture><source srcset="images/ref_5.webp" type="image/webp"><img data-lightbox src="images/ref_5.jpg" alt="Wärmepumpe und regeneratives Heizen" width="350" height="350" loading="lazy" decoding="async"></picture>
+          <span class="ref-card__tag">Heizung</span>
+        </article>
+        <article class="ref-card" data-category="bad">
+          <picture><source srcset="images/ref_6.webp" type="image/webp"><img data-lightbox src="images/ref_6.jpg" alt="Barrierefreies Bad" width="350" height="350" loading="lazy" decoding="async"></picture>
+          <span class="ref-card__tag">Bad</span>
+        </article>
+        <article class="ref-card" data-category="bad">
+          <picture><source srcset="images/ref_7.webp" type="image/webp"><img data-lightbox src="images/ref_7.jpg" alt="Bad Design und Sanitär" width="350" height="350" loading="lazy" decoding="async"></picture>
+          <span class="ref-card__tag">Bad</span>
+        </article>
+        <article class="ref-card" data-category="service">
+          <picture><source srcset="images/ref_8.webp" type="image/webp"><img data-lightbox src="images/ref_8.jpg" alt="Service und Wartung Haustechnik" width="350" height="350" loading="lazy" decoding="async"></picture>
+          <span class="ref-card__tag">Service</span>
+        </article>
+      </div>
+    </section>
+    <section class="subpage-card">
+      <a class="btn btn--primary" href="index.html#termin">Termin buchen</a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__bottom">
+        <span class="footer__copy" data-config="copyright">© [JAHR] [FIRMENNAME], [ORT]</span>
+        <div class="footer__socials" style="display:flex;gap:.8rem;">
+          <a href="#" data-config-href="facebook" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook">Facebook</a>
+          <a href="#" data-config-href="instagram" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">Instagram</a>
+        </div>
+        <nav class="footer__legal" aria-label="Rechtliches">
+          <a href="impressum.html">Impressum</a>
+          <a href="datenschutz.html">Datenschutz</a>
+          <a href="team.html">Team</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+  <script src="js/main.js" defer></script>
+</body>
+</html>

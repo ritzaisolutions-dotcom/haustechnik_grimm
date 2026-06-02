@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Datenschutz | [FIRMENNAME] [UNTERNEHMENSTYP]</title>
+  <meta name="robots" content="noindex, follow">
+  <link rel="icon" type="image/png" href="images/favicon-client.png">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/config.js"></script>
+  <script src="js/config-apply.js"></script>
+</head>
+<body>
+  <nav class="nav nav--scrolled" id="mainNav" aria-label="Hauptnavigation">
+    <div class="nav__inner">
+      <a href="index.html#hero" class="nav__wordmark" aria-label="Startseite">
+        <picture>
+          <source srcset="images/logo-client.webp" type="image/webp">
+          <img class="nav__logo" src="images/logo-client.png" alt="[FIRMENNAME]" data-config-alt="true" width="200" height="42" decoding="async">
+        </picture>
+      </a>
+      <ul class="nav__links" role="list">
+        <li><a href="index.html#leistungen">Leistungen</a></li>
+        <li><a href="referenzen.html">Referenzen</a></li>
+        <li><a href="index.html#kontakt">Kontakt</a></li>
+        <li><a href="impressum.html">Impressum</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="subpage-main container">
+    <header class="subpage-hero">
+      <h1>Datenschutzerklärung</h1>
+      <p>Informationen zur Verarbeitung personenbezogener Daten auf dieser Website.</p>
+    </header>
+
+    <!-- ══════════════════════════════════════════════════════════
+         § 1  VERANTWORTLICHER
+    ══════════════════════════════════════════════════════════ -->
+    <section class="subpage-card">
+      <h2>Verantwortlicher</h2>
+      <p>
+        <span data-config="name">[FIRMENNAME]</span><br>
+        <span data-config="strasse">[STRASSE_NR]</span><br>
+        <span data-config="plz">[PLZ]</span> <span data-config="ort">[ORT]</span><br>
+        Deutschland
+      </p>
+      <p>
+        E-Mail: <a href="mailto:#" data-config-href="mailto" data-config="email">[EMAIL]</a><br>
+        Telefon: <a href="tel:#" data-config-href="tel" data-config="telefonDisplay">[TELEFON]</a>
+      </p>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         § 2  VERARBEITUNGEN (technisch verifizierter Ist-Stand)
+    ══════════════════════════════════════════════════════════ -->
+    <section class="subpage-card">
+      <h2>Verarbeitungen auf dieser Website</h2>
+      <p>Die nachfolgenden Verarbeitungen basieren auf dem technisch nachvollziehbaren Ist-Stand des Projekts:</p>
+      <ul class="subpage-list">
+        <li>Technisch notwendige Speicherung von Einwilligungen im Browser (Klaro, localStorage).</li>
+        <li>Kontaktanfragen über Web3Forms mit clientseitiger Validierung, Honeypot-Feld und zweckgebundener Übermittlung.</li>
+        <li>Kostenrechner-Rückruf: Telefonnummer und Kalkulationsdaten werden nur zur Bearbeitung der Rückruf-Anfrage per Web3Forms übermittelt (keine dauerhafte Speicherung auf dieser Website).</li>
+
+        <!-- Termin-Variante: calcom — Standard, per config-apply.js ggf. ausgeblendet -->
+        <li data-datenschutz-termin="calcom">
+          Optionale Online-Terminbuchung über den externen Dienst <strong>Cal.com</strong> – nur nach aktiver Einwilligung im Consent-Banner.
+        </li>
+        <!-- Termin-Variante: whatsapp — per config-apply.js eingeblendet wenn terminVariante="whatsapp" -->
+        <li data-datenschutz-termin="whatsapp" hidden>
+          Kontaktaufnahme zur Terminvereinbarung über <strong>WhatsApp</strong> (Meta Platforms Ireland Limited). Beim Öffnen des WhatsApp-Links werden technische Verbindungsdaten an Meta übermittelt. Verarbeitung gemäß den Datenschutzhinweisen von Meta.
+        </li>
+        <!-- Termin-Variante: formular — per config-apply.js eingeblendet wenn terminVariante="formular" -->
+        <li data-datenschutz-termin="formular" hidden>
+          Terminanfragen über das Terminformular auf dieser Website – Übermittlung über <strong>Web3Forms</strong> mit clientseitiger Validierung und Honeypot-Feld zur zweckgebundenen Bearbeitung.
+        </li>
+
+        <li>Einbindung von Kartenmaterial (<strong>Google Maps</strong>) als externe Ressource – nur nach aktiver Einwilligung.</li>
+      </ul>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         § 3  RECHTSGRUNDLAGEN
+    ══════════════════════════════════════════════════════════ -->
+    <section class="subpage-card">
+      <h2>Rechtsgrundlagen</h2>
+      <ul class="subpage-list">
+        <li>Art. 6 Abs. 1 lit. f DSGVO für technisch notwendige Bereitstellung der Website und Consent-Speicherung (berechtigtes Interesse).</li>
+        <li>Art. 6 Abs. 1 lit. a DSGVO für einwilligungsbasierte Dienste (Cal.com Terminbuchungs-Embed, Google Maps).</li>
+        <li>Art. 6 Abs. 1 lit. b DSGVO für vorvertragliche Kommunikation bei Kontaktanfragen, Kostenrechner-Rückrufen und Terminanfragen.</li>
+      </ul>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         § 4  EMPFÄNGER UND DRITTLANDBEZUG
+    ══════════════════════════════════════════════════════════ -->
+    <section class="subpage-card">
+      <h2>Empfänger und Drittlandbezug</h2>
+      <ul class="subpage-list">
+        <li>Kontaktanfragen und Rückruf-Anfragen werden an <strong>Web3Forms</strong> als technischen Dienstleister übermittelt.</li>
+
+        <li data-datenschutz-termin="calcom">
+          Bei aktivierter Terminbuchung wird eine Verbindung zu <strong>Cal.com</strong> hergestellt. Dabei können personenbezogene Daten (u. a. IP-Adresse, Termindetails) an Cal.com übermittelt werden.
+        </li>
+        <li data-datenschutz-termin="whatsapp" hidden>
+          Bei Nutzung des WhatsApp-Kontaktlinks werden Verbindungsdaten und Nachrichteninhalte über <strong>Meta Platforms Ireland Limited</strong> verarbeitet.
+        </li>
+        <li data-datenschutz-termin="formular" hidden>
+          Terminanfragen über das Formular werden an <strong>Web3Forms</strong> als technischen Dienstleister übermittelt.
+        </li>
+
+        <li>Google Maps wird erst nach Einwilligung geladen und kann technische Verbindungsdaten (z. B. IP-Adresse) an <strong>Google Ireland Limited</strong> übermitteln.</li>
+      </ul>
+      <p>Bei Drittlandübermittlungen erfolgen diese nur auf Basis der jeweils geltenden datenschutzrechtlichen Garantien des Anbieters (z. B. EU-Standardvertragsklauseln). Details sind den Datenschutzhinweisen der jeweiligen Dienste zu entnehmen.</p>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         § 5  SPEICHERDAUER
+    ══════════════════════════════════════════════════════════ -->
+    <section class="subpage-card">
+      <h2>Speicherdauer</h2>
+      <ul class="subpage-list">
+        <li>Consent-Daten: bis zum Widerruf bzw. Löschen des Browser-Speichers.</li>
+        <li>Kontaktanfragen und Terminanfragen: nur so lange, wie sie zur Bearbeitung der Anfrage und gesetzlicher Nachweispflichten erforderlich sind.</li>
+        <li>Kostenrechner-Berechnungen basieren auf clientseitig gepflegten Vorgaben – es findet keine serverseitige Speicherung der Eingaben statt.</li>
+        <li>Kontaktdaten bei Web3Forms: Speicherdauer gemäß den Anbieterangaben und eigenen Löschfristen (vgl. <a class="inline-link" href="https://web3forms.com/privacy" target="_blank" rel="noopener noreferrer">web3forms.com/privacy</a>).</li>
+      </ul>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         § 6  IHRE RECHTE
+    ══════════════════════════════════════════════════════════ -->
+    <section class="subpage-card">
+      <h2>Ihre Rechte</h2>
+      <ul class="subpage-list">
+        <li>Auskunft (Art. 15 DSGVO)</li>
+        <li>Berichtigung (Art. 16 DSGVO)</li>
+        <li>Löschung (Art. 17 DSGVO)</li>
+        <li>Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
+        <li>Datenübertragbarkeit (Art. 20 DSGVO)</li>
+        <li>Widerspruch gegen Verarbeitungen nach Art. 6 Abs. 1 lit. f DSGVO (Art. 21 DSGVO)</li>
+        <li>Widerruf erteilter Einwilligungen mit Wirkung für die Zukunft (Art. 7 Abs. 3 DSGVO)</li>
+      </ul>
+      <p>Zur Ausübung Ihrer Rechte genügt eine formlose Nachricht an <a href="mailto:#" data-config-href="mailto" data-config="email">[EMAIL]</a>.</p>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         § 7  BESCHWERDERECHT
+         Aufsichtsbehörde wird via config.js (bundesland, aufsichtsbehoerde,
+         aufsichtsbehoerdeUrl) variablen-gesteuert befüllt.
+    ══════════════════════════════════════════════════════════ -->
+    <section class="subpage-card">
+      <h2>Beschwerderecht</h2>
+      <p>
+        Sie haben das Recht, sich bei einer Datenschutzaufsichtsbehörde zu beschweren.
+        Zuständig für <span data-config="bundesland">[BUNDESLAND]</span> ist:
+        <strong><a href="#" data-config-href="aufsichtsbehoerde" class="inline-link" target="_blank" rel="noopener noreferrer"><span data-config="aufsichtsbehoerde">[NAME_DER_AUFSICHTSBEHOERDE]</span></a></strong>.
+      </p>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         § 8  HINWEIS ZUR RECHTSPRÜFUNG
+    ══════════════════════════════════════════════════════════ -->
+    <section class="subpage-card">
+      <h2>Hinweis zur finalen Rechtsprüfung</h2>
+      <p>Diese Datenschutzerklärung wurde auf Basis der im Projekt technisch nachvollziehbaren Datenflüsse erstellt. Vor Go-Live sind insbesondere der konkrete Web3Forms-Account, etwaige Drittlandübermittlungen und die finale Speicherdauer juristisch freizugeben.</p>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         § 9  PRIMÄRQUELLEN
+    ══════════════════════════════════════════════════════════ -->
+    <section class="subpage-card">
+      <h2>Verwendete Primärquellen (Stand dieser Fassung)</h2>
+      <ul class="subpage-list">
+        <li><a class="inline-link" href="https://www.gesetze-im-internet.de/ttdsg/" target="_blank" rel="noopener noreferrer">TDDDG (Gesetze im Internet)</a></li>
+        <li><a class="inline-link" href="https://web3forms.com/privacy" target="_blank" rel="noopener noreferrer">Web3Forms Privacy Policy</a></li>
+        <li data-datenschutz-termin="calcom"><a class="inline-link" href="https://cal.com/privacy" target="_blank" rel="noopener noreferrer">Cal.com Privacy Policy</a></li>
+        <li data-datenschutz-termin="whatsapp" hidden><a class="inline-link" href="https://www.whatsapp.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">WhatsApp / Meta Privacy Policy</a></li>
+        <li><a class="inline-link" href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__bottom">
+        <span class="footer__copy" data-config="copyright">© [JAHR] [FIRMENNAME], [ORT]</span>
+        <div class="footer__socials" style="display:flex;gap:.8rem;">
+          <a href="#" data-config-href="facebook" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook">Facebook</a>
+          <a href="#" data-config-href="instagram" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">Instagram</a>
+        </div>
+        <nav class="footer__legal" aria-label="Rechtliches">
+          <a href="impressum.html">Impressum</a>
+          <a href="datenschutz.html">Datenschutz</a>
+          <a href="team.html">Team</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+  <script src="js/main.js" defer></script>
+</body>
+</html>

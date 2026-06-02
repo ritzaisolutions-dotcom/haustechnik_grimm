@@ -1,0 +1,5 @@
+# Vercel Root Directory = website (canonical).
+# Do not ignore index.html, css/, js/, or images/
+
+docs/
+.vercel

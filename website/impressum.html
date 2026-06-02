@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Impressum | [FIRMENNAME] [UNTERNEHMENSTYP]</title>
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/png" href="images/favicon-client.png">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/config.js"></script>
+  <script src="js/config-apply.js"></script>
+</head>
+<body>
+  <nav class="nav nav--scrolled" id="mainNav" aria-label="Hauptnavigation">
+    <div class="nav__inner">
+      <a href="index.html#hero" class="nav__wordmark" aria-label="Startseite">
+        <picture>
+          <source srcset="images/logo-client.webp" type="image/webp">
+          <img class="nav__logo" src="images/logo-client.png" alt="[FIRMENNAME]" data-config-alt="true" width="200" height="42" decoding="async">
+        </picture>
+      </a>
+      <ul class="nav__links" role="list">
+        <li><a href="index.html#leistungen">Leistungen</a></li>
+        <li><a href="referenzen.html">Referenzen</a></li>
+        <li><a href="index.html#kontakt">Kontakt</a></li>
+        <li><a href="datenschutz.html">Datenschutz</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="subpage-main container">
+    <header class="subpage-hero">
+      <h1>Impressum</h1>
+      <p>Angaben gemäß DDG und berufsrechtlicher Vorschriften.</p>
+    </header>
+
+    <section class="subpage-card">
+      <h2>Anbieter</h2>
+      <p>
+        <span data-config="name">[FIRMENNAME]</span><br>
+        <span data-config="strasse">[STRASSE_NR]</span><br>
+        <span data-config="plz">[PLZ]</span> <span data-config="ort">[ORT]</span><br>
+        Deutschland
+      </p>
+      <p>Lageradresse: Hohenrhein 64a, 56112 Lahnstein</p>
+      <p>
+        Telefon: <a href="tel:#" data-config-href="tel" data-config="telefonDisplay">+49 (0)2621 947 40 04</a><br>
+        Mobil: +49 (0)176 219 00 432<br>
+        E-Mail: <a href="mailto:#" data-config-href="mailto" data-config="email">info@grimm-sanitaer.de</a>
+      </p>
+    </section>
+
+    <section class="subpage-card">
+      <h2>Berufsrechtliche Angaben</h2>
+      <p>Berufsbezeichnung: <span data-config="berufsbezeichnung">[BERUFSBEZEICHNUNG]</span> (verliehen in Deutschland).</p>
+      <p>Zuständige Kammer: <span data-config="kammer">[KAMMERBEZEICHNUNG], [KAMMERORT]</span>.</p>
+      <p>Mitglied im <span data-config="fachverband">[FACHVERBAND_NAME]</span>.</p>
+      <p>Berufsrechtliche Regelungen: Handwerksordnung (HwO), einsehbar unter <a class="inline-link" href="https://www.gesetze-im-internet.de/hwo/" target="_blank" rel="noopener noreferrer">gesetze-im-internet.de/hwo</a>.</p>
+      <!-- TODO LIVE (B4/B5): USt-IdNr und Berufshaftpflicht (Versicherer, Anschrift, Geltungsraum) nach Kundenfreigabe ergänzen -->
+      <p>Weitere steuer- und versicherungsrechtliche Pflichtangaben werden nach finaler Kundenfreigabe ergänzt.</p>
+    </section>
+
+    <section class="subpage-card">
+      <h2>EU-Streitschlichtung</h2>
+      <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a class="inline-link" href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">ec.europa.eu/consumers/odr/</a>.</p>
+    </section>
+
+    <section class="subpage-card">
+      <h2>Verbraucherstreitbeilegung (VSBG)</h2>
+      <p>Wir sind nicht verpflichtet und nicht bereit, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+    </section>
+
+    <section class="subpage-card">
+      <h2>Haftung für Inhalte und Links</h2>
+      <p>Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__bottom">
+        <span class="footer__copy" data-config="copyright">© [JAHR] [FIRMENNAME], [ORT]</span>
+        <div class="footer__socials" style="display:flex;gap:.8rem;">
+          <a href="#" data-config-href="facebook" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook">Facebook</a>
+          <a href="#" data-config-href="instagram" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">Instagram</a>
+        </div>
+        <nav class="footer__legal" aria-label="Rechtliches">
+          <a href="impressum.html">Impressum</a>
+          <a href="datenschutz.html">Datenschutz</a>
+          <a href="team.html">Team</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+  <script src="js/main.js" defer></script>
+</body>
+</html>

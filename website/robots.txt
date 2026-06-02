@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+# Controlled launch: keep non-public helper paths out of index.
+Disallow: /docs/
+Disallow: /assets/private/
+Sitemap: https://www.grimm-sanitaer.de/sitemap.xml

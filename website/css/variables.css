@@ -1,0 +1,93 @@
+:root {
+  /* ══════════════════════════════════════════════════════════════
+     BRAND COLORS
+     Werden von config-apply.js via CLIENT.colors überschrieben.
+     Diese Werte sind Fallbacks / Vorschau-Defaults.
+  ══════════════════════════════════════════════════════════════ */
+  --primary:       #3A3A3A;   /* Grimm Primärfarbe — Dunkelgrau                    */
+  --primary-dark:  #2A2A2A;   /* Hero-Overlay, Footer                              */
+  --primary-mid:   #454545;   /* Mittlere Primärfarbe                             */
+  --primary-light: #555555;   /* Hover-States                                     */
+  --accent:        #4AAEDC;   /* Grimm Akzent — Hellblau CTAs                     */
+  --accent-hover:  #3A9ECC;   /* Akzent Hover                                     */
+  --accent-light:  #E8F6FC;   /* Badge-Hintergrund                                */
+
+  /* ══════════════════════════════════════════════════════════════
+     UI NEUTRAL COLORS
+  ══════════════════════════════════════════════════════════════ */
+  --bg:         #ffffff;
+  --bg-alt:     #f7f8fa;
+  --text:       #333333;
+  --text-light: #666666;
+  --text-muted: #999999;
+  --border:     #e4e8ef;
+
+  /* ══════════════════════════════════════════════════════════════
+     THIRD-PARTY COLORS  (nicht über config.js veränderbar)
+  ══════════════════════════════════════════════════════════════ */
+  --wa-green:       #25d366;  /* WhatsApp-Grün — Brand-Vorgabe, nicht ändern   */
+  --wa-green-dark:  #128c7e;  /* WhatsApp dunkel                               */
+  --wa-green-hover: #20b858;  /* WhatsApp Hover                                */
+
+  /* ══════════════════════════════════════════════════════════════
+     SPACING SCALE
+  ══════════════════════════════════════════════════════════════ */
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 1rem;
+  --sp-4: 1.5rem;
+  --sp-5: 2rem;
+  --sp-6: 3rem;
+  --sp-7: 4rem;
+  --sp-8: 6rem;
+
+  /* ══════════════════════════════════════════════════════════════
+     BORDER RADIUS
+  ══════════════════════════════════════════════════════════════ */
+  --r-sm:   2px;
+  --r-md:   4px;
+  --r-lg:   8px;
+  --r-xl:   16px;
+  --r-full: 9999px;
+
+  /* ══════════════════════════════════════════════════════════════
+     SHADOWS
+  ══════════════════════════════════════════════════════════════ */
+  --s-sm: 0 1px 4px rgba(26,43,76,.08);
+  --s-md: 0 4px 20px rgba(26,43,76,.12);
+  --s-lg: 0 8px 40px rgba(26,43,76,.18);
+
+  /* ══════════════════════════════════════════════════════════════
+     ANIMATION
+  ══════════════════════════════════════════════════════════════ */
+  --ease:   cubic-bezier(0.16, 1, 0.3, 1);
+  --t-fast: 200ms;
+  --t-base: 300ms;
+  --t-slow: 600ms;
+
+  /* ══════════════════════════════════════════════════════════════
+     TYPOGRAPHY
+     Self-hosted Fonts in assets/fonts/ — keine Google-Font-Requests
+  ══════════════════════════════════════════════════════════════ */
+  --ff-head: 'CormorantGaramondLocal', 'Cormorant Garamond', Georgia, serif;
+  --ff-body: 'DMSansLocal', 'DM Sans', Arial, sans-serif;
+
+  --fs-xs:   clamp(0.72rem, 1.2vw, 0.8rem);
+  --fs-sm:   clamp(0.85rem, 1.5vw, 0.9rem);
+  --fs-base: clamp(1rem,    2vw,   1.05rem);
+  --fs-lg:   clamp(1.1rem,  2vw,   1.25rem);
+  --fs-xl:   clamp(1.3rem,  2.5vw, 1.6rem);
+  --fs-2xl:  clamp(1.6rem,  3vw,   2.2rem);
+  --fs-3xl:  clamp(2rem,    4vw,   3rem);
+  --fs-4xl:  clamp(2.8rem,  5vw,   4.5rem);
+
+  /* ══════════════════════════════════════════════════════════════
+     LAYOUT
+  ══════════════════════════════════════════════════════════════ */
+  --nav-h: 72px;
+  --max-w: 1200px;
+
+  --section-p-y: var(--sp-8);
+  --section-gap: var(--sp-6);
+  --hero-min-h: 115vh;
+}

@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[HANDWERKSBEZEICHNUNG] [ORT] | [FIRMENNAME] [UNTERNEHMENSTYP]</title>
+  <meta name="description" content="[BERUFSBEZEICHNUNG] [FIRMENNAME] in [ORT]: [LEISTUNGEN_KURZ] aus einer Hand.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="[DOMAIN]/">
+  <meta property="og:title" content="[FIRMENNAME]">
+  <meta property="og:description" content="[HANDWERKSBEZEICHNUNG]-Meisterbetrieb in [ORT].">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="[DOMAIN]/">
+  <meta property="og:site_name" content="[FIRMENNAME]">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:image" content="[DOMAIN]/images/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="[FIRMENNAME]">
+  <meta name="twitter:description" content="[HANDWERKSBEZEICHNUNG]-Meisterbetrieb in [ORT].">
+  <meta name="twitter:image" content="[DOMAIN]/images/og-image.jpg">
+  <link rel="icon" type="image/png" href="images/favicon-client.png">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="preload" as="image" href="images/hero-poster.webp" type="image/webp" fetchpriority="high">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/animations.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="css/animations.css"></noscript>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pdf-kalkulation.css">
+
+  <!-- ═══════════════════════════════════════════════════════
+       Template-Erweiterungen: WhatsApp FAB, Termin-Varianten
+       Diese Styles ergänzen style.css ohne es zu berühren.
+  ═══════════════════════════════════════════════════════ -->
+  <style>
+    /* ── WhatsApp FAB ────────────────────────────────────── */
+    .wa-fab {
+      position: fixed;
+      bottom: 2rem;
+      right: 1.5rem;
+      z-index: 950;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: var(--wa-green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 24px rgba(37,211,102,.45), 0 2px 8px rgba(0,0,0,.18);
+      text-decoration: none;
+      transition: transform var(--t-fast), box-shadow var(--t-fast);
+    }
+    .wa-fab:hover  { transform: scale(1.1); box-shadow: 0 8px 36px rgba(37,211,102,.6); }
+    .wa-fab:focus  { outline: 3px solid var(--wa-green); outline-offset: 4px; }
+    .wa-fab svg    { display: block; }
+    .wa-fab__ring  {
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 2.5px solid var(--wa-green);
+      opacity: 0;
+      pointer-events: none;
+      animation: wa-ring 2.8s ease-out infinite;
+    }
+    @keyframes wa-ring {
+      0%   { transform: scale(1);    opacity: .55; }
+      75%  { transform: scale(1.6);  opacity: 0;   }
+      100% { transform: scale(1.6);  opacity: 0;   }
+    }
+    @media (max-width: 768px) {
+      .wa-fab { bottom: 1.2rem; right: 1rem; width: 52px; height: 52px; }
+    }
+
+    /* ── Termin-Variante: WhatsApp ───────────────────────── */
+    .termin-wa-box {
+      max-width: 560px;
+      margin: 2.5rem auto 0;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: var(--r-lg);
+      padding: var(--sp-5) var(--sp-5) var(--sp-6);
+      text-align: center;
+    }
+    .termin-wa-box__icon { font-size: 3rem; line-height: 1; margin-bottom: 1rem; }
+    .termin-wa-box h3 {
+      font-size: var(--fs-xl);
+      color: #fff;
+      margin-bottom: .6rem;
+      font-family: var(--ff-head);
+      font-weight: 600;
+    }
+    .termin-wa-box p { color: rgba(255,255,255,.65); margin-bottom: var(--sp-4); font-size: var(--fs-base); }
+
+    /* ── Termin-Variante: Formular ───────────────────────── */
+    .termin-form-box {
+      max-width: 640px;
+      margin: 2.5rem auto 0;
+      background: var(--bg);
+      border-radius: var(--r-lg);
+      padding: var(--sp-5) var(--sp-5) var(--sp-6);
+      box-shadow: var(--s-lg);
+    }
+    .termin-form-box label { color: var(--text); }
+    .termin-form-box input,
+    .termin-form-box textarea,
+    .termin-form-box select { color: var(--text); background: var(--bg); }
+    #terminFormResult { margin-top: .75rem; font-size: var(--fs-sm); font-weight: 600; }
+
+    /* ── WhatsApp Button (universell) ────────────────────── */
+    .btn--wa {
+      background: var(--wa-green);
+      color: #fff;
+      border: 2px solid var(--wa-green);
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      font-weight: 600;
+    }
+    .btn--wa:hover, .btn--wa:focus {
+      background: var(--wa-green-hover);
+      border-color: var(--wa-green-hover);
+      color: #fff;
+    }
+    .btn--wa svg { flex-shrink: 0; }
+
+    /* ── WhatsApp im Kontaktbereich ──────────────────────── */
+    .kontakt-wa-wrap { margin-top: 1rem; }
+    .kontakt-wa-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      color: var(--wa-green);
+      font-weight: 600;
+      font-size: var(--fs-sm);
+      text-decoration: none;
+      transition: color var(--t-fast);
+    }
+    .kontakt-wa-link:hover { color: var(--wa-green-hover); }
+    .kontakt-wa-link svg   { flex-shrink: 0; }
+
+    /* ── Partner-Logo-Leiste ─────────────────────────────── */
+    .partner-strip {
+      margin-top: var(--sp-7);
+      padding-top: var(--sp-6);
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    .partner-strip__label {
+      font-size: var(--fs-sm);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: var(--sp-4);
+    }
+    .partner-strip__logos {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: var(--sp-4) var(--sp-5);
+    }
+    .partner-strip__logos img {
+      height: 36px;
+      width: auto;
+      max-width: 110px;
+      object-fit: contain;
+      filter: grayscale(100%);
+      opacity: .75;
+      transition: filter var(--t-fast), opacity var(--t-fast);
+    }
+    .partner-strip__logos img:hover {
+      filter: grayscale(0%);
+      opacity: 1;
+    }
+  </style>
+
+  <script src="js/config.js"></script>
+  <script defer src="js/config-apply.js"></script>
+  <script>
+    window.klaroConfig = {
+      version: 1,
+      elementID: 'klaro',
+      storageMethod: 'localStorage',
+      storageName: 'grimm-consent-v1',
+      mustConsent: true,
+      acceptAll: true,
+      hideDeclineAll: false,
+      default: false,
+      lang: 'de',
+      translations: {
+        de: {
+          consentNotice: {
+            description: 'Wir nutzen optionale Dienste nur mit Ihrer Einwilligung. Details finden Sie in der Datenschutzerklärung.'
+          },
+          purposes: {
+            technisch: 'Technisch erforderlich',
+            terminbuchung: 'Terminbuchung',
+            karten: 'Karten & Standort'
+          },
+          services: {
+            necessary: {
+              title: 'Technisch erforderliche Speicherung',
+              description: 'Speichert Ihre Consent-Entscheidung lokal im Browser.'
+            },
+            booking: {
+              title: 'Cal.com Terminbuchung',
+              description: 'Lädt den externen Terminbuchungsdienst erst nach Einwilligung.'
+            },
+            googleMaps: {
+              title: 'Google Maps',
+              description: 'Ermöglicht die interaktive Anfahrtskarte und Routenplanung direkt auf unserer Webseite.'
+            }
+          }
+        }
+      },
+      services: [
+        { name: 'necessary', required: true,  purposes: ['technisch']      },
+        { name: 'booking',   required: false, purposes: ['terminbuchung'] },
+        { name: 'googleMaps',required: false, purposes: ['karten']        }
+      ]
+    };
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "[BRANCHE]",
+      "name": "[FIRMENNAME]",
+      "telephone": "[TELEFON]",
+      "email": "[EMAIL]",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "[STRASSE_NR]",
+        "postalCode": "[PLZ]",
+        "addressLocality": "[ORT]",
+        "addressCountry": "DE"
+      },
+      "url": "[DOMAIN]/",
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "[LAT]",
+        "longitude": "[LNG]"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+          "opens": "08:00",
+          "closes": "17:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Friday",
+          "opens": "08:00",
+          "closes": "13:00"
+        }
+      ]
+    }
+  </script>
+</head>
+<body>
+
+  <!-- ╔════════════════════════════════╗ -->
+  <!-- ║  NAV                           ║ -->
+  <!-- ╚════════════════════════════════╝ -->
+  <nav class="nav" id="mainNav" aria-label="Hauptnavigation">
+    <div class="nav__inner">
+      <a href="#hero" class="nav__wordmark" aria-label="[FIRMENNAME], Startseite">
+        <picture>
+          <source srcset="images/logo-client.webp" type="image/webp">
+          <img class="nav__logo" src="images/logo-client.png" alt="[FIRMENNAME]" data-config-alt="true" width="200" height="42" decoding="async" fetchpriority="high">
+        </picture>
+      </a>
+
+      <ul class="nav__links" role="list">
+        <li><a href="#leistungen">Leistungen</a></li>
+        <li data-nav-calc><a href="#kostenrechner">Kostenrechner</a></li>
+        <li><a href="#referenzen">Referenzen</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="#familie">Über uns</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+
+      <a href="#termin" class="btn btn--primary btn--sm nav__cta">Termin buchen</a>
+
+      <button class="nav__hamburger" id="navHamburger" aria-label="Menü öffnen" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile overlay -->
+  <div class="nav__mobile" id="navMobile" role="dialog" aria-label="Navigation">
+    <button class="nav__mobile-close" id="navMobileClose" aria-label="Menü schließen">✕</button>
+    <a href="#leistungen">Leistungen</a>
+    <a href="#kostenrechner" data-nav-calc>Kostenrechner</a>
+    <a href="#referenzen">Referenzen</a>
+    <a href="team.html">Team</a>
+    <a href="#familie">Über uns</a>
+    <a href="#kontakt">Kontakt</a>
+    <a href="#termin" class="btn btn--primary" style="margin-top:1rem">Termin buchen</a>
+    <span class="nav__mobile-phone">
+      <a href="tel:#" data-config-href="tel" data-config="telefonDisplay">[TELEFON]</a>
+    </span>
+  </div>
+
+
+  <!-- ╔════════════════════════════════╗ -->
+  <!-- ║  HERO                          ║ -->
+  <!-- ╚════════════════════════════════╝ -->
+  <section class="hero" id="hero">
+    <div class="hero__sticky" id="heroSticky">
+      <div class="hero__bg">
+        <video
+          class="hero__bg-img"
+          id="heroVideo"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="auto"
+          poster="images/hero-poster.jpg"
+          data-video-candidates="images/video_hero_section_backround.mp4,images/video_hero_section_background.mp4">
+          <source src="images/video_hero_section_backround.mp4" type="video/mp4">
+        </video>
+        <div class="hero__overlay"></div>
+      </div>
+
+      <div class="hero__content container">
+        <div class="hero__body">
+          <span class="hero__eyebrow" data-config="heroEyebrow">Meisterbetrieb · [ORT] · seit [GRUENDUNGSJAHR]</span>
+
+          <h1 class="hero__h1">
+            <span class="word">Heizung.</span>
+            <span class="word">Bad.</span>
+            <span class="word">Haustechnik.</span>
+            <span class="word word--accent"><em data-config="nameKurz">Grimm</em></span>
+            <span class="word">—</span>
+            <span class="word">Ihr</span>
+            <span class="word">Partner</span>
+            <span class="word">in</span>
+            <span class="word" data-config="ort">Lahnstein</span>
+            <span class="word">.</span>
+          </h1>
+
+          <p class="hero__sub" data-config="slogan">[SLOGAN]</p>
+
+          <div class="hero__ctas">
+            <a href="#termin" class="btn btn--primary">Termin vereinbaren</a>
+            <a href="referenzen.html" class="btn btn--ghost">Unsere Referenzen</a>
+          </div>
+
+          <a
+            href="#"
+            data-config-href="googleBewertung"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hero__google-pill"
+            hidden
+            aria-label="Google-Bewertungen ansehen">
+            <span class="hero__google-pill-stars">★★★★★</span>
+            <span class="hero__google-pill-value" data-config="googleBewertungNote">[NOTE]</span>
+            <span class="hero__google-pill-meta"><span data-config="googleBewertungAnzahl">[ANZAHL]</span> Google-Bewertungen</span>
+          </a>
+        </div>
+
+        <div class="hero__trust">
+          <div class="trust-item">
+            <span class="trust-item__value" data-config="jahreErfahrung">[JAHRE]+</span>
+            <span class="trust-item__label">Jahre Erfahrung</span>
+          </div>
+          <div class="trust-divider"></div>
+          <div class="trust-item">
+            <span class="trust-item__value" data-config="teamGroesse">[ANZAHL]</span>
+            <span class="trust-item__label">Fachkräfte im Team</span>
+          </div>
+          <div class="trust-divider"></div>
+          <div class="trust-item">
+            <span class="trust-item__value">1</span>
+            <span class="trust-item__label">Ansprechpartner</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="scroll-indicator" id="scrollIndicator" aria-hidden="true">
+        <span>Scroll</span>
+        <div class="scroll-indicator__arrow">↓</div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ╔════════════════════════════════╗ -->
+  <!-- ║  VORHER / NACHHER              ║ -->
+  <!-- ╚════════════════════════════════╝ -->
+  <section class="vn-section" id="vorher-nachher" hidden>
+    <div class="container">
+      <header class="section-header section-header--center reveal">
+        <span class="section-label">Unsere Arbeit</span>
+        <h2 class="section-h2">Sehen Sie den Unterschied selbst.</h2>
+        <p class="section-sub vn-sub--desktop">Ziehen Sie den Regler und sehen Sie den Unterschied von alt zu neu.</p>
+        <p class="section-sub vn-sub--mobile">Wählen Sie Vorher oder Nachher – derselbe Badezimmer-Ausbau.</p>
+      </header>
+
+      <p class="vn-hint vn-hint--desktop reveal reveal-delay-1">◁ Regler ziehen ▷</p>
+
+      <div class="vn-mobile-toggle reveal reveal-delay-1" role="group" aria-label="Vorher oder Nachher anzeigen">
+        <button type="button" class="btn btn--sm btn--secondary is-active" data-vn-view="before" aria-pressed="true">Vorher</button>
+        <button type="button" class="btn btn--sm btn--secondary" data-vn-view="after" aria-pressed="false">Nachher</button>
+      </div>
+
+      <!-- TODO LIVE (B3): Bei zweitem Bildpaar vn-tabs wieder einblenden -->
+      <div class="vn-tabs vn-tabs--hidden" role="tablist" aria-label="Vorher-Nachher Projektwahl" hidden>
+        <button type="button" class="btn btn--sm btn--secondary" data-vn-set="dusche" aria-selected="true">Dusche</button>
+      </div>
+
+      <div
+        class="vn-slider reveal reveal-delay-2"
+        id="vnSlider"
+        role="region"
+        aria-label="Vorher-Nachher Vergleich: Dusche"
+        tabindex="0">
+
+        <div class="vn-img vn-before">
+          <picture>
+            <source srcset="images/ref_6.webp" type="image/webp">
+            <img src="images/ref_6.jpg" alt="Bad vor der Sanierung" width="1024" height="571" decoding="async">
+          </picture>
+          <span class="vn-label vn-label-before">Vorher</span>
+        </div>
+
+        <div class="vn-img vn-after">
+          <picture>
+            <source srcset="images/ref_1.webp" type="image/webp">
+            <img src="images/ref_1.jpg" alt="Bad nach der Sanierung" width="1024" height="571" decoding="async">
+          </picture>
+          <span class="vn-label vn-label-after">Nachher</span>
+        </div>
+
+        <div class="vn-divider" id="vnDivider">
+          <div class="vn-handle" aria-hidden="true">
+            <span class="vn-handle-icon">◁▷</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="vn-cta reveal reveal-delay-3">
+        <a href="#termin" class="btn btn--primary">Ihr Projekt besprechen</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ╔════════════════════════════════╗ -->
+  <!-- ║  LEISTUNGEN                    ║ -->
+  <!-- ╚════════════════════════════════╝ -->
+  <section class="section" id="leistungen">
+    <div class="container">
+      <header class="section-header reveal">
+        <span class="section-label">Was wir tun</span>
+        <h2 class="section-h2">Unsere Leistungen.</h2>
+        <p class="section-sub">Bad, Heizung, Haustechnik und Lüftung — aus einer Hand, termingerecht und transparent.</p>
+      </header>
+
+      <div class="leistungen-grid">
+        <article class="leistung-card reveal reveal-delay-1">
+          <div class="leistung-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false"><path d="M3 12h18M3 6h18M3 18h18M7 3v18M17 3v18"/></svg>
+          </div>
+          <div class="leistung-card__num">01</div>
+          <h3 class="leistung-card__title" data-config="leistung1Titel">[LEISTUNG_1_TITEL]</h3>
+          <p class="leistung-card__text" data-config="leistung1Text">[LEISTUNG_1_TEXT]</p>
+        </article>
+
+        <article class="leistung-card reveal reveal-delay-2">
+          <div class="leistung-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false"><path d="M4 20V8l8-4 8 4v12H4zm4-7h8M8 17h8"/></svg>
+          </div>
+          <div class="leistung-card__num">02</div>
+          <h3 class="leistung-card__title" data-config="leistung2Titel">[LEISTUNG_2_TITEL]</h3>
+          <p class="leistung-card__text" data-config="leistung2Text">[LEISTUNG_2_TEXT]</p>
+        </article>
+
+        <article class="leistung-card reveal reveal-delay-3">
+          <div class="leistung-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false"><path d="M3 16h18M5 16l2-8h10l2 8M8 8V5m8 3V5"/></svg>
+          </div>
+          <div class="leistung-card__num">03</div>
+          <h3 class="leistung-card__title" data-config="leistung3Titel">[LEISTUNG_3_TITEL]</h3>
+          <p class="leistung-card__text" data-config="leistung3Text">[LEISTUNG_3_TEXT]</p>
+        </article>
+
+        <article class="leistung-card reveal reveal-delay-4">
+          <div class="leistung-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false"><path d="M4 18h16M7 18V6l5-3 5 3v12M9 11h6"/></svg>
+          </div>
+          <div class="leistung-card__num">04</div>
+          <h3 class="leistung-card__title" data-config="leistung4Titel">[LEISTUNG_4_TITEL]</h3>
+          <p class="leistung-card__text" data-config="leistung4Text">[LEISTUNG_4_TEXT]</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ╔════════════════════════════════╗ -->
+  <!-- ║  KOSTENRECHNER                 ║ -->
+  <!-- ╚════════════════════════════════╝ -->
+  <!-- Sichtbarkeit gesteuert durch CLIENT.kostenrechnerAktiv in config.js -->
+  <section class="section section--alt" id="kostenrechner">
+    <div class="container">
+      <header class="section-header reveal section-header--center">
+        <span class="section-label">Kostenrechner</span>
+        <h2 class="section-h2">Ihr Preisrahmen in 4 interaktiven Schritten.</h2>
+        <p class="section-sub">In 4 Schritten zum Preisrahmen – unverbindlich und kostenlos. Der verbindliche Preis folgt nach Besichtigung.</p>
+      </header>
+
+      <div class="calc-wizard reveal reveal-delay-1" id="calcWizard">
+        <div class="calc-steps" aria-hidden="true">
+          <span class="calc-step-dot calc-step-dot--active"></span>
+          <span class="calc-step-dot"></span>
+          <span class="calc-step-dot"></span>
+          <span class="calc-step-dot"></span>
+        </div>
+
+        <form id="calcForm" class="calc-form" novalidate>
+          <section class="calc-panel" data-step="1">
+            <h3>1) Projektart wählen</h3>
+            <div class="calc-card-grid">
+              <button type="button" class="calc-choice" data-field="projectType" data-value="bath">
+                <span class="calc-choice__title">Badsanierung</span>
+                <span class="calc-choice__desc">Komplettrenovierung aus einer Hand inkl. Staubschutz und Koordination aller Gewerke.</span>
+              </button>
+              <button type="button" class="calc-choice" data-field="projectType" data-value="floor">
+                <span class="calc-choice__title">Wohnräume &amp; Küchen</span>
+                <span class="calc-choice__desc">Heizungsmodernisierung und Wärmeverteilung aus einer Hand.</span>
+              </button>
+              <button type="button" class="calc-choice" data-field="projectType" data-value="terrace">
+                <span class="calc-choice__title">Terrasse &amp; Balkon</span>
+                <span class="calc-choice__desc">Witterungsbeständige, langlebige Verlegung im Außenbereich für Wohlfühloasen.</span>
+              </button>
+              <button type="button" class="calc-choice" data-field="projectType" data-value="repair">
+                <span class="calc-choice__title">Reparatur &amp; Sanierung</span>
+                <span class="calc-choice__desc">Schneller und fachgerechter Meister-Service für kleinere Schäden und Ausbesserungen.</span>
+              </button>
+            </div>
+          </section>
+
+          <section class="calc-panel" data-step="2" hidden>
+            <h3>2) Fläche und Material</h3>
+            <div class="calc-grid">
+              <label>Fläche (m²)
+                <input type="number" name="area" min="1" max="500" value="12" required>
+              </label>
+            </div>
+            <div class="calc-card-grid calc-card-grid--3">
+              <button type="button" class="calc-choice" data-field="materialClass" data-value="standard">
+                <span class="calc-choice__title">Feinsteinzeug</span>
+                <span class="calc-choice__desc">Standardformat inkl. Verlegung ca. 135 €/m²</span>
+              </button>
+              <button type="button" class="calc-choice" data-field="materialClass" data-value="premium">
+                <span class="calc-choice__title">Premium / Naturstein</span>
+                <span class="calc-choice__desc">Marmor / Schiefer inkl. Verlegung ca. 240 €/m²</span>
+              </button>
+              <button type="button" class="calc-choice" data-field="materialClass" data-value="xl">
+                <span class="calc-choice__title">Großformat</span>
+                <span class="calc-choice__desc">bis 120×260 cm inkl. Verlegung ca. 330 €/m²</span>
+              </button>
+            </div>
+            <p id="calcStep2Error" class="calc-error" hidden>Bitte Fläche eingeben und Material wählen.</p>
+          </section>
+
+          <section class="calc-panel" data-step="3" hidden>
+            <h3>3) Zusatzleistungen</h3>
+            <p class="calc-step-sub">Optional – nichts nötig? Einfach weiter.</p>
+            <div class="calc-card-grid calc-card-grid--3">
+              <button type="button" class="calc-choice" data-extra="debris">
+                <span class="calc-choice__title">Altbelag entfernen</span>
+                <span class="calc-choice__desc">+ ca. 45 €/m²</span>
+              </button>
+              <button type="button" class="calc-choice" data-extra="waterproofing">
+                <span class="calc-choice__title">Abdichtung (Nassbereich)</span>
+                <span class="calc-choice__desc">+ ca. 60 €/m²</span>
+              </button>
+              <button type="button" class="calc-choice" data-extra="floorHeating">
+                <span class="calc-choice__title">Fußbodenheizung integrieren</span>
+                <span class="calc-choice__desc">+ ca. 28 €/m²</span>
+              </button>
+            </div>
+          </section>
+        </form>
+
+        <section class="calc-panel" data-step="4" hidden>
+          <h3>4) Ihr Ergebnis</h3>
+          <div id="calcResult" class="calc-result" hidden>
+            <p class="calc-summary" id="calcSummaryText"></p>
+            <div class="calc-total-box">
+              <span class="calc-total-label">Geschätzter Preisrahmen:</span>
+              <p id="calcTotal" class="calc-total-price"></p>
+              <div class="calc-total-note calc-disclaimer">
+                <p>Unverbindlich · inkl. Material &amp; Arbeit · Festpreis nach Besichtigung.</p>
+                <p><strong>Wichtiger Hinweis:</strong> Richtwert nach branchenüblichen Mittelwerten. Endpreis nur nach Vor-Ort-Aufmaß möglich.</p>
+                <p>Handwerkerleistungen sind steuerlich absetzbar (§35a EStG).</p>
+              </div>
+            </div>
+
+            <div id="calcResultDetail" class="calc-result-detail">
+              <h4 class="calc-result-detail__title">Detaillierte Kostenaufschlüsselung</h4>
+              <ul id="calcBreakdown" class="calc-breakdown-list"></ul>
+              <div class="calc-actions">
+                <button type="button" id="calcPdfBtn" class="btn btn--secondary">PDF herunterladen</button>
+                <a href="#termin" class="btn btn--primary">Beratungstermin anfragen</a>
+              </div>
+            </div>
+
+            <div class="calc-callback calc-callback--prominent">
+              <h4 class="calc-callback__title">Rückruf mit Ihrem Preisrahmen</h4>
+              <p class="calc-callback__intro">Geben Sie Ihre Telefonnummer an – wir rufen Sie mit Ihrem Rechnerergebnis zurück, in der Regel innerhalb von 24&nbsp;Stunden.</p>
+              <form id="calcCallbackForm" class="calc-callback-form" action="https://api.web3forms.com/submit" method="post" novalidate>
+                <input type="hidden" name="access_key" value="">
+                <input type="hidden" name="subject" id="calcCallbackSubject" value="RÜCKRUF Kostenrechner">
+                <label for="calc_callback_phone">Telefonnummer für Rückruf
+                  <input id="calc_callback_phone" name="phone" type="tel" required autocomplete="tel" placeholder="z. B. 0151 12345678">
+                </label>
+                <label class="kontakt-form__check" for="calc_callback_dsgvo">
+                  <input id="calc_callback_dsgvo" name="dsgvo_consent" type="checkbox" required>
+                  <span>Ich willige in die Verarbeitung meiner Telefonnummer zur Rückruf-Kontaktaufnahme ein (gemäß <a href="datenschutz.html" target="_blank">Datenschutzerklärung</a>).</span>
+                </label>
+                <label class="kontakt-form__honeypot" for="calc_callback_website">
+                  Website
+                  <input id="calc_callback_website" name="website" type="text" tabindex="-1" autocomplete="off">
+                </label>
+                <button type="submit" id="calcCallbackSubmitBtn" class="btn btn--primary calc-callback__submit">Rückruf anfordern</button>
+              </form>
+              <p id="calcCallbackResult" class="calc-callback-result" aria-live="polite" hidden></p>
+              <a href="#kontakt" class="calc-callback-kontakt-link">Ausführliche Anfrage im Kontaktformular</a>
+            </div>
+            <button type="button" id="calcResetBtn" class="calc-reset" hidden>← Neu berechnen</button>
+          </div>
+        </section>
+
+        <div class="calc-nav">
+          <button type="button" id="calcBackBtn" class="btn btn--secondary">Zurück</button>
+          <button type="button" id="calcNextBtn" class="btn btn--primary">Weiter</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ╔════════════════════════════════╗ -->
+  <!-- ║  WARUM WIR                     ║ -->
+  <!-- ╚════════════════════════════════╝ -->
+  <section class="section section--alt" id="warum">
+    <div class="container">
+      <div class="warum-inner">
+        <div class="warum-img-wrap reveal">
+          <picture>
+            <source srcset="images/bild-haus.webp" type="image/webp">
+            <img src="images/bild-haus.jpg" alt="SHK-Fachbetrieb Grimm Heizung und Sanitär bei der Arbeit" width="1200" height="900" loading="lazy" decoding="async">
+          </picture>
+        </div>
+
+        <div>
+          <header class="section-header reveal">
+            <span class="section-label" data-config="warumLabel">Warum wir</span>
+            <h2 class="section-h2">Was uns von anderen unterscheidet.</h2>
+          </header>
+
+          <ul class="warum-list" style="list-style:none">
+            <li class="warum-item reveal reveal-delay-1">
+              <div class="warum-item__icon">✓</div>
+              <div>
+                <div class="warum-item__title" data-config="warum1Titel">[USP_1_TITEL]</div>
+                <p class="warum-item__text" data-config="warum1Text">[USP_1_TEXT]</p>
+              </div>
+            </li>
+            <li class="warum-item reveal reveal-delay-2">
+              <div class="warum-item__icon">✓</div>
+              <div>
+                <div class="warum-item__title" data-config="warum2Titel">[USP_2_TITEL]</div>
+                <p class="warum-item__text" data-config="warum2Text">[USP_2_TEXT]</p>
+              </div>
+            </li>
+            <li class="warum-item reveal reveal-delay-3">
+              <div class="warum-item__icon">✓</div>
+              <div>
+                <div class="warum-item__title" data-config="warum3Titel">[USP_3_TITEL]</div>
+                <p class="warum-item__text" data-config="warum3Text">[USP_3_TEXT]</p>
+              </div>
+            </li>
+            <li class="warum-item reveal reveal-delay-4">
+              <div class="warum-item__icon">✓</div>
+              <div>
+                <div class="warum-item__title" data-config="warum4Titel">[USP_4_TITEL]</div>
+                <p class="warum-item__text" data-config="warum4Text">[USP_4_TEXT]</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ╔════════════════════════════════╗ -->
+  <!-- ║  FAMILIE / ÜBER UNS            ║ -->
+  <!-- ╚════════════════════════════════╝ -->
+  <section class="section" id="familie">
+    <div class="container">
+      <div class="familie-inner">
+        <div class="familie-imgs reveal">
+          <a class="familie-img-link" href="team.html">
+            <div class="familie-img-main">
+              <picture>
+                <source srcset="images/team-bild.webp" type="image/webp">
+                <img src="images/team-bild.jpg" alt="Das Team von [FIRMENNAME]" width="3590" height="3000" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <span class="familie-img-cta">Unser Team kennenlernen →</span>
+          </a>
+        </div>
+
+        <div class="familie-text">
+          <header class="section-header reveal">
+            <span class="section-label">Über uns</span>
+            <h2 class="section-h2">Handwerks&shy;kunst seit <span data-config="gruendungsjahr">[GRUENDUNGSJAHR]</span>.</h2>
+          </header>
+
+          <!-- ══════════════════════════════════════════════════════
+               Über-uns-Text: wird von config-apply.js aus CLIENT.ueberUns
+               befüllt (Array von Absätzen). Fallback-Platzhalter bleiben
+               sichtbar, solange die Werte in config.js nicht gesetzt sind.
+               ══════════════════════════════════════════════════════ -->
+          <div class="familie-body reveal reveal-delay-1" id="ueberUnsBody">
+            <p>[ÜBER_UNS_ABSATZ_1]</p>
+            <p>[ÜBER_UNS_ABSATZ_2]</p>
+            <p>[ÜBER_UNS_ABSATZ_3]</p>
+          </div>
+
+          <div class="familie-badges reveal reveal-delay-2">
+            <span class="familie-badge">BOSCH Premium Partner</span>
+            <span class="familie-badge">Gegründet <span data-config="gruendungsjahr">1998</span></span>
+            <span class="familie-badge" data-config="fachverband">SHK-Innung Rhein-Lahn</span>
+          </div>
+
+          <!-- ══════════════════════════════════════════════════════
+               Dokument-Bilder: gesteuert über CLIENT.dokBild1/2/3
+               Leerer String ("") in config.js → Bild wird ausgeblendet.
+               ══════════════════════════════════════════════════════ -->
+          <div class="familie-docs reveal reveal-delay-3">
+            <div class="familie-doc" id="dokBild1">
+              <picture>
+                <source srcset="images/partner-bosch-premium.webp" type="image/webp">
+                <img src="images/partner-bosch-premium.jpg" alt="BOSCH Premium Partner" width="720" height="1080" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="familie-doc" id="dokBild2">
+              <picture>
+                <source srcset="images/partner-bosch-split.webp" type="image/webp">
+                <img src="images/partner-bosch-split.jpg" alt="BOSCH zertifizierter Profi Split-Klimageräte" width="469" height="700" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="familie-doc" id="dokBild3" hidden></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="partner-strip reveal reveal-delay-4">
+        <p class="partner-strip__label">Partner renommierter Hersteller</p>
+        <div class="partner-strip__logos" aria-label="Hersteller-Logos">
+          <img src="images/IP_bosch.webp" alt="Bosch Thermotechnik" width="120" height="48" loading="lazy" decoding="async">
+          <img src="images/IP_geberit.webp" alt="Geberit" width="120" height="48" loading="lazy" decoding="async">
+          <img src="images/IP_viega.webp" alt="Viega" width="120" height="48" loading="lazy" decoding="async">
+          <img src="images/IP_Villeroy.webp" alt="Villeroy &amp; Boch" width="120" height="48" loading="lazy" decoding="async">
+          <img src="images/IP_grohe.webp" alt="Grohe" width="120" height="48" loading="lazy" decoding="async">
+          <img src="images/IP_hansgrohe.webp" alt="hansgrohe" width="120" height="48" loading="lazy" decoding="async">
+          <img src="images/IP_Buderus.webp" alt="Buderus" width="120" height="48" loading="lazy" decoding="async">
+          <img src="images/IP_kermi.webp" alt="Kermi" width="120" height="48" loading="lazy" decoding="async">
+          <img src="images/IP_tece.webp" alt="TECE" width="120" height="48" loading="lazy" decoding="async">
+          <img src="images/IP_weishaupt.webp" alt="Weishaupt" width="120" height="48" loading="lazy" decoding="async">
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ╔════════════════════════════════╗ -->
+  <!-- ║  REFERENZEN                    ║ -->
+  <!-- ╚════════════════════════════════╝ -->
+  <section class="section section--alt" id="referenzen">
+    <div class="container">
+      <header class="section-header section-header--center reveal">
+        <span class="section-label">Unsere Projekte</span>
+        <h2 class="section-h2">Ausgewählte Referenzen.</h2>
+        <p class="section-sub" data-config="referenzenIntro">Auswahl abgeschlossener Projekte aus Lahnstein und Umgebung.</p>
+      </header>
+
+      <div class="ref-grid reveal">
+        <div class="ref-item">
+          <picture><source srcset="images/ref_1.webp" type="image/webp"><img src="images/ref_1.jpg" alt="Badezimmer Sanierung mit bodengleicher Dusche und Glasabtrennung" width="350" height="350" loading="lazy" decoding="async"></picture>
+          <div class="ref-item__overlay"><span>Badsanierung</span></div>
+        </div>
+        <div class="ref-item">
+          <picture><source srcset="images/ref_2.webp" type="image/webp"><img src="images/ref_2.jpg" alt="Modernes Badezimmer mit hochwertiger Ausstattung" width="350" height="350" loading="lazy" decoding="async"></picture>
+          <div class="ref-item__overlay"><span>Badmodernisierung</span></div>
+        </div>
+        <div class="ref-item">
+          <picture><source srcset="images/ref_3.webp" type="image/webp"><img src="images/ref_3.jpg" alt="Heizungsinstallation und Wärmeverteilung" width="350" height="350" loading="lazy" decoding="async"></picture>
+          <div class="ref-item__overlay"><span>Heizung</span></div>
+        </div>
+        <div class="ref-item">
+          <picture><source srcset="images/ref_4.webp" type="image/webp"><img src="images/ref_4.jpg" alt="Sanitär- und Haustechnikarbeiten" width="350" height="350" loading="lazy" decoding="async"></picture>
+          <div class="ref-item__overlay"><span>Haustechnik</span></div>
+        </div>
+        <div class="ref-item">
+          <picture><source srcset="images/ref_5.webp" type="image/webp"><img src="images/ref_5.jpg" alt="Wärmepumpe und regeneratives Heizen" width="350" height="350" loading="lazy" decoding="async"></picture>
+          <div class="ref-item__overlay"><span>Wärmepumpe</span></div>
+        </div>
+        <div class="ref-item">
+          <picture><source srcset="images/ref_6.webp" type="image/webp"><img src="images/ref_6.jpg" alt="Barrierefreies Bad" width="350" height="350" loading="lazy" decoding="async"></picture>
+          <div class="ref-item__overlay"><span>Barrierefreies Bad</span></div>
+        </div>
+        <div class="ref-item">
+          <picture><source srcset="images/ref_7.webp" type="image/webp"><img src="images/ref_7.jpg" alt="Bad Design und Sanitär" width="350" height="350" loading="lazy" decoding="async"></picture>
+          <div class="ref-item__overlay"><span>Bad Design</span></div>
+        </div>
+        <div class="ref-item">
+          <picture><source srcset="images/ref_8.webp" type="image/webp"><img src="images/ref_8.jpg" alt="Service und Wartung Haustechnik" width="350" height="350" loading="lazy" decoding="async"></picture>
+          <div class="ref-item__overlay"><span>Service</span></div>
+        </div>
+      </div>
+
+      <div class="ref-cta reveal">
+        <a href="referenzen.html" class="btn btn--secondary">Alle Projekte ansehen</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ╔════════════════════════════════╗ -->
+  <!-- ║  BEWERTUNGEN                   ║ -->
+  <!-- ╚════════════════════════════════╝ -->
+  <section class="section section--dark-mid" id="bewertungen" hidden>
+    <div class="container">
+      <header class="section-header section-header--center reveal">
+        <span class="section-label">Was Kunden sagen</span>
+        <h2 class="section-h2"><span data-config="googleBewertungNote">[NOTE]</span> Sterne auf Google.</h2>
+        <p class="section-sub"><span data-config="bewertungenAnzahl">[ANZAHL]</span> Bewertungen. Echt. Unbearbeitet.</p>
+      </header>
+
+      <div class="bewertungen-carousel-container reveal">
+        <button class="carousel-btn carousel-btn--prev" aria-label="Vorherige Bewertung" id="reviewsPrev">
+          <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+
+        <div class="carousel-track-container">
+          <div class="carousel-track" id="reviewsTrack">
+            <article class="bewertung-card">
+              <div class="bewertung-card__header">
+                <div class="bewertung-card__avatar avatar--c1">[I]</div>
+                <div class="bewertung-card__meta">
+                  <div class="bewertung-card__author">[BEWERTUNG_1_VORNAME_NACHNAME]</div>
+                  <div class="bewertung-card__stars">★★★★★</div>
+                </div>
+              </div>
+              <p class="bewertung-card__text">„[BEWERTUNG_1_TEXT — echtes Zitat aus Google-Profil, unverändert übernehmen]"</p>
+              <a class="bewertung-card__more" href="#" data-config-href="googleBewertung" target="_blank" rel="noopener noreferrer">Vollständige Bewertung auf Google</a>
+            </article>
+
+            <article class="bewertung-card">
+              <div class="bewertung-card__header">
+                <div class="bewertung-card__avatar avatar--c2">[I]</div>
+                <div class="bewertung-card__meta">
+                  <div class="bewertung-card__author">[BEWERTUNG_2_VORNAME_NACHNAME]</div>
+                  <div class="bewertung-card__stars">★★★★★</div>
+                </div>
+              </div>
+              <p class="bewertung-card__text">„[BEWERTUNG_2_TEXT — echtes Zitat aus Google-Profil, unverändert übernehmen]"</p>
+              <a class="bewertung-card__more" href="#" data-config-href="googleBewertung" target="_blank" rel="noopener noreferrer">Vollständige Bewertung auf Google</a>
+            </article>
+
+            <article class="bewertung-card">
+              <div class="bewertung-card__header">
+                <div class="bewertung-card__avatar avatar--c3">[I]</div>
+                <div class="bewertung-card__meta">
+                  <div class="bewertung-card__author">[BEWERTUNG_3_VORNAME_NACHNAME]</div>
+                  <div class="bewertung-card__stars">★★★★★</div>
+                </div>
+              </div>
+              <p class="bewertung-card__text">„[BEWERTUNG_3_TEXT — echtes Zitat aus Google-Profil, unverändert übernehmen]"</p>
+              <a class="bewertung-card__more" href="#" data-config-href="googleBewertung" target="_blank" rel="noopener noreferrer">Vollständige Bewertung auf Google</a>
+            </article>
+
+            <article class="bewertung-card">
+              <div class="bewertung-card__header">
+                <div class="bewertung-card__avatar avatar--c4">[I]</div>
+                <div class="bewertung-card__meta">
+                  <div class="bewertung-card__author">[BEWERTUNG_4_VORNAME_NACHNAME]</div>
+                  <div class="bewertung-card__stars">★★★★★</div>
+                </div>
+              </div>
+              <p class="bewertung-card__text">„[BEWERTUNG_4_TEXT — echtes Zitat aus Google-Profil, unverändert übernehmen]"</p>
+              <a class="bewertung-card__more" href="#" data-config-href="googleBewertung" target="_blank" rel="noopener noreferrer">Vollständige Bewertung auf Google</a>
+            </article>
+
+            <article class="bewertung-card">
+              <div class="bewertung-card__header">
+                <div class="bewertung-card__avatar avatar--c5">[I]</div>
+                <div class="bewertung-card__meta">
+                  <div class="bewertung-card__author">[BEWERTUNG_5_VORNAME_NACHNAME]</div>
+                  <div class="bewertung-card__stars">★★★★★</div>
+                </div>
+              </div>
+              <p class="bewertung-card__text">„[BEWERTUNG_5_TEXT — echtes Zitat aus Google-Profil, unverändert übernehmen]"</p>
+              <a class="bewertung-card__more" href="#" data-config-href="googleBewertung" target="_blank" rel="noopener noreferrer">Vollständige Bewertung auf Google</a>
+            </article>
+          </div>
+        </div>
+
+        <button class="carousel-btn carousel-btn--next" aria-label="Nächste Bewertung" id="reviewsNext">
+          <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+      </div>
+
+      <div class="carousel-dots" id="reviewsDots"></div>
+
+      <p class="reviews-cta-wrap reveal">
+        <a href="#"
+           data-config-href="googleBewertung"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="reviews-google-link">Google-Bewertung schreiben</a>
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ╔════════════════════════════════╗ -->
+  <!-- ║  TERMIN                        ║ -->
+  <!-- ╚════════════════════════════════╝ -->
+  <!-- Variante: CLIENT.terminVariante = "calcom" | "whatsapp" | "formular" -->
+  <section class="section section--dark" id="termin">
+    <div class="container">
+      <header class="section-header section-header--center reveal">
+        <span class="section-label">Jetzt starten</span>
+        <h2 class="section-h2">Bereit für Ihr Projekt?</h2>
+        <p class="section-sub">Kostenloses Beratungsgespräch – unverbindlich und ohne Verpflichtung.</p>
+      </header>
+
+      <div class="termin-grid">
+        <div class="termin-card termin-card--featured reveal reveal-delay-1">
+          <div class="termin-card__icon">🏗</div>
+          <h3 class="termin-card__title">Kostenloses Beratungsgespräch</h3>
+          <p class="termin-card__text">Wir besprechen Ihr Projekt in Ruhe. Vor Ort oder telefonisch, ganz wie Sie möchten.</p>
+          <ul class="termin-meta">
+            <li>⏱ ca. 30–60 Minuten</li>
+            <li>📍 Bei Ihnen vor Ort oder telefonisch</li>
+            <li>💶 Kostenlos &amp; unverbindlich</li>
+          </ul>
+          <a class="btn btn--primary btn--full" href="#termin-buchung">Beratung buchen</a>
+        </div>
+      </div>
+
+      <!-- ──────────────────────────────────────────────────────
+           VARIANTE A: Cal.com (Standard)
+           Eingeblendet wenn CLIENT.terminVariante === "calcom"
+      ────────────────────────────────────────────────────── -->
+      <div data-termin="calcom" id="termin-buchung">
+        <div class="consent-gate reveal" id="termin-consent">
+          <h3 class="consent-gate__title">Online-Terminbuchung (Cal.com) nach Einwilligung</h3>
+          <p class="consent-gate__text">
+            Die Terminbuchung nutzt einen externen Dienst. Aktivierung erst nach Ihrer Einwilligung.
+            Details stehen in der <a class="inline-link" href="datenschutz.html">Datenschutzerklärung</a>.
+          </p>
+          <div>
+            <button type="button" class="btn btn--primary btn--sm" id="enableBookingConsent">Terminbereich freischalten</button>
+            <button type="button" class="btn btn--ghost btn--sm" id="withdrawBookingConsent">Einwilligung widerrufen</button>
+          </div>
+          <p class="consent-gate__status" id="bookingConsentStatus"></p>
+          <div class="booking-embed-placeholder" id="bookingEmbed" hidden>
+            <a href="#"
+               data-config-href="calcom"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="btn btn--primary">
+              Termin direkt buchen
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ──────────────────────────────────────────────────────
+           VARIANTE B: WhatsApp direkt
+           Eingeblendet wenn CLIENT.terminVariante === "whatsapp"
+      ────────────────────────────────────────────────────── -->
+      <div data-termin="whatsapp" hidden id="termin-buchung-wa">
+        <div class="termin-wa-box reveal">
+          <div class="termin-wa-box__icon" aria-hidden="true">
+            <svg width="52" height="52" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20.4054 3.4875C18.1607 1.2375 15.1714 0 11.9946 0C5.4375 0 0.101786 5.335 0.101786 11.8929C0.101786 13.9875 0.648214 16.0339 1.6875 17.8393L0 24L6.30536 22.3446C8.04107 23.2929 9.99643 23.7911 11.9893 23.7911H11.9946C18.5464 23.7911 24 18.4561 24 11.8982C24 8.72143 22.65 5.7375 20.4054 3.4875ZM11.9946 21.7875C10.2107 21.7875 8.46429 21.3107 6.93214 20.4107L6.57321 20.1964L2.84464 21.1714L3.83571 17.5286L3.60107 17.1536C2.60893 15.5625 2.08929 13.7518 2.08929 11.8929C2.08929 6.43393 6.53571 1.9875 12 1.9875C14.6464 1.9875 17.1321 3.02143 18.9857 4.88036C20.8393 6.73929 21.9161 9.225 21.9107 11.8982C21.9107 17.3625 17.4536 21.7875 11.9946 21.7875ZM17.4268 14.3839C17.1321 14.2339 15.6589 13.5107 15.3857 13.4143C15.1125 13.3125 14.9143 13.2643 14.7161 13.5643C14.5179 13.8643 13.9446 14.5339 13.7679 14.7375C13.5964 14.9357 13.4196 14.9625 13.125 14.8125C11.3786 13.9393 10.2268 13.2536 9.07018 11.2768C8.76429 10.7411 9.38036 10.7786 9.95357 9.63214C10.05 9.43393 10.0018 9.2625 9.92679 9.1125C9.85179 8.9625 9.25714 7.48929 9.01071 6.89464C8.76964 6.31607 8.525 6.39643 8.34107 6.38571C8.16964 6.375 7.97143 6.375 7.77321 6.375C7.575 6.375 7.25357 6.45 6.98036 6.74464C6.70714 7.04464 5.94643 7.75714 5.94643 9.23036C5.94643 10.7036 7.00714 12.1286 7.15179 12.3268C7.30179 12.525 9.24643 15.5304 12.2357 16.8375C14.1375 17.6679 14.8875 17.7375 15.8357 17.5982C16.4143 17.5125 17.6036 16.8911 17.85 16.2054C18.0964 15.5196 18.0964 14.9304 18.0214 14.8071C17.9518 14.6732 17.7214 14.5982 17.4268 14.3839Z" fill="white"/>
+            </svg>
+          </div>
+          <h3>Direkt per WhatsApp anfragen</h3>
+          <p>Schreiben Sie uns – schnell, unkompliziert und ohne Wartezeiten. Wir antworten in der Regel innerhalb weniger Stunden.</p>
+          <a href="#" id="terminWaBtn" class="btn btn--wa btn--lg" target="_blank" rel="noopener noreferrer" data-config-href="whatsapp">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.4054 3.4875C18.1607 1.2375 15.1714 0 11.9946 0C5.4375 0 0.101786 5.335 0.101786 11.8929C0.101786 13.9875 0.648214 16.0339 1.6875 17.8393L0 24L6.30536 22.3446C8.04107 23.2929 9.99643 23.7911 11.9893 23.7911H11.9946C18.5464 23.7911 24 18.4561 24 11.8982C24 8.72143 22.65 5.7375 20.4054 3.4875ZM11.9946 21.7875C10.2107 21.7875 8.46429 21.3107 6.93214 20.4107L6.57321 20.1964L2.84464 21.1714L3.83571 17.5286L3.60107 17.1536C2.60893 15.5625 2.08929 13.7518 2.08929 11.8929C2.08929 6.43393 6.53571 1.9875 12 1.9875C14.6464 1.9875 17.1321 3.02143 18.9857 4.88036C20.8393 6.73929 21.9161 9.225 21.9107 11.8982C21.9107 17.3625 17.4536 21.7875 11.9946 21.7875ZM17.4268 14.3839C17.1321 14.2339 15.6589 13.5107 15.3857 13.4143C15.1125 13.3125 14.9143 13.2643 14.7161 13.5643C14.5179 13.8643 13.9446 14.5339 13.7679 14.7375C13.5964 14.9357 13.4196 14.9625 13.125 14.8125C11.3786 13.9393 10.2268 13.2536 9.07018 11.2768C8.76429 10.7411 9.38036 10.7786 9.95357 9.63214C10.05 9.43393 10.0018 9.2625 9.92679 9.1125C9.85179 8.9625 9.25714 7.48929 9.01071 6.89464C8.76964 6.31607 8.525 6.39643 8.34107 6.38571C8.16964 6.375 7.97143 6.375 7.77321 6.375C7.575 6.375 7.25357 6.45 6.98036 6.74464C6.70714 7.04464 5.94643 7.75714 5.94643 9.23036C5.94643 10.7036 7.00714 12.1286 7.15179 12.3268C7.30179 12.525 9.24643 15.5304 12.2357 16.8375C14.1375 17.6679 14.8875 17.7375 15.8357 17.5982C16.4143 17.5125 17.6036 16.8911 17.85 16.2054C18.0964 15.5196 18.0964 14.9304 18.0214 14.8071C17.9518 14.6732 17.7214 14.5982 17.4268 14.3839Z"/></svg>
+            Auf WhatsApp schreiben
+          </a>
+        </div>
+      </div>
+
+      <!-- ──────────────────────────────────────────────────────
+           VARIANTE C: Terminanfrage-Formular (Web3Forms)
+           Eingeblendet wenn CLIENT.terminVariante === "formular"
+      ────────────────────────────────────────────────────── -->
+      <div data-termin="formular" hidden id="termin-buchung-form">
+        <div class="termin-form-box reveal">
+          <form id="terminForm" action="https://api.web3forms.com/submit" method="post" novalidate>
+            <input type="hidden" name="access_key" value="">
+            <input type="hidden" name="subject" value="Neue Terminanfrage">
+            <input type="hidden" name="from_page" value="Terminsektion">
+            <div class="kontakt-form__grid">
+              <label for="termin_name">Ihr Name
+                <input id="termin_name" name="name" type="text" required autocomplete="name" placeholder="Max Mustermann">
+              </label>
+              <label for="termin_phone">Telefon
+                <input id="termin_phone" name="telefon" type="tel" required autocomplete="tel" placeholder="0151 12345678">
+              </label>
+            </div>
+            <label for="termin_date">Wunschdatum (optional)
+              <input id="termin_date" name="wunschtermin" type="date">
+            </label>
+            <label for="termin_nachricht">Ihr Anliegen
+              <textarea id="termin_nachricht" name="nachricht" rows="3" placeholder="Kurz beschreiben, was Sie planen – wir melden uns schnellstmöglich."></textarea>
+            </label>
+            <label class="kontakt-form__honeypot" for="termin_website" aria-hidden="true">
+              Website
+              <input id="termin_website" name="website" type="text" tabindex="-1" autocomplete="off">
+            </label>
+            <label class="kontakt-form__check" for="termin_dsgvo">
+              <input id="termin_dsgvo" name="dsgvo_consent" type="checkbox" required>
+              <span>Ich willige in die Verarbeitung meiner Angaben zur Bearbeitung meiner Terminanfrage ein (gemäß <a href="datenschutz.html" target="_blank">Datenschutzerklärung</a>).</span>
+            </label>
+            <button type="submit" id="terminFormSubmitBtn" class="btn btn--primary">Terminanfrage senden</button>
+            <p id="terminFormResult" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+
+      <p class="termin-fallback reveal">
+        Oder direkt anrufen:
+        <a href="tel:#" data-config-href="tel" data-config="telefonDisplay">[TELEFON]</a>
+        &nbsp;·&nbsp; <span data-config="oeffZeitenKurz">Mo–Do 08–17 Uhr, Fr 08–13 Uhr</span>
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ╔════════════════════════════════╗ -->
+  <!-- ║  KONTAKT                       ║ -->
+  <!-- ╚════════════════════════════════╝ -->
+  <section class="section section--contact" id="kontakt">
+      <header class="section-header reveal">
+        <span class="section-label">Finden Sie uns</span>
+        <h2 class="section-h2">Kontakt &amp; Anfahrt.</h2>
+      </header>
+
+      <div class="kontakt-inner">
+        <div class="kontakt-info reveal">
+          <div class="kontakt-block">
+            <div class="kontakt-block__label">Adresse</div>
+            <p>
+              <span data-config="name">[FIRMENNAME]</span><br>
+              <span data-config="strasse">[STRASSE_NR]</span><br>
+              <span data-config="plz">[PLZ]</span> <span data-config="ort">[ORT]</span>
+            </p>
+          </div>
+
+          <div class="kontakt-block">
+            <div class="kontakt-block__label">Kontakt</div>
+            <p>
+              <a href="tel:#" data-config-href="tel" data-config="telefonDisplay">[TELEFON]</a><br>
+              <a href="mailto:#" data-config-href="mailto" data-config="email">[EMAIL]</a>
+            </p>
+            <!-- WhatsApp-Link: wird von config-apply.js ein-/ausgeblendet (CLIENT.whatsapp) -->
+            <div class="kontakt-wa-wrap" data-wa-wrap hidden>
+              <a href="#" data-config-href="whatsapp" class="kontakt-wa-link" target="_blank" rel="noopener noreferrer" hidden aria-label="WhatsApp schreiben">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.4054 3.4875C18.1607 1.2375 15.1714 0 11.9946 0C5.4375 0 0.101786 5.335 0.101786 11.8929C0.101786 13.9875 0.648214 16.0339 1.6875 17.8393L0 24L6.30536 22.3446C8.04107 23.2929 9.99643 23.7911 11.9893 23.7911H11.9946C18.5464 23.7911 24 18.4561 24 11.8982C24 8.72143 22.65 5.7375 20.4054 3.4875ZM11.9946 21.7875C10.2107 21.7875 8.46429 21.3107 6.93214 20.4107L6.57321 20.1964L2.84464 21.1714L3.83571 17.5286L3.60107 17.1536C2.60893 15.5625 2.08929 13.7518 2.08929 11.8929C2.08929 6.43393 6.53571 1.9875 12 1.9875C14.6464 1.9875 17.1321 3.02143 18.9857 4.88036C20.8393 6.73929 21.9161 9.225 21.9107 11.8982C21.9107 17.3625 17.4536 21.7875 11.9946 21.7875ZM17.4268 14.3839C17.1321 14.2339 15.6589 13.5107 15.3857 13.4143C15.1125 13.3125 14.9143 13.2643 14.7161 13.5643C14.5179 13.8643 13.9446 14.5339 13.7679 14.7375C13.5964 14.9357 13.4196 14.9625 13.125 14.8125C11.3786 13.9393 10.2268 13.2536 9.07018 11.2768C8.76429 10.7411 9.38036 10.7786 9.95357 9.63214C10.05 9.43393 10.0018 9.2625 9.92679 9.1125C9.85179 8.9625 9.25714 7.48929 9.01071 6.89464C8.76964 6.31607 8.525 6.39643 8.34107 6.38571C8.16964 6.375 7.97143 6.375 7.77321 6.375C7.575 6.375 7.25357 6.45 6.98036 6.74464C6.70714 7.04464 5.94643 7.75714 5.94643 9.23036C5.94643 10.7036 7.00714 12.1286 7.15179 12.3268C7.30179 12.525 9.24643 15.5304 12.2357 16.8375C14.1375 17.6679 14.8875 17.7375 15.8357 17.5982C16.4143 17.5125 17.6036 16.8911 17.85 16.2054C18.0964 15.5196 18.0964 14.9304 18.0214 14.8071C17.9518 14.6732 17.7214 14.5982 17.4268 14.3839Z"/></svg>
+                Auf WhatsApp schreiben
+              </a>
+            </div>
+          </div>
+
+          <div class="kontakt-block">
+            <div class="kontakt-block__label">Öffnungszeiten</div>
+            <dl class="kontakt-hours">
+              <dt>Mo – Do</dt><dd data-config="oeffMoDoBis">[MO-DO ZEITEN]</dd>
+              <dt>Freitag</dt><dd data-config="oeffFrBis">[FR ZEITEN]</dd>
+              <dt>Sa &amp; So</dt><dd>Geschlossen</dd>
+            </dl>
+          </div>
+
+          <div class="kontakt-block">
+            <div class="kontakt-block__label">Soziale Netzwerke</div>
+            <div class="kontakt-socials" style="display: flex; gap: 1.2rem; margin-top: 0.5rem;">
+              <a href="#" data-config-href="facebook" target="_blank" rel="noopener noreferrer" class="social-link social-link--contact" aria-label="Facebook" style="color: var(--primary); transition: color var(--t-fast), transform var(--t-fast); display: inline-flex;">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              </a>
+              <a href="#" data-config-href="instagram" target="_blank" rel="noopener noreferrer" class="social-link social-link--contact" aria-label="Instagram" style="color: var(--primary); transition: color var(--t-fast), transform var(--t-fast); display: inline-flex;">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051C.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <a href="#termin" class="btn btn--primary">Termin vereinbaren</a>
+        </div>
+
+        <div class="kontakt-map reveal reveal-delay-1" id="gatedMapContainer">
+          <div class="kontakt-map__overlay" id="mapConsentOverlay">
+            <div class="kontakt-map__overlay-content">
+              <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="kontakt-map__overlay-icon"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon><line x1="8" y1="2" x2="8" y2="18"></line><line x1="16" y1="6" x2="16" y2="22"></line></svg>
+              <h3 class="kontakt-map__overlay-title">Interaktive Karte laden</h3>
+              <p class="kontakt-map__overlay-text">Stimmen Sie der Aktivierung von <strong>Google Maps</strong> zu, um die Anfahrtskarte und Routenplanung direkt anzuzeigen.</p>
+              <button type="button" class="btn btn--primary btn--sm" id="acceptMapBtn">Karte aktivieren</button>
+              <span class="kontakt-map__overlay-note">Mit Aktivierung willigen Sie in die Datenübertragung an Google ein (gemäß <a href="datenschutz.html" target="_blank">Datenschutzerklärung</a>).</span>
+            </div>
+          </div>
+          <div id="realMapContainer" class="kontakt-map__real" style="display: none; width: 100%; height: 100%;"></div>
+        </div>
+
+        <!-- Kontaktformular: gesteuert durch CLIENT.kontaktformularAktiv -->
+        <form class="kontakt-form reveal reveal-delay-2" id="kontaktForm" action="https://api.web3forms.com/submit" method="post" novalidate>
+            <input type="hidden" name="access_key" value="">
+            <div class="kontakt-form__grid">
+              <label for="vorname">Vorname
+                <input id="vorname" name="vorname" autocomplete="given-name" required>
+              </label>
+              <label for="nachname">Nachname
+                <input id="nachname" name="nachname" autocomplete="family-name" required>
+              </label>
+            </div>
+            <div class="kontakt-form__grid">
+              <label for="telefon">Telefon
+                <input id="telefon" name="telefon" type="tel" autocomplete="tel" required>
+              </label>
+              <label for="email">E-Mail
+                <input id="email" name="email" type="email" autocomplete="email" required>
+              </label>
+            </div>
+            <!-- Optionen werden von config-apply.js aus CLIENT.kontaktAnliegen befüllt -->
+            <label for="anfrageart">Anliegen
+              <select id="anfrageart" name="anfrageart" required>
+                <option value="">Bitte auswählen</option>
+                <option value="beratung">Beratung / Angebot anfragen</option>
+                <option value="reparatur">Reparatur / Sanierung</option>
+                <option value="allgemein">Allgemeine Anfrage</option>
+              </select>
+            </label>
+            <label for="nachricht">Nachricht
+              <textarea id="nachricht" name="nachricht" placeholder="Kurz Ihr Vorhaben beschreiben"></textarea>
+            </label>
+            <label class="kontakt-form__honeypot" for="website" aria-hidden="true">
+              Website
+              <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+            </label>
+            <label class="kontakt-form__check" for="dsgvo">
+              <input id="dsgvo" name="dsgvo" type="checkbox" required>
+              <span>Ich habe die <a class="inline-link" href="datenschutz.html">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Angaben zur Bearbeitung meiner Anfrage zu.</span>
+            </label>
+            <button type="submit" class="btn btn--primary">Anfrage senden</button>
+            <p class="kontakt-form__note" id="kontaktFormResult" aria-live="polite"></p>
+          </form>
+      </div>
+  </section>
+
+
+  <!-- ╔════════════════════════════════╗ -->
+  <!-- ║  FOOTER                        ║ -->
+  <!-- ╚════════════════════════════════╝ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <div class="footer__wordmark-name" data-config="name">[FIRMENNAME]</div>
+          <div class="footer__wordmark-sub" data-config="unternehmenstyp">[UNTERNEHMENSTYP]</div>
+          <p class="footer__brand-claim">Ihr Partner für Heizung &amp; Sanitär in <span data-config="ort">Lahnstein</span>. Seit <span data-config="gruendungsjahr">1998</span>.</p>
+          <p class="footer__brand-member" style="margin-bottom: 1.2rem;">Mitglied: <span data-config="fachverband">[FACHVERBAND]</span></p>
+          <div class="footer__socials" style="display: flex; gap: 1rem;">
+            <a href="#" data-config-href="facebook" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook" style="color: rgba(255,255,255,0.6); transition: color var(--t-fast); display: inline-flex;">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="#" data-config-href="instagram" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram" style="color: rgba(255,255,255,0.6); transition: color var(--t-fast); display: inline-flex;">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051C.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer__col-title">Leistungen</div>
+          <ul class="footer__col-links">
+            <li><a href="leistungen/bad.html">Bad</a></li>
+            <li><a href="leistungen/heizung.html">Heizung</a></li>
+            <li><a href="leistungen/haustechnik.html">Haustechnik</a></li>
+            <li><a href="leistungen/lueftung.html">Lüftung</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__col-title">Navigation</div>
+          <ul class="footer__col-links">
+            <li><a href="referenzen.html">Referenzen</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="#familie">Über uns</a></li>
+            <li><a href="#termin">Termin buchen</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer__col-title">Kontakt</div>
+          <ul class="footer__col-links">
+            <li><span data-config="strasse">[STRASSE]</span>, <span data-config="plz">[PLZ]</span> <span data-config="ort">[ORT]</span></li>
+            <li><a href="tel:#" data-config-href="tel" data-config="telefonDisplay">[TELEFON]</a></li>
+            <li><a href="mailto:#" data-config-href="mailto" data-config="email">[EMAIL]</a></li>
+            <li style="margin-top:.5rem;color:rgba(255,255,255,.35);font-size:.7rem" data-config="oeffZeitenKurz">Mo–Do 08–17 · Fr 08–13 Uhr</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <span class="footer__copy" data-config="copyright">© [JAHR] [FIRMENNAME], [ORT]</span>
+        <nav class="footer__legal" aria-label="Rechtliches">
+          <a href="impressum.html">Impressum</a>
+          <a href="datenschutz.html">Datenschutz</a>
+          <a href="index.html">Startseite</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ╔════════════════════════════════╗ -->
+  <!-- ║  WHATSAPP FAB                  ║ -->
+  <!-- ╚════════════════════════════════╝ -->
+  <!-- Sichtbarkeit gesteuert durch config-apply.js (CLIENT.whatsapp) -->
+  <a
+    id="waFab"
+    href="#"
+    class="wa-fab"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="WhatsApp: Direkt schreiben"
+    hidden>
+    <span class="wa-fab__ring" aria-hidden="true"></span>
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <path d="M20.4054 3.4875C18.1607 1.2375 15.1714 0 11.9946 0C5.4375 0 0.101786 5.335 0.101786 11.8929C0.101786 13.9875 0.648214 16.0339 1.6875 17.8393L0 24L6.30536 22.3446C8.04107 23.2929 9.99643 23.7911 11.9893 23.7911H11.9946C18.5464 23.7911 24 18.4561 24 11.8982C24 8.72143 22.65 5.7375 20.4054 3.4875ZM11.9946 21.7875C10.2107 21.7875 8.46429 21.3107 6.93214 20.4107L6.57321 20.1964L2.84464 21.1714L3.83571 17.5286L3.60107 17.1536C2.60893 15.5625 2.08929 13.7518 2.08929 11.8929C2.08929 6.43393 6.53571 1.9875 12 1.9875C14.6464 1.9875 17.1321 3.02143 18.9857 4.88036C20.8393 6.73929 21.9161 9.225 21.9107 11.8982C21.9107 17.3625 17.4536 21.7875 11.9946 21.7875ZM17.4268 14.3839C17.1321 14.2339 15.6589 13.5107 15.3857 13.4143C15.1125 13.3125 14.9143 13.2643 14.7161 13.5643C14.5179 13.8643 13.9446 14.5339 13.7679 14.7375C13.5964 14.9357 13.4196 14.9625 13.125 14.8125C11.3786 13.9393 10.2268 13.2536 9.07018 11.2768C8.76429 10.7411 9.38036 10.7786 9.95357 9.63214C10.05 9.43393 10.0018 9.2625 9.92679 9.1125C9.85179 8.9625 9.25714 7.48929 9.01071 6.89464C8.76964 6.31607 8.525 6.39643 8.34107 6.38571C8.16964 6.375 7.97143 6.375 7.77321 6.375C7.575 6.375 7.25357 6.45 6.98036 6.74464C6.70714 7.04464 5.94643 7.75714 5.94643 9.23036C5.94643 10.7036 7.00714 12.1286 7.15179 12.3268C7.30179 12.525 9.24643 15.5304 12.2357 16.8375C14.1375 17.6679 14.8875 17.7375 15.8357 17.5982C16.4143 17.5125 17.6036 16.8911 17.85 16.2054C18.0964 15.5196 18.0964 14.9304 18.0214 14.8071C17.9518 14.6732 17.7214 14.5982 17.4268 14.3839Z"/>
+    </svg>
+  </a>
+
+  <div id="klaro"></div>
+
+  <div id="pdfExportHost" class="pdf-export-host" aria-hidden="true"></div>
+
+  <script src="js/main.js" defer></script>
+  <script src="js/calc.js" defer></script>
+  <script src="js/pdf.js" defer></script>
+  <script src="js/slider.js" defer></script>
+
+  <!-- Terminanfrage-Formular Handler (nur für terminVariante = "formular") -->
+  <script>
+    (function () {
+      const form = document.getElementById('terminForm');
+      if (!form) return;
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        const btn    = document.getElementById('terminFormSubmitBtn');
+        const result = document.getElementById('terminFormResult');
+        if (!btn || !result) return;
+        const origText   = btn.textContent;
+        btn.disabled     = true;
+        btn.textContent  = 'Wird gesendet …';
+        result.textContent = '';
+        try {
+          const res  = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            body: new FormData(form)
+          });
+          const data = await res.json();
+          if (data.success) {
+            result.textContent  = 'Ihre Terminanfrage wurde gesendet – wir melden uns bald!';
+            result.style.color  = 'var(--accent, #2980b9)';
+            form.reset();
+          } else {
+            throw new Error('server');
+          }
+        } catch {
+          result.textContent = 'Leider ist ein Fehler aufgetreten. Bitte rufen Sie uns direkt an.';
+          result.style.color = '#e74c3c';
+        } finally {
+          btn.disabled    = false;
+          btn.textContent = origText;
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

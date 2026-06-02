@@ -1,0 +1,85 @@
+<!--
+  PDF-Kalkulation — HTML-Template (Fragment)
+  Wird von js/pdf.js per fetch geladen, Platzhalter {{KEY}} werden ersetzt.
+  Platzhalter-Liste siehe js/pdf.js → PDF_TEMPLATE_KEYS
+-->
+<article class="pdf-doc" lang="de">
+  <header class="pdf-doc__header">
+    <div class="pdf-doc__brand">
+      <img class="pdf-doc__logo {{LOGO_HIDDEN_CLASS}}" src="{{LOGO_SRC}}" alt="{{CLIENT_NAME}}" width="200" height="42">
+      <div class="pdf-doc__company">
+        <p class="pdf-doc__company-name">{{CLIENT_NAME}}</p>
+        <p class="pdf-doc__company-meta">{{HANDWERKSBEZEICHNUNG}} · {{ORT}}</p>
+      </div>
+    </div>
+    <div class="pdf-doc__meta">
+      <p class="pdf-doc__doc-type">Kostenschätzung</p>
+      <p class="pdf-doc__date">{{DATUM}}</p>
+    </div>
+  </header>
+
+  <div class="pdf-doc__title-block">
+    <h1 class="pdf-doc__title">Ihre unverbindliche Kostenschätzung</h1>
+    <p class="pdf-doc__summary">{{SUMMARY}}</p>
+  </div>
+
+  <div class="pdf-doc__details">
+    <div class="pdf-doc__detail">
+      <span class="pdf-doc__detail-label">Projektart</span>
+      <span class="pdf-doc__detail-value">{{PROJECT_LABEL}}</span>
+    </div>
+    <div class="pdf-doc__detail">
+      <span class="pdf-doc__detail-label">Material</span>
+      <span class="pdf-doc__detail-value">{{MATERIAL_LABEL}}</span>
+    </div>
+    <div class="pdf-doc__detail">
+      <span class="pdf-doc__detail-label">Fläche</span>
+      <span class="pdf-doc__detail-value">{{AREA}} m²</span>
+    </div>
+    <div class="pdf-doc__detail">
+      <span class="pdf-doc__detail-label">Erstellt am</span>
+      <span class="pdf-doc__detail-value">{{DATUM_KURZ}}</span>
+    </div>
+  </div>
+
+  <h2 class="pdf-doc__section-title">Kostenaufschlüsselung</h2>
+  <div class="pdf-doc__table-wrap">
+    <table class="pdf-doc__table">
+      <thead>
+        <tr>
+          <th scope="col">Position</th>
+          <th scope="col">Betrag</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{LINE_ITEMS_ROWS}}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pdf-doc__total-box">
+    <p class="pdf-doc__total-label">Geschätzter Preisrahmen</p>
+    <p class="pdf-doc__total-range">{{TOTAL_RANGE}}</p>
+    <p class="pdf-doc__total-avg">Mittelwert ca. {{TOTAL_AVG}}</p>
+  </div>
+
+  <aside class="pdf-doc__disclaimer">
+    <p class="pdf-doc__disclaimer-title">Wichtiger Hinweis</p>
+    <p>Diese Kostenschätzung ist <strong>unverbindlich</strong> und basiert auf branchenüblichen Mittelwerten für Deutschland (inkl. Material &amp; Arbeit).</p>
+    <p>Der endgültige Festpreis ist erst nach Vor-Ort-Aufmaß und finaler Materialwahl möglich.</p>
+    <p>Handwerkerleistungen sind steuerlich absetzbar (§&nbsp;35a EStG).</p>
+  </aside>
+
+  <footer class="pdf-doc__footer">
+    <div>
+      <strong>Kontakt</strong>
+      <p>{{TELEFON}}<br>{{EMAIL}}</p>
+    </div>
+    <div>
+      <strong>Anschrift</strong>
+      <p>{{ADRESSE}}</p>
+    </div>
+  </footer>
+
+  <p class="pdf-doc__validity">Gültigkeit dieser Schätzung: 30 Tage · {{DOMAIN}}</p>
+</article>

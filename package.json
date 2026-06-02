@@ -1,0 +1,11 @@
+{
+  "name": "grimm-haustechnik-demo",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Preview server for Grimm Heizung & Sanitär demo website",
+  "scripts": {
+    "preview": "node server.js",
+    "start": "node server.js",
+    "smoke": "node scripts/smoke-test.js"
+  }
+}
