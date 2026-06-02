@@ -16,7 +16,175 @@
     });
   };
 
+  const getNavContext = () => {
+    const path = window.location.pathname.replace(/\\/g, '/');
+    const inLeistungen = path.includes('/leistungen/');
+    const base = inLeistungen ? '../' : '';
+    const file = path.split('/').pop() || '';
+    const isHome = !inLeistungen && (file === '' || file === 'index.html');
+    const pageLink = (anchor) => (isHome ? `#${anchor}` : `${base}index.html#${anchor}`);
+    const pathLink = (relPath) => {
+      if (inLeistungen && relPath.startsWith('leistungen/')) {
+        return relPath.replace('leistungen/', '');
+      }
+      return `${base}${relPath}`;
+    };
+    return { base, inLeistungen, isHome, pageLink, pathLink };
+  };
+
+  const resolveNavHref = (item, ctx) => {
+    if (item.hrefKey === 'tel' && CLIENT.telefon) return `tel:${CLIENT.telefon}`;
+    if (item.hrefKey === 'mailto' && CLIENT.email) return `mailto:${CLIENT.email}`;
+    if (item.hrefKey === 'whatsapp' && CLIENT.whatsapp) {
+      const num = CLIENT.whatsapp.replace(/[^0-9+]/g, '');
+      const text = encodeURIComponent(CLIENT.whatsappVornachricht || '');
+      return `https://wa.me/${num}?text=${text}`;
+    }
+    if (item.anchor) return ctx.pageLink(item.anchor);
+    if (item.path) return ctx.pathLink(item.path);
+    return '#';
+  };
+
+  const renderSiteNav = () => {
+    const desktopHost = document.querySelector('[data-nav-desktop]');
+    const mobileHost = document.querySelector('[data-nav-mobile]');
+    if (!desktopHost && !mobileHost) return;
+
+    const ctx = getNavContext();
+    const leistungen = Array.isArray(CLIENT.navLeistungen) ? CLIENT.navLeistungen : [];
+    const kontakt = Array.isArray(CLIENT.navKontakt) ? CLIENT.navKontakt : [];
+    const calcHidden = CLIENT.kostenrechnerAktiv === false ? ' hidden' : '';
+    const calcAttr = CLIENT.kostenrechnerAktiv === false ? '' : ' data-nav-calc';
+
+    if (desktopHost) {
+      const leistungenItems = leistungen.map((item) => {
+        const href = ctx.pathLink(item.path);
+        return `<li><a href="${href}">${item.label}</a></li>`;
+      }).join('');
+
+      const kontaktItems = kontakt.map((item) => {
+        const href = resolveNavHref(item, ctx);
+        const target = item.hrefKey === 'whatsapp' ? ' target="_blank" rel="noopener noreferrer"' : '';
+        return `<li><a href="${href}"${target}>${item.label}</a></li>`;
+      }).join('');
+
+      desktopHost.innerHTML = `
+        <li class="nav__item nav__item--has-menu">
+          <button type="button" class="nav__menu-trigger" aria-expanded="false" aria-haspopup="true">Leistungen</button>
+          <ul class="nav__dropdown" role="menu">${leistungenItems}</ul>
+        </li>
+        <li${calcAttr}><a href="${ctx.pageLink('kostenrechner')}">Kostenrechner</a></li>
+        <li><a href="${ctx.pathLink('referenzen.html')}">Referenzen</a></li>
+        <li><a href="${ctx.pathLink('team.html')}">Team</a></li>
+        <li><a href="${ctx.pageLink('familie')}">Über uns</a></li>
+        <li class="nav__item nav__item--has-menu">
+          <button type="button" class="nav__menu-trigger" aria-expanded="false" aria-haspopup="true">Kontakt</button>
+          <ul class="nav__dropdown" role="menu">${kontaktItems}</ul>
+        </li>`;
+    }
+
+    if (mobileHost) {
+      const leistungenMobile = leistungen.map((item) => {
+        const href = ctx.pathLink(item.path);
+        return `<a href="${href}" class="nav__mobile-link">${item.label}</a>`;
+      }).join('');
+
+      const navMobile = `
+        <a href="${ctx.pathLink('referenzen.html')}" class="nav__mobile-link">Referenzen</a>
+        <a href="${ctx.pathLink('team.html')}" class="nav__mobile-link">Team</a>
+        <a href="${ctx.pageLink('familie')}" class="nav__mobile-link">Über uns</a>
+        <a href="${ctx.pageLink('kostenrechner')}" class="nav__mobile-link"${calcAttr}>Kostenrechner</a>`;
+
+      const kontaktMobile = kontakt.map((item) => {
+        const href = resolveNavHref(item, ctx);
+        const target = item.hrefKey === 'whatsapp' ? ' target="_blank" rel="noopener noreferrer"' : '';
+        return `<a href="${href}" class="nav__mobile-link nav__mobile-link--sub"${target}>${item.label}</a>`;
+      }).join('');
+
+      mobileHost.innerHTML = `
+        <div class="nav__mobile-group">
+          <span class="nav__mobile-group-title">Leistungen</span>
+          ${leistungenMobile}
+        </div>
+        <div class="nav__mobile-group">
+          <span class="nav__mobile-group-title">Navigation</span>
+          ${navMobile}
+        </div>
+        <div class="nav__mobile-group">
+          <span class="nav__mobile-group-title">Kontakt</span>
+          ${kontaktMobile}
+        </div>
+        <a href="tel:${CLIENT.telefon}" class="btn btn--primary nav__mobile-cta" data-config-href="tel">Anrufen</a>
+        <span class="nav__mobile-phone">
+          <a href="tel:${CLIENT.telefon}" data-config-href="tel" data-config="telefonDisplay">${CLIENT.telefonDisplay || ''}</a>
+        </span>`;
+    }
+
+    const navCta = document.querySelector('[data-nav-cta]');
+    if (navCta && CLIENT.telefon) {
+      navCta.href = `tel:${CLIENT.telefon}`;
+      navCta.textContent = 'Anrufen';
+    }
+
+    const wordmark = document.querySelector('.nav__wordmark');
+    if (wordmark) {
+      wordmark.href = ctx.isHome ? '#hero' : `${ctx.base}index.html#hero`;
+    }
+  };
+
+  const avatarColorClass = (initialen) => {
+    const key = String(initialen || 'A').slice(0, 2).toUpperCase();
+    const palette = ['avatar--cz', 'avatar--mm', 'avatar--ht', 'avatar--ma', 'avatar--mb'];
+    let sum = 0;
+    for (let i = 0; i < key.length; i += 1) sum += key.charCodeAt(i);
+    return palette[sum % palette.length];
+  };
+
+  const renderGoogleReviews = () => {
+    const track = document.getElementById('reviewsTrack');
+    const carousel = document.getElementById('googleReviewsCarousel');
+    if (!track || !Array.isArray(CLIENT.googleReviews)) return;
+
+    const reviews = CLIENT.googleReviews.filter((r) => r && r.text && r.autor);
+    if (!reviews.length) {
+      if (carousel) carousel.setAttribute('hidden', '');
+      return;
+    }
+
+    const profileLink = CLIENT.googleBewertungsLink && !String(CLIENT.googleBewertungsLink).startsWith('[')
+      ? CLIENT.googleBewertungsLink
+      : '';
+
+    track.innerHTML = reviews.map((review) => {
+      const stars = '★'.repeat(Math.min(5, Math.max(0, Number(review.sterne) || 5)));
+      const initials = review.initialen || review.initial || (review.autor ? review.autor.charAt(0) : 'G');
+      const avatarHtml = review.avatar
+        ? `<img class="google-review-card__avatar-img" src="${review.avatar}" alt="" width="48" height="48" loading="lazy" decoding="async">`
+        : `<span class="google-review-card__avatar ${avatarColorClass(initials)}" aria-hidden="true">${initials}</span>`;
+      const moreLink = profileLink
+        ? `<a class="google-review-card__more" href="${profileLink}" target="_blank" rel="noopener noreferrer">Mehr auf Google</a>`
+        : '';
+      return `
+        <article class="google-review-card">
+          <div class="google-review-card__header">
+            ${avatarHtml}
+            <div class="google-review-card__meta">
+              <p class="google-review-card__author">${review.autor}</p>
+              <span class="google-review-card__stars" aria-label="${review.sterne || 5} von 5 Sternen">${stars}</span>
+              ${review.datum ? `<span class="google-review-card__date">${review.datum}</span>` : ''}
+            </div>
+          </div>
+          <p class="google-review-card__text">${review.text}</p>
+          ${moreLink}
+        </article>`;
+    }).join('\n');
+
+    if (carousel) carousel.removeAttribute('hidden');
+    document.dispatchEvent(new CustomEvent('grimm:reviews-ready'));
+  };
+
   const init = () => {
+    renderSiteNav();
     // ── 1. DOCUMENT TITLE ──────────────────────────────────
     const pageTitle = document.querySelector('title');
     if (pageTitle && CLIENT.name && !CLIENT.name.startsWith('[')) {
@@ -326,8 +494,12 @@
       }
     });
 
+    renderGoogleReviews();
+
     const reviewsProofCards = document.getElementById('reviewsProofCards');
-    if (reviewsProofCards && Array.isArray(CLIENT.bewertungenCards) && CLIENT.bewertungenCards.length > 0) {
+    if (reviewsProofCards && Array.isArray(CLIENT.googleReviews) && CLIENT.googleReviews.length > 0) {
+      reviewsProofCards.hidden = true;
+    } else if (reviewsProofCards && Array.isArray(CLIENT.bewertungenCards) && CLIENT.bewertungenCards.length > 0) {
       const cards = CLIENT.bewertungenCards.filter((card) => {
         if (!card) return false;
         const title = String(card.titel || '');
@@ -345,15 +517,22 @@
       }
     }
 
-    // ── 19. TERMIN VARIANTE ───────────────────────────────
+    // ── 19. TERMIN VARIANTE (Cal.com nur im Accordion auf Startseite) ──
     const terminVariante = CLIENT.terminVariante || 'calcom';
     document.querySelectorAll('[data-termin]').forEach(el => {
+      if (el.closest('#termin-buchung')) return;
       if (el.dataset.termin === terminVariante) {
         el.removeAttribute('hidden');
       } else {
         el.setAttribute('hidden', '');
       }
     });
+    const calAccordion = document.getElementById('termin-buchung');
+    if (calAccordion && terminVariante === 'calcom' && CLIENT.calcomLink && !String(CLIENT.calcomLink).startsWith('[')) {
+      calAccordion.removeAttribute('hidden');
+    } else if (calAccordion && terminVariante !== 'calcom') {
+      calAccordion.setAttribute('hidden', '');
+    }
 
     // WhatsApp-Variante: WA-Href in den Termin-Button setzen
     if (terminVariante === 'whatsapp') {

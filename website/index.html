@@ -197,13 +197,11 @@
       width: auto;
       max-width: 120px;
       object-fit: contain;
-      filter: grayscale(100%);
-      opacity: 0.6;
-      transition: filter 0.3s ease, opacity 0.3s ease;
+      opacity: 1;
+      transition: transform 0.3s ease;
     }
     .partner-track a:hover img {
-      filter: grayscale(0%);
-      opacity: 1;
+      transform: scale(1.05);
     }
     @keyframes scroll-partners {
       0%   { transform: translateX(0); }
@@ -486,16 +484,9 @@
         </picture>
       </a>
 
-      <ul class="nav__links" role="list">
-        <li><a href="#leistungen">Leistungen</a></li>
-        <li data-nav-calc><a href="#kostenrechner">Kostenrechner</a></li>
-        <li><a href="#referenzen">Referenzen</a></li>
-        <li><a href="team.html">Team</a></li>
-        <li><a href="#familie">Über uns</a></li>
-        <li><a href="#kontakt">Kontakt</a></li>
-      </ul>
+      <ul class="nav__links" data-nav-desktop role="list"></ul>
 
-      <a href="#termin" class="btn btn--primary btn--sm nav__cta">Termin buchen</a>
+      <a href="tel:+4926219474004" class="btn btn--primary btn--sm nav__cta" data-nav-cta data-config-href="tel">Anrufen</a>
 
       <button class="nav__hamburger" id="navHamburger" aria-label="Menü öffnen" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -506,16 +497,7 @@
   <!-- Mobile overlay -->
   <div class="nav__mobile" id="navMobile" role="dialog" aria-label="Navigation">
     <button class="nav__mobile-close" id="navMobileClose" aria-label="Menü schließen">✕</button>
-    <a href="#leistungen">Leistungen</a>
-    <a href="#kostenrechner" data-nav-calc>Kostenrechner</a>
-    <a href="#referenzen">Referenzen</a>
-    <a href="team.html">Team</a>
-    <a href="#familie">Über uns</a>
-    <a href="#kontakt">Kontakt</a>
-    <a href="#termin" class="btn btn--primary" style="margin-top:1rem">Termin buchen</a>
-    <span class="nav__mobile-phone">
-      <a href="tel:+4926219474004" data-config-href="tel" data-config="telefonDisplay">02621 947 40 04</a>
-    </span>
+    <div data-nav-mobile></div>
   </div>
 
 
@@ -543,18 +525,19 @@
       <div class="hero__content container">
         <div class="hero__layout">
           <div class="hero__brand">
-            <span class="hero__eyebrow" data-config="heroEyebrow">SHK-Meisterbetrieb · Lahnstein · seit 1998</span>
+            <span class="hero__eyebrow" data-config="heroEyebrow">SHK Meisterbetrieb · Lahnstein · seit 1998</span>
             <picture class="hero__logo-card">
               <source srcset="images/logo-client.webp" type="image/webp">
               <img src="images/logo-client.png" alt="Sascha Grimm Heizung &amp; Sanitär" data-config-alt="true" width="420" height="110" decoding="async">
             </picture>
             <p class="hero__brand-name" data-config="name">Sascha Grimm Heizung &amp; Sanitär</p>
-            <h1 class="hero__h1">Bad, Heizung und Haustechnik — ehrlich beraten, sauber umgesetzt.</h1>
+            <h1 class="hero__h1" data-config="heroHeadline">Ihr SHK Meisterbetrieb in Lahnstein</h1>
           </div>
 
-          <aside class="hero__cta-panel" aria-label="Projekt anfragen">
-            <a href="#termin" class="btn btn--primary hero__primary-cta">Kostenlose Erstberatung anfragen</a>
-            <p class="hero__cta-note">Kostenlos &amp; unverbindlich. Wir melden uns mit einer ehrlichen Einschätzung.</p>
+          <aside class="hero__cta-panel" aria-label="Kontakt aufnehmen">
+            <a href="tel:+4926219474004" class="btn btn--primary hero__primary-cta" data-config-href="tel">
+              Jetzt anrufen: <span data-config="telefonDisplay">02621 947 40 04</span>
+            </a>
             <a
               href="https://www.klimatechniker.net/lahnstein/grimm-heizung-sanitaer-aUPsMi"
               data-config-href="googleBewertung"
@@ -566,7 +549,7 @@
               aria-label="Bewertungen ansehen">
               <span class="hero__rating-score"><span data-config="googleBewertungNote">4,8</span>/5</span>
               <span class="hero__rating-stars" aria-hidden="true">★★★★★</span>
-              <span class="hero__rating-meta"><span data-config="googleBewertungAnzahl">32</span> <span data-config="bewertungsMetaLabel">Bewertungen</span></span>
+              <span class="hero__rating-meta">Sterne bei Google · <span data-config="googleBewertungAnzahl">32</span> <span data-config="bewertungsMetaLabel">Bewertungen</span></span>
             </a>
             <picture class="hero__bosch-badge">
               <source srcset="images/partner-bosch-premium.webp" type="image/webp">
@@ -578,7 +561,7 @@
         <div class="hero__trust" aria-label="Vertrauenskennzahlen">
           <div class="trust-item">
             <span class="trust-item__value"><span data-config="googleBewertungNote">4,8</span>/5</span>
-            <span class="trust-item__label">Bewertungs-Score</span>
+            <span class="trust-item__label">Bewertungsscore</span>
           </div>
           <div class="trust-divider"></div>
           <div class="trust-item">
@@ -670,7 +653,7 @@
       <header class="section-header reveal">
         <span class="section-label">Was wir tun</span>
         <h2 class="section-h2">Unsere Leistungen.</h2>
-        <p class="section-sub">Bad, Heizung, Haustechnik und Lüftung — aus einer Hand, termingerecht und transparent.</p>
+        <p class="section-sub">Bad, Heizung, Haustechnik und Lüftung aus einer Hand, termingerecht und transparent.</p>
       </header>
 
       <div class="leistungen-grid">
@@ -916,7 +899,7 @@
         </div>
         <div class="bosch-flagship__content">
           <p class="bosch-flagship__label">Zertifizierte Partnerschaft</p>
-          <h2>BOSCH Premium Partner —<br>Ihr Vorteil.</h2>
+          <h2>BOSCH Premium Partner:<br>Ihr Vorteil.</h2>
           <p>Als zertifizierter BOSCH Premium Partner erhalten Sie exklusiven Zugang zu den neuesten Heizungssystemen, bevorzugte Lieferzeiten und erweiterte Garantieleistungen — weit über den gesetzlichen Standard hinaus.</p>
           <ul class="bosch-flagship__vorteile">
             <li>✓ Erweiterte Herstellergarantie auf alle BOSCH Systeme</li>
@@ -924,6 +907,25 @@
             <li>✓ Zertifizierte Fachinstallation nach BOSCH-Standard</li>
           </ul>
         </div>
+      </div>
+
+      <div class="bosch-produkte reveal reveal-delay-2">
+        <a class="bosch-produkt-card" href="leistungen/heizung.html">
+          <picture>
+            <source srcset="images/bosch-gas-brennwerttherme.webp" type="image/webp">
+            <img src="images/bosch-gas-brennwerttherme.webp" alt="BOSCH Gas Brennwerttherme" width="640" height="480" loading="lazy" decoding="async">
+          </picture>
+          <h3>Heizung mit Brennwerttechnik</h3>
+          <p>Modernisierung, Wärmepumpe und Service als BOSCH Premium Partner.</p>
+        </a>
+        <a class="bosch-produkt-card" href="leistungen/lueftung.html">
+          <picture>
+            <source srcset="images/bosch-klimaanlage.webp" type="image/webp">
+            <img src="images/bosch-klimaanlage.webp" alt="BOSCH Split Klimaanlage" width="640" height="480" loading="lazy" decoding="async">
+          </picture>
+          <h3>Klima und Lüftung</h3>
+          <p>Split Klimaanlagen und Wohnraumlüftung vom zertifizierten Profi.</p>
+        </a>
       </div>
     </div>
   </section>
@@ -1144,13 +1146,23 @@
         </div>
       </div>
 
-      <div class="reviews-proof__cards reveal reveal-delay-2" id="reviewsProofCards">
-        <article class="review-proof-card">
-          <span class="review-proof-card__num">01</span>
-          <h3>Zuverlässigkeit</h3>
-          <p>Termine, Rückrufe und Absprachen werden für Kunden greifbar, bevor sie ihr Projekt anfragen.</p>
-        </article>
+      <div class="reviews-proof__cards reveal reveal-delay-2" id="reviewsProofCards" hidden></div>
+
+      <div class="bewertungen-carousel-container reveal reveal-delay-3" id="googleReviewsCarousel" data-rating-proof hidden>
+        <button type="button" class="carousel-btn carousel-btn--prev" id="reviewsPrev" aria-label="Vorherige Bewertung">‹</button>
+        <div class="carousel-track-container">
+          <div class="carousel-track" id="reviewsTrack" aria-live="polite"></div>
+        </div>
+        <button type="button" class="carousel-btn carousel-btn--next" id="reviewsNext" aria-label="Nächste Bewertung">›</button>
       </div>
+      <div class="carousel-dots" id="reviewsDots" data-rating-proof hidden></div>
+      <p class="reviews-cta-wrap reveal reveal-delay-3" data-rating-proof hidden>
+        <a href="https://www.klimatechniker.net/lahnstein/grimm-heizung-sanitaer-aUPsMi"
+           class="reviews-google-link"
+           data-config-href="googleBewertung"
+           target="_blank"
+           rel="noopener noreferrer">Alle Bewertungen auf Google ansehen</a>
+      </p>
     </div>
   </section>
 
@@ -1163,28 +1175,49 @@
     <div class="container">
       <header class="section-header section-header--center reveal">
         <span class="section-label">Jetzt starten</span>
-        <h2 class="section-h2">Bereit für Ihr Projekt?</h2>
-        <p class="section-sub">Kostenloses Beratungsgespräch – unverbindlich und ohne Verpflichtung.</p>
+        <h2 class="section-h2" data-config="terminHeadline">Rufen Sie uns an und bekommen Sie einen Festpreis vor Ort.</h2>
+        <p class="section-sub" data-config="terminSubline">Unverbindliche Erstberatung. Klare Preise. Persönlicher Ansprechpartner.</p>
       </header>
 
-      <div class="termin-grid">
-        <div class="termin-card termin-card--featured reveal reveal-delay-1">
-          <div class="termin-card__icon">🏗</div>
-          <h3 class="termin-card__title">Kostenloses Beratungsgespräch</h3>
-          <p class="termin-card__text">Wir besprechen Ihr Projekt in Ruhe. Vor Ort oder telefonisch, ganz wie Sie möchten.</p>
-          <ul class="termin-meta">
-            <li>⏱ ca. 30–60 Minuten</li>
-            <li>📍 Bei Ihnen vor Ort oder telefonisch</li>
-            <li>💶 Kostenlos &amp; unverbindlich</li>
-          </ul>
-          <a class="btn btn--primary btn--full" href="#termin-buchung">Beratung buchen</a>
-        </div>
+      <p class="termin-festpreis-note reveal" data-config="terminFestpreisText">Nach der Besichtigung erhalten Sie eine transparente Festpreisofferte.</p>
+
+      <div class="termin-cta-row reveal reveal-delay-1">
+        <a href="#" class="btn btn--wa btn--lg" data-config-href="whatsapp" target="_blank" rel="noopener noreferrer">WhatsApp schreiben</a>
+        <a href="tel:+4926219474004" class="btn btn--primary btn--lg" data-config-href="tel">
+          Anrufen: <span data-config="telefonDisplay">02621 947 40 04</span>
+        </a>
       </div>
 
-      <!-- ──────────────────────────────────────────────────────
-           VARIANTE A: Cal.com (Standard)
-           Eingeblendet wenn CLIENT.terminVariante === "calcom"
-      ────────────────────────────────────────────────────── -->
+      <div class="termin-callback-box reveal reveal-delay-2">
+        <h3>Rückruf beantragen</h3>
+        <form id="terminCallbackForm" action="https://api.web3forms.com/submit" method="post" novalidate>
+          <input type="hidden" name="access_key" value="">
+          <input type="hidden" name="subject" value="Rückrufanfrage Jetzt starten">
+          <input type="hidden" name="from_page" value="Jetzt starten">
+          <div class="kontakt-form__grid">
+            <label for="termin_callback_name">Ihr Name
+              <input id="termin_callback_name" name="name" type="text" required autocomplete="name" placeholder="Max Mustermann">
+            </label>
+            <label for="termin_callback_phone">Telefon
+              <input id="termin_callback_phone" name="telefon" type="tel" required autocomplete="tel" placeholder="0151 12345678">
+            </label>
+          </div>
+          <label class="kontakt-form__honeypot" for="termin_callback_website" aria-hidden="true">
+            Website
+            <input id="termin_callback_website" name="website" type="text" tabindex="-1" autocomplete="off">
+          </label>
+          <label class="kontakt-form__check" for="termin_callback_dsgvo">
+            <input id="termin_callback_dsgvo" name="dsgvo_consent" type="checkbox" required>
+            <span>Ich willige in die Verarbeitung meiner Angaben zur Rückrufbearbeitung ein (gemäß <a href="datenschutz.html">Datenschutzerklärung</a>).</span>
+          </label>
+          <button type="submit" class="btn btn--primary">Rückruf anfordern</button>
+          <p id="terminCallbackResult" aria-live="polite"></p>
+        </form>
+      </div>
+
+      <details class="termin-cal-accordion reveal reveal-delay-3">
+        <summary>Online Termin buchen (Cal.com)</summary>
+        <div class="termin-cal-accordion__body">
       <div data-termin="calcom" id="termin-buchung">
         <div class="consent-gate reveal" id="termin-consent">
           <h3 class="consent-gate__title">Online-Terminbuchung (Cal.com) nach Einwilligung</h3>
@@ -1204,6 +1237,8 @@
           </div>
         </div>
       </div>
+        </div>
+      </details>
 
       <!-- ──────────────────────────────────────────────────────
            VARIANTE B: WhatsApp direkt
@@ -1266,7 +1301,7 @@
       <p class="termin-fallback reveal">
         Oder direkt anrufen:
         <a href="tel:+4926219474004" data-config-href="tel" data-config="telefonDisplay">02621 947 40 04</a>
-        &nbsp;·&nbsp; <span data-config="oeffZeitenKurz">Mo–Do 08–17 Uhr, Fr 08–13 Uhr</span>
+        <span data-config="oeffZeitenKurz">Mo–Do 07:30–16:30 Uhr, Fr 07:30–13:30 Uhr</span>
       </p>
     </div>
   </section>

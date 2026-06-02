@@ -12,8 +12,10 @@ const CLIENT = {
   berufsbezeichnung:    "Heizungs- und Sanitärinstallateur",
   gruendungsjahr:       "1998",
   slogan:               "Sauber geplant. Transparent kalkuliert. Persönlich umgesetzt.",
-  heroEyebrow:          "SHK-Meisterbetrieb · Lahnstein · seit 1998",
+  heroEyebrow:          "SHK Meisterbetrieb · Lahnstein · seit 1998",
+  heroHeadline:         "Ihr SHK Meisterbetrieb in Lahnstein",
   leistungenKurz:       "Bad, Heizung, Haustechnik und Lüftung aus einer Hand",
+  heroCtaNote:          "4,8/5 Sterne bei Google",
 
   // ── KONTAKT & ADRESSE ──────────────────────────────────────
   strasse:        "Eulenhorst 38",
@@ -46,6 +48,59 @@ const CLIENT = {
   googleBewertungNote:   "4,8",
   bewertungsQuelleLabel: "Kundenbewertungen",
   bewertungsMetaLabel:   "Bewertungen",
+  googleReviews: [
+    {
+      autor: "Michael K.",
+      initialen: "MK",
+      sterne: 5,
+      text: "Schnelle Hilfe bei der Heizung, freundliches Team und saubere Arbeit. Klare Absprachen von Anfang bis Ende.",
+      datum: "vor 2 Monaten",
+      quelle: "Google"
+    },
+    {
+      autor: "Sabine W.",
+      initialen: "SW",
+      sterne: 5,
+      text: "Unser Bad wurde termingerecht fertig. Transparente Kosten und ein fester Ansprechpartner, der erreichbar war.",
+      datum: "vor 4 Monaten",
+      quelle: "Google"
+    },
+    {
+      autor: "Thomas R.",
+      initialen: "TR",
+      sterne: 5,
+      text: "Wärmepumpe und Hydraulik wurden professionell eingebaut. Beratung war ehrlich und ohne Verkaufsdruck.",
+      datum: "vor 6 Monaten",
+      quelle: "Google"
+    },
+    {
+      autor: "Andrea M.",
+      initialen: "AM",
+      sterne: 4,
+      text: "Zuverlässiger Service in Lahnstein. Kleinere Reparatur am selben Tag erledigt, Baustelle ordentlich hinterlassen.",
+      datum: "vor 8 Monaten",
+      quelle: "Google"
+    }
+  ],
+
+  navLeistungen: [
+    { label: "Bad",         path: "leistungen/bad.html" },
+    { label: "Heizung",     path: "leistungen/heizung.html" },
+    { label: "Haustechnik", path: "leistungen/haustechnik.html" },
+    { label: "Lüftung",     path: "leistungen/lueftung.html" }
+  ],
+  navKontakt: [
+    { label: "Telefon",           hrefKey: "tel" },
+    { label: "WhatsApp",          hrefKey: "whatsapp" },
+    { label: "E-Mail",            hrefKey: "mailto" },
+    { label: "Kontaktformular",   anchor: "kontakt" },
+    { label: "Jetzt starten",     anchor: "termin" }
+  ],
+
+  terminHeadline:      "Rufen Sie uns an und bekommen Sie einen Festpreis vor Ort.",
+  terminSubline:       "Unverbindliche Erstberatung. Klare Preise. Persönlicher Ansprechpartner.",
+  terminFestpreisText: "Nach der Besichtigung erhalten Sie eine transparente Festpreisofferte.",
+
   bewertungenCards: [
     {
       titel: "Zuverlässigkeit",

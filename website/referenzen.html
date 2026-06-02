@@ -22,12 +22,8 @@
           <img class="nav__logo" src="images/logo-client.png" alt="Sascha Grimm Heizung &amp; Sanitär Meisterbetrieb" data-config-alt="true" width="200" height="42" decoding="async">
         </picture>
       </a>
-      <ul class="nav__links" role="list">
-        <li><a href="index.html#leistungen">Leistungen</a></li>
-        <li><a href="index.html#kontakt">Kontakt</a></li>
-        <li><a href="impressum.html">Impressum</a></li>
-      </ul>
-      <a href="index.html#termin" class="btn btn--primary btn--sm nav__cta">Termin buchen</a>
+      <ul class="nav__links" data-nav-desktop role="list"></ul>
+      <a href="tel:+4926219474004" class="btn btn--primary btn--sm nav__cta" data-nav-cta data-config-href="tel">Anrufen</a>
       <button class="nav__hamburger" id="navHamburger" aria-label="Menü öffnen" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -36,14 +32,7 @@
 
   <div class="nav__mobile" id="navMobile" role="dialog" aria-label="Navigation">
     <button class="nav__mobile-close" id="navMobileClose" aria-label="Menü schließen">✕</button>
-    <a href="index.html#leistungen">Leistungen</a>
-    <a href="referenzen.html">Referenzen</a>
-    <a href="team.html">Team</a>
-    <a href="index.html#kontakt">Kontakt</a>
-    <a href="index.html#termin" class="btn btn--primary" style="margin-top:1rem">Termin buchen</a>
-    <span class="nav__mobile-phone">
-      <a href="tel:+4926219474004" data-config-href="tel" data-config="telefonDisplay">02621 947 40 04</a>
-    </span>
+    <div data-nav-mobile></div>
   </div>
 
   <main class="subpage-main container">

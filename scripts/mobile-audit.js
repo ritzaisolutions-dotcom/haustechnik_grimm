@@ -79,6 +79,7 @@ async function auditPage(page, url, viewportName) {
         videoPaused: video ? video.paused : null,
         overlayOpacity,
         heroCtaVisible: heroCta ? heroCta.offsetParent !== null : false,
+        heroCtaHref: heroCta ? heroCta.getAttribute('href') : null,
         heroCtaCount: document.querySelectorAll('.hero__primary-cta').length,
         boschBadgeVisible: boschBadge ? boschBadge.offsetParent !== null : false,
         ratingVisible: rating ? rating.offsetParent !== null : false,
@@ -95,7 +96,10 @@ async function auditPage(page, url, viewportName) {
 
     checks.heroHeadlineMin28 = hero.h1Size >= 28;
     checks.heroVideoPresent = hero.hasVideo;
-    checks.heroPrimaryCta = hero.heroCtaVisible && hero.heroCtaCount === 1;
+    checks.heroPrimaryCta = hero.heroCtaVisible
+      && hero.heroCtaCount === 1
+      && !!(hero.heroCtaHref && hero.heroCtaHref.startsWith('tel:'));
+    checks.heroTelCta = !!(hero.heroCtaHref && hero.heroCtaHref.startsWith('tel:'));
     checks.heroBoschBadge = hero.boschBadgeVisible;
     checks.heroRating = hero.ratingVisible;
     checks.waFabMobile = viewportName === 'mobile' ? hero.waFabVisible : !hero.waFabVisible;
@@ -128,7 +132,8 @@ async function auditPage(page, url, viewportName) {
 
     if (!checks.heroHeadlineMin28) issues.push(`Hero H1 ${hero.h1Size}px < 28px`);
     if (!checks.heroVideoPresent) issues.push('Hero video missing');
-    if (!checks.heroPrimaryCta) issues.push(`Hero primary CTA invalid count=${hero.heroCtaCount}`);
+    if (!checks.heroPrimaryCta) issues.push(`Hero primary CTA invalid (count=${hero.heroCtaCount}, href=${hero.heroCtaHref || 'none'})`);
+    if (!checks.heroTelCta) issues.push(`Hero primary CTA is not tel: (${hero.heroCtaHref || 'missing'})`);
     if (!checks.heroBoschBadge) issues.push('Hero BOSCH badge not visible');
     if (!checks.heroRating) issues.push('Hero rating proof not visible');
     if (!checks.waFabMobile) issues.push('WhatsApp float visibility wrong for viewport');
@@ -140,6 +145,28 @@ async function auditPage(page, url, viewportName) {
     if (!checks.partnerCarouselPauses) issues.push('Partner carousel does not pause on hover/focus');
     if (!checks.calcTapTarget) issues.push(`Calc button height ${hero.calcBtnH}px`);
     if (!checks.telLink) issues.push('Tel link missing');
+  }
+
+  if (!url.endsWith('/') && !url.endsWith('/index.html') && url !== `${BASE}/`) {
+    const navCheck = await page.evaluate(() => {
+      const mobileHost = document.querySelector('[data-nav-mobile]');
+      const leistungenLinks = mobileHost
+        ? mobileHost.querySelectorAll('.nav__mobile-group:first-of-type .nav__mobile-link').length
+        : 0;
+      const desktopDropdowns = document.querySelectorAll('.nav__item--has-menu').length;
+      const telCta = document.querySelector('[data-nav-cta]');
+      return {
+        leistungenLinks,
+        desktopDropdowns,
+        telCtaHref: telCta ? telCta.getAttribute('href') : null,
+      };
+    });
+    checks.navLeistungenMobile = navCheck.leistungenLinks >= 4;
+    checks.navDropdownsDesktop = viewportName === 'desktop' ? navCheck.desktopDropdowns >= 2 : true;
+    checks.navTelCta = !!(navCheck.telCtaHref && navCheck.telCtaHref.startsWith('tel:'));
+    if (!checks.navLeistungenMobile) issues.push(`Mobile nav Leistungen links=${navCheck.leistungenLinks}`);
+    if (!checks.navDropdownsDesktop) issues.push(`Desktop nav dropdowns=${navCheck.desktopDropdowns}`);
+    if (!checks.navTelCta) issues.push('Nav CTA tel link missing');
   }
 
   return { url, viewportName, checks, issues, pass: issues.length === 0 };
@@ -175,6 +202,7 @@ async function testReducedMotion(browser) {
     const bg = document.querySelector('.hero__bg-img');
     const carousel = document.querySelector('.partner-track');
     return {
+      heroPosition: hero ? getComputedStyle(hero).position : '',
       heroTransform: hero ? getComputedStyle(hero).transform : '',
       heroClip: hero ? getComputedStyle(hero).clipPath : '',
       bgAnimation: bg ? getComputedStyle(bg).animationName : '',
@@ -183,9 +211,10 @@ async function testReducedMotion(browser) {
   });
   await context.close();
   const heroTransformReset = state.heroTransform === 'none' || state.heroTransform === 'matrix(1, 0, 0, 1, 0, 0)';
+  const heroStatic = state.heroPosition === 'relative' && (state.heroClip === 'none' || state.heroClip === '');
   return {
     ...state,
-    pass: heroTransformReset && state.bgAnimation === 'none' && state.carouselAnimation === 'none',
+    pass: heroStatic && heroTransformReset && state.bgAnimation === 'none' && state.carouselAnimation === 'none',
   };
 }
 

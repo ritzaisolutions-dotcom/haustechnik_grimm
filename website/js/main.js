@@ -44,8 +44,8 @@
       document.body.style.overflow = '';
     };
     if (mobileClose) mobileClose.addEventListener('click', closeMenu);
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', closeMenu);
+    mobileMenu.addEventListener('click', (event) => {
+      if (event.target.closest('a')) closeMenu();
     });
   }
 
@@ -61,90 +61,45 @@
     window.addEventListener('scroll', hideIndicator, { passive: true });
   }
 
-  const heroSection = document.getElementById('hero');
-  const heroSticky = document.getElementById('heroSticky');
-  if (heroSection && heroSticky) {
-    const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
-    const lerp = (a, b, t) => a + (b - a) * t;
-    const heroFxMobileMq = window.matchMedia('(max-width: 768px)');
-    const heroFxReducedMq = window.matchMedia('(prefers-reduced-motion: reduce)');
-
-    const resetHeroFx = () => {
-      heroSection.style.setProperty('--hero-scale', '1');
-      heroSection.style.setProperty('--hero-radius', '0px 0px 0px 0px');
-      heroSection.style.setProperty('--hero-overlay-opacity', '1');
-      heroSection.style.setProperty('--hero-content-y', '0px');
-      heroSection.style.setProperty('--hero-content-opacity', '1');
-      heroSection.style.setProperty('--hero-panel-y', '0px');
-      heroSection.style.setProperty('--hero-panel-opacity', '1');
-      heroSection.style.setProperty('--hero-clip', '0%');
-    };
-
-    const heroFxEnabled = () => !heroFxMobileMq.matches && !heroFxReducedMq.matches;
-
-    const updateHeroProgress = () => {
-      if (!heroFxEnabled()) {
-        resetHeroFx();
-        return;
-      }
-
-      const rect = heroSection.getBoundingClientRect();
-      const total = Math.max(1, rect.height - window.innerHeight);
-      const progress = clamp(-rect.top / total, 0, 1);
-
-      const holdProgress = clamp((progress - 0.12) / 0.88, 0, 1);
-      const closingProgress = clamp((progress - 0.42) / 0.58, 0, 1);
-      const easedClose = closingProgress * closingProgress * (3 - 2 * closingProgress);
-
-      const scale = lerp(1, 0.9, easedClose);
-      const radius = lerp(0, 34, easedClose);
-      const clip = lerp(0, 18, easedClose);
-      const overlayOpacity = lerp(1, 0.72, easedClose);
-      const contentY = lerp(0, -36, holdProgress);
-      const contentOpacity = lerp(1, 0.08, easedClose);
-      const panelY = lerp(0, 64, easedClose);
-      const panelOpacity = lerp(1, 0, clamp((progress - 0.5) / 0.36, 0, 1));
-
-      heroSection.style.setProperty('--hero-scale', String(scale));
-      heroSection.style.setProperty('--hero-radius', `0px 0px ${radius}px ${radius}px`);
-      heroSection.style.setProperty('--hero-overlay-opacity', String(overlayOpacity));
-      heroSection.style.setProperty('--hero-content-y', `${contentY}px`);
-      heroSection.style.setProperty('--hero-content-opacity', String(contentOpacity));
-      heroSection.style.setProperty('--hero-panel-y', `${panelY}px`);
-      heroSection.style.setProperty('--hero-panel-opacity', String(panelOpacity));
-      heroSection.style.setProperty('--hero-clip', `${clip}%`);
-    };
-
-    let heroFxScrollBound = false;
-
-    const syncHeroFx = () => {
-      if (heroFxEnabled()) {
-        if (!heroFxScrollBound) {
-          window.addEventListener('scroll', updateHeroProgress, { passive: true });
-          heroFxScrollBound = true;
-        }
-        updateHeroProgress();
+  /* === NAV: Dropdowns (desktop touch + Escape) === */
+  document.addEventListener('click', (event) => {
+    const trigger = event.target.closest('.nav__menu-trigger');
+    if (trigger) {
+      event.preventDefault();
+      const item = trigger.closest('.nav__item--has-menu');
+      if (!item) return;
+      const open = !item.classList.contains('nav__item--open');
+      document.querySelectorAll('.nav__item--has-menu.nav__item--open').forEach((other) => {
+        other.classList.remove('nav__item--open');
+        const otherTrigger = other.querySelector('.nav__menu-trigger');
+        if (otherTrigger) otherTrigger.setAttribute('aria-expanded', 'false');
+      });
+      if (open) {
+        item.classList.add('nav__item--open');
+        trigger.setAttribute('aria-expanded', 'true');
       } else {
-        if (heroFxScrollBound) {
-          window.removeEventListener('scroll', updateHeroProgress);
-          heroFxScrollBound = false;
-        }
-        resetHeroFx();
+        item.classList.remove('nav__item--open');
+        trigger.setAttribute('aria-expanded', 'false');
       }
-    };
-
-    const onHeroFxChange = () => syncHeroFx();
-
-    syncHeroFx();
-    window.addEventListener('resize', onHeroFxChange);
-    if (typeof heroFxMobileMq.addEventListener === 'function') {
-      heroFxMobileMq.addEventListener('change', onHeroFxChange);
-      heroFxReducedMq.addEventListener('change', onHeroFxChange);
-    } else {
-      heroFxMobileMq.addListener(onHeroFxChange);
-      heroFxReducedMq.addListener(onHeroFxChange);
+      return;
     }
-  }
+    if (!event.target.closest('.nav__item--has-menu')) {
+      document.querySelectorAll('.nav__item--has-menu.nav__item--open').forEach((item) => {
+        item.classList.remove('nav__item--open');
+        const t = item.querySelector('.nav__menu-trigger');
+        if (t) t.setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape') return;
+    document.querySelectorAll('.nav__item--has-menu.nav__item--open').forEach((item) => {
+      item.classList.remove('nav__item--open');
+      const trigger = item.querySelector('.nav__menu-trigger');
+      if (trigger) trigger.setAttribute('aria-expanded', 'false');
+    });
+  });
 
   const internalLinks = document.querySelectorAll('a[href^="#"]');
   internalLinks.forEach((link) => {
@@ -447,6 +402,48 @@
   renderBookingState();
   renderMapState();
 
+  /* === TERMIN CALLBACK FORM === */
+  const terminCallbackForm = document.getElementById('terminCallbackForm');
+  if (terminCallbackForm) {
+    terminCallbackForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const message = document.getElementById('terminCallbackResult');
+      const submitButton = terminCallbackForm.querySelector('button[type="submit"]');
+      if (submitButton) submitButton.disabled = true;
+
+      const formData = new FormData(terminCallbackForm);
+      const accessKey = String(formData.get('access_key') || '').trim();
+      const honeypot = String(formData.get('website') || '').trim();
+      if (honeypot) {
+        if (message) message.textContent = 'Anfrage blockiert.';
+        if (submitButton) submitButton.disabled = false;
+        return;
+      }
+      if (!accessKey || accessKey === 'YOUR_WEB3FORMS_ACCESS_KEY' || accessKey === 'demo-key-nicht-aktiv') {
+        if (message) message.textContent = 'Rückruf im Demo-Modus: Bitte telefonisch melden.';
+        if (submitButton) submitButton.disabled = false;
+        return;
+      }
+
+      try {
+        const response = await fetch(terminCallbackForm.action, {
+          method: 'POST',
+          body: formData
+        });
+        const data = await response.json();
+        if (!response.ok) {
+          throw new Error(data?.message || 'Rückruf konnte nicht gesendet werden.');
+        }
+        if (message) message.textContent = 'Danke! Wir rufen Sie schnellstmöglich zurück.';
+        terminCallbackForm.reset();
+      } catch (error) {
+        if (message) message.textContent = `Fehler: ${error.message}`;
+      } finally {
+        if (submitButton) submitButton.disabled = false;
+      }
+    });
+  }
+
   /* === CONTACT FORM === */
   const contactForm = document.getElementById('kontaktForm');
   if (contactForm) {
@@ -582,13 +579,18 @@
   }
 
   /* === REVIEWS CAROUSEL === */
+  const initReviewsCarousel = () => {
   const reviewsTrack = document.getElementById('reviewsTrack');
   const reviewsPrev = document.getElementById('reviewsPrev');
   const reviewsNext = document.getElementById('reviewsNext');
   const reviewsDotsContainer = document.getElementById('reviewsDots');
   
-  if (reviewsTrack && reviewsPrev && reviewsNext && reviewsDotsContainer) {
-    const cards = Array.from(reviewsTrack.querySelectorAll('.bewertung-card'));
+  if (!reviewsTrack || !reviewsPrev || !reviewsNext || !reviewsDotsContainer) return;
+  if (reviewsTrack.dataset.carouselReady === 'true') return;
+
+  const cards = Array.from(reviewsTrack.querySelectorAll('.google-review-card, .bewertung-card'));
+  if (!cards.length) return;
+  reviewsTrack.dataset.carouselReady = 'true';
     let currentIndex = 0;
     let autoplayInterval;
     
@@ -717,6 +719,13 @@
         updateCarousel();
       }, 150);
     });
+  };
+
+  document.addEventListener('grimm:reviews-ready', initReviewsCarousel);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initReviewsCarousel);
+  } else {
+    initReviewsCarousel();
   }
 
   const loadKlaro = () => {
