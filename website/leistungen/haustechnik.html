@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Haustechnik | Sascha Grimm Heizung &amp; Sanitär</title>
-  <meta name="description" content="Trinkwasser, Service und Haustechnik für Ihren Komfort — Grimm in Lahnstein.">
+  <title>Haustechnik | Sascha Grimm Heizung &amp; Sanitär | SHK-Meisterbetrieb Lahnstein</title>
+  <meta name="description" content="Trinkwasser, Rohrsanierung, Service und Reparatur — Grimm Haustechnik in Lahnstein.">
   <meta name="robots" content="index, follow">
   <link rel="icon" type="image/png" href="../images/favicon-client.png">
+  <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
   <link rel="stylesheet" href="../css/variables.css">
   <link rel="stylesheet" href="../css/style.css">
   <script src="../js/config.js"></script>
@@ -21,20 +23,73 @@
           <img class="nav__logo" src="../images/logo-client.png" alt="Grimm Heizung &amp; Sanitär" data-config-alt="true" width="200" height="42" decoding="async">
         </picture>
       </a>
+      <ul class="nav__links" role="list">
+        <li><a href="../index.html#leistungen">Leistungen</a></li>
+        <li><a href="../referenzen.html">Referenzen</a></li>
+        <li><a href="../index.html#kontakt">Kontakt</a></li>
+      </ul>
+      <a href="../index.html#termin" class="btn btn--primary btn--sm nav__cta">Termin buchen</a>
+      <button class="nav__hamburger" id="navHamburger" aria-label="Menü öffnen" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 
+  <div class="nav__mobile" id="navMobile" role="dialog" aria-label="Navigation">
+    <button class="nav__mobile-close" id="navMobileClose" aria-label="Menü schließen">✕</button>
+    <a href="../index.html#leistungen">Leistungen</a>
+    <a href="../referenzen.html">Referenzen</a>
+    <a href="../index.html#kontakt">Kontakt</a>
+    <a href="../index.html#termin" class="btn btn--primary" style="margin-top:1rem">Termin buchen</a>
+    <span class="nav__mobile-phone">
+      <a href="tel:+4926219474004" data-config-href="tel" data-config="telefonDisplay">02621 947 40 04</a>
+    </span>
+  </div>
+
   <main class="subpage-main container">
-    <header class="subpage-hero"><h1>Haustechnik für Ihren Komfort</h1></header>
+    <p class="subpage-back"><a href="../index.html">← Zur Startseite</a></p>
+
+    <header class="subpage-hero">
+      <h1>Haustechnik für Ihren Komfort</h1>
+      <p>Zuverlässige Haustechnik aus einer Hand — von der Trinkwasserinstallation über Rohrsanierung bis zum schnellen Reparaturservice in Lahnstein und Umgebung.</p>
+    </header>
+
     <section class="subpage-card">
-      <p>Zuverlässige Haustechnik aus einer Hand — von Trinkwasserinstallation bis zum regelmäßigen Service.</p>
-      <ul class="subpage-list">
-        <li>Wasser- und Trinkwasserinstallation</li>
-        <li>Service Haustechnik und Reparaturen</li>
-        <li>Installationssysteme von Viega, TECE und Geberit</li>
-        <li>Schnelle Hilfe in Lahnstein und Umgebung</li>
-      </ul>
-      <a class="btn btn--primary" href="../index.html#kontakt">Service anfragen</a>
+      <h2>Unsere Haustechnik-Leistungen</h2>
+      <div class="subpage-leistungen">
+        <article class="subpage-leistung">
+          <h3>Trinkwasser</h3>
+          <p>Installation und Erweiterung von Trinkwasserleitungen — hygienisch, normgerecht und mit Systemen von Viega, TECE und Geberit.</p>
+        </article>
+        <article class="subpage-leistung">
+          <h3>Rohrsanierung</h3>
+          <p>Inliner-Verfahren und klassische Sanierung — minimaler Eingriff, wenn Leitungen undicht oder veraltet sind.</p>
+        </article>
+        <article class="subpage-leistung">
+          <h3>Service &amp; Reparatur</h3>
+          <p>Undichtigkeiten, defekte Armaturen oder Heizungsstörungen — wir sind schnell vor Ort und lösen das Problem nachhaltig.</p>
+        </article>
+      </div>
+    </section>
+
+    <div class="subpage-media">
+      <picture>
+        <source srcset="../images/ref_4.webp" type="image/webp">
+        <img src="../images/ref_4.jpg" alt="Referenz: Sanitär- und Haustechnikarbeiten" width="350" height="350" loading="lazy" decoding="async">
+      </picture>
+      <picture>
+        <source srcset="../images/ref_8.webp" type="image/webp">
+        <img src="../images/ref_8.jpg" alt="Referenz: Service und Wartung Haustechnik" width="350" height="350" loading="lazy" decoding="async">
+      </picture>
+    </div>
+
+    <section class="subpage-card">
+      <h2>Service anfragen</h2>
+      <p>Schildern Sie uns Ihr Anliegen — per Termin oder WhatsApp. Für Notfälle erreichen Sie uns telefonisch während der Öffnungszeiten.</p>
+      <div class="subpage-ctas">
+        <a class="btn btn--primary" href="#" data-config-href="calcom" target="_blank" rel="noopener noreferrer">Termin buchen (Cal.com)</a>
+        <a class="btn btn--wa" href="#" data-config-href="whatsapp" target="_blank" rel="noopener noreferrer">💬 WhatsApp schreiben</a>
+      </div>
     </section>
   </main>
 

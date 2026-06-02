@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bad | Sascha Grimm Heizung &amp; Sanitär</title>
-  <meta name="description" content="Badmodernisierung, barrierefreie Bäder und Badplanung — Grimm Heizung &amp; Sanitär in Lahnstein.">
+  <title>Bad | Sascha Grimm Heizung &amp; Sanitär | SHK-Meisterbetrieb Lahnstein</title>
+  <meta name="description" content="Badmodernisierung, barrierefreie Bäder, Komplettbad und Trockenbau — Grimm Heizung &amp; Sanitär in Lahnstein.">
   <meta name="robots" content="index, follow">
   <link rel="icon" type="image/png" href="../images/favicon-client.png">
+  <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
   <link rel="stylesheet" href="../css/variables.css">
   <link rel="stylesheet" href="../css/style.css">
   <script src="../js/config.js"></script>
@@ -21,20 +23,81 @@
           <img class="nav__logo" src="../images/logo-client.png" alt="Grimm Heizung &amp; Sanitär" data-config-alt="true" width="200" height="42" decoding="async">
         </picture>
       </a>
+      <ul class="nav__links" role="list">
+        <li><a href="../index.html#leistungen">Leistungen</a></li>
+        <li><a href="../referenzen.html">Referenzen</a></li>
+        <li><a href="../index.html#kontakt">Kontakt</a></li>
+      </ul>
+      <a href="../index.html#termin" class="btn btn--primary btn--sm nav__cta">Termin buchen</a>
+      <button class="nav__hamburger" id="navHamburger" aria-label="Menü öffnen" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 
+  <div class="nav__mobile" id="navMobile" role="dialog" aria-label="Navigation">
+    <button class="nav__mobile-close" id="navMobileClose" aria-label="Menü schließen">✕</button>
+    <a href="../index.html#leistungen">Leistungen</a>
+    <a href="../referenzen.html">Referenzen</a>
+    <a href="../index.html#kontakt">Kontakt</a>
+    <a href="../index.html#termin" class="btn btn--primary" style="margin-top:1rem">Termin buchen</a>
+    <span class="nav__mobile-phone">
+      <a href="tel:+4926219474004" data-config-href="tel" data-config="telefonDisplay">02621 947 40 04</a>
+    </span>
+  </div>
+
   <main class="subpage-main container">
-    <header class="subpage-hero"><h1>Bäder zum Wohlfühlen</h1></header>
+    <p class="subpage-back"><a href="../index.html">← Zur Startseite</a></p>
+
+    <header class="subpage-hero">
+      <h1>Bäder zum Wohlfühlen</h1>
+      <p>Von der Teilsanierung bis zum barrierefreien Komplettbad — wir planen, koordinieren und realisieren Ihr Bad mit hochwertigen Markenprodukten aus einer Hand.</p>
+    </header>
+
     <section class="subpage-card">
-      <p>Von der Badmodernisierung bis zum barrierefreien Bad — wir planen und realisieren Ihr Traumbad mit hochwertigen Markenprodukten.</p>
-      <ul class="subpage-list">
-        <li>Badmodernisierung und Komplettsanierung</li>
-        <li>Barrierefreie Bäder und altersgerechte Lösungen</li>
-        <li>Individuelle Planung und transparente Kostenaufstellung</li>
-        <li>Partner von Geberit, Grohe, hansgrohe und Villeroy &amp; Boch</li>
-      </ul>
-      <a class="btn btn--primary" href="../index.html#termin">Badanfrage stellen</a>
+      <h2>Unsere Bad-Leistungen</h2>
+      <div class="subpage-leistungen">
+        <article class="subpage-leistung">
+          <h3>Badmodernisierung</h3>
+          <p>Neue Fliesen, Sanitärobjekte und Armaturen — wir erneuern Ihr Bad schrittweise oder in einem Durchgang, abgestimmt auf Ihr Budget.</p>
+        </article>
+        <article class="subpage-leistung">
+          <h3>Barrierefreies Bad</h3>
+          <p>Bodengleiche Duschen, Haltegriffe und altersgerechte Planung für mehr Sicherheit und Komfort im Alltag.</p>
+        </article>
+        <article class="subpage-leistung">
+          <h3>Komplettbad</h3>
+          <p>Individuelle Badplanung inklusive Elektro, Fliesen und Sanitär — ein Ansprechpartner für das gesamte Projekt.</p>
+        </article>
+        <article class="subpage-leistung">
+          <h3>Trockenbau</h3>
+          <p>Vorbereitung und Anpassung der Bausubstanz — Leichtbauwände, Abhängungen und Einbauten für Ihr Wunschbad.</p>
+        </article>
+      </div>
+    </section>
+
+    <div class="subpage-media">
+      <picture>
+        <source srcset="../images/ref_1.webp" type="image/webp">
+        <img src="../images/ref_1.jpg" alt="Referenz: Badsanierung mit bodengleicher Dusche" width="350" height="350" loading="lazy" decoding="async">
+      </picture>
+      <picture>
+        <source srcset="../images/ref_6.webp" type="image/webp">
+        <img src="../images/ref_6.jpg" alt="Referenz: Barrierefreies Bad" width="350" height="350" loading="lazy" decoding="async">
+      </picture>
+    </div>
+
+    <aside class="subpage-hinweis">
+      <p><strong>Förderhinweis:</strong> Barrierefreie Badumbauten können über die BEG (Bundesförderung für effiziente Gebäude) gefördert werden. Wir beraten Sie zu Voraussetzungen und Antragstellung — <a href="https://www.bafa.de" target="_blank" rel="noopener noreferrer">mehr bei BAFA</a>.</p>
+    </aside>
+
+    <section class="subpage-card">
+      <h2>Bad anfragen</h2>
+      <p>Buchen Sie einen Beratungstermin oder schreiben Sie uns direkt — wir melden uns zeitnah mit den nächsten Schritten.</p>
+      <div class="subpage-ctas">
+        <a class="btn btn--primary" href="#" data-config-href="calcom" target="_blank" rel="noopener noreferrer">Termin buchen (Cal.com)</a>
+        <a class="btn btn--wa" href="#" data-config-href="whatsapp" target="_blank" rel="noopener noreferrer">💬 WhatsApp schreiben</a>
+      </div>
     </section>
   </main>
 

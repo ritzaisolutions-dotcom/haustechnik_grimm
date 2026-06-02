@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>[HANDWERKSBEZEICHNUNG] [ORT] | [FIRMENNAME] [UNTERNEHMENSTYP]</title>
-  <meta name="description" content="[BERUFSBEZEICHNUNG] [FIRMENNAME] in [ORT]: [LEISTUNGEN_KURZ] aus einer Hand.">
+  <title>Sascha Grimm Heizung &amp; Sanitär | SHK-Meisterbetrieb Lahnstein</title>
+  <meta name="description" content="SHK-Meisterbetrieb Sascha Grimm Heizung &amp; Sanitär in Lahnstein: Bad, Heizung, Haustechnik und Lüftung sauber geplant, transparent kalkuliert und persönlich umgesetzt.">
   <meta name="robots" content="index, follow, max-image-preview:large">
-  <link rel="canonical" href="[DOMAIN]/">
-  <meta property="og:title" content="[FIRMENNAME]">
-  <meta property="og:description" content="[HANDWERKSBEZEICHNUNG]-Meisterbetrieb in [ORT].">
+  <link rel="canonical" href="https://www.grimm-sanitaer.de/">
+  <meta property="og:title" content="Sascha Grimm Heizung &amp; Sanitär | SHK-Meisterbetrieb Lahnstein">
+  <meta property="og:description" content="SHK-Meisterbetrieb in Lahnstein für Bad, Heizung, Haustechnik und Lüftung.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="[DOMAIN]/">
-  <meta property="og:site_name" content="[FIRMENNAME]">
+  <meta property="og:url" content="https://www.grimm-sanitaer.de/">
+  <meta property="og:site_name" content="Sascha Grimm Heizung &amp; Sanitär">
   <meta property="og:locale" content="de_DE">
-  <meta property="og:image" content="[DOMAIN]/images/og-image.jpg">
+  <meta property="og:image" content="https://www.grimm-sanitaer.de/images/og-image.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="[FIRMENNAME]">
-  <meta name="twitter:description" content="[HANDWERKSBEZEICHNUNG]-Meisterbetrieb in [ORT].">
-  <meta name="twitter:image" content="[DOMAIN]/images/og-image.jpg">
+  <meta name="twitter:title" content="Sascha Grimm Heizung &amp; Sanitär | SHK-Meisterbetrieb Lahnstein">
+  <meta name="twitter:description" content="SHK-Meisterbetrieb in Lahnstein für Bad, Heizung, Haustechnik und Lüftung.">
+  <meta name="twitter:image" content="https://www.grimm-sanitaer.de/images/og-image.jpg">
   <link rel="icon" type="image/png" href="images/favicon-client.png">
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -33,42 +33,57 @@
        Diese Styles ergänzen style.css ohne es zu berühren.
   ═══════════════════════════════════════════════════════ -->
   <style>
-    /* ── WhatsApp FAB ────────────────────────────────────── */
-    .wa-fab {
+    /* ── WhatsApp Float (Mobile only, Schritt 2) ─────────── */
+    .whatsapp-float {
       position: fixed;
-      bottom: 2rem;
-      right: 1.5rem;
-      z-index: 950;
-      width: 58px;
-      height: 58px;
-      border-radius: 50%;
-      background: var(--wa-green);
+      bottom: 24px;
+      right: 24px;
+      background: #25D366;
+      color: white;
+      border-radius: 50px;
+      padding: 14px 20px;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+      z-index: 9999;
       display: flex;
       align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 24px rgba(37,211,102,.45), 0 2px 8px rgba(0,0,0,.18);
+      gap: 8px;
       text-decoration: none;
+      line-height: 1;
       transition: transform var(--t-fast), box-shadow var(--t-fast);
     }
-    .wa-fab:hover  { transform: scale(1.1); box-shadow: 0 8px 36px rgba(37,211,102,.6); }
-    .wa-fab:focus  { outline: 3px solid var(--wa-green); outline-offset: 4px; }
-    .wa-fab svg    { display: block; }
-    .wa-fab__ring  {
-      position: absolute;
-      inset: -6px;
-      border-radius: 50%;
-      border: 2.5px solid var(--wa-green);
-      opacity: 0;
-      pointer-events: none;
-      animation: wa-ring 2.8s ease-out infinite;
+    .whatsapp-float:hover,
+    .whatsapp-float:focus {
+      transform: scale(1.05);
+      color: #fff;
+      outline: 3px solid #25D366;
+      outline-offset: 3px;
     }
-    @keyframes wa-ring {
-      0%   { transform: scale(1);    opacity: .55; }
-      75%  { transform: scale(1.6);  opacity: 0;   }
-      100% { transform: scale(1.6);  opacity: 0;   }
+    @media (min-width: 768px) {
+      .whatsapp-float { display: none !important; }
     }
-    @media (max-width: 768px) {
-      .wa-fab { bottom: 1.2rem; right: 1rem; width: 52px; height: 52px; }
+
+    /* ── Cal.com Embed (Schritt 4) ───────────────────────── */
+    .cal-embed-wrapper {
+      width: 100%;
+      max-width: 100%;
+      overflow: hidden;
+      border-radius: var(--r-md);
+      background: rgba(0, 0, 0, 0.2);
+    }
+    .cal-embed-wrapper iframe {
+      display: block;
+      width: 100%;
+      min-height: 520px;
+      height: 65vh;
+      max-height: 700px;
+      border: 0;
+    }
+    @media (min-width: 768px) {
+      .cal-embed-wrapper iframe {
+        min-height: 620px;
+        height: 700px;
+      }
     }
 
     /* ── Termin-Variante: WhatsApp ───────────────────────── */
@@ -138,12 +153,14 @@
     .kontakt-wa-link:hover { color: var(--wa-green-hover); }
     .kontakt-wa-link svg   { flex-shrink: 0; }
 
-    /* ── Partner-Logo-Leiste ─────────────────────────────── */
+    /* ── Partner Carousel (Schritt 5) ────────────────────── */
     .partner-strip {
       margin-top: var(--sp-7);
       padding-top: var(--sp-6);
       border-top: 1px solid var(--border);
       text-align: center;
+      overflow: hidden;
+      min-width: 0;
     }
     .partner-strip__label {
       font-size: var(--fs-sm);
@@ -152,25 +169,223 @@
       letter-spacing: .08em;
       margin-bottom: var(--sp-4);
     }
-    .partner-strip__logos {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: var(--sp-4) var(--sp-5);
+    .partner-carousel-wrapper {
+      overflow: hidden;
+      width: 100%;
+      padding: 20px 0;
+      max-width: 100%;
     }
-    .partner-strip__logos img {
-      height: 36px;
+    .partner-track {
+      display: flex;
+      gap: 48px;
+      align-items: center;
+      width: max-content;
+      animation: scroll-partners 72s linear infinite;
+    }
+    .partner-carousel-wrapper:hover .partner-track,
+    .partner-carousel-wrapper:focus-within .partner-track,
+    .partner-track:hover {
+      animation-play-state: paused;
+    }
+    .partner-track a {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+    }
+    .partner-track img {
+      height: 40px;
       width: auto;
-      max-width: 110px;
+      max-width: 120px;
       object-fit: contain;
       filter: grayscale(100%);
-      opacity: .75;
-      transition: filter var(--t-fast), opacity var(--t-fast);
+      opacity: 0.6;
+      transition: filter 0.3s ease, opacity 0.3s ease;
     }
-    .partner-strip__logos img:hover {
+    .partner-track a:hover img {
       filter: grayscale(0%);
       opacity: 1;
+    }
+    @keyframes scroll-partners {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    @media (max-width: 767px) {
+      .partner-track {
+        gap: 32px;
+        animation-duration: 56s;
+      }
+      .partner-track img {
+        height: 30px;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .partner-track {
+        animation: none;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        gap: var(--sp-4);
+      }
+    }
+
+    /* ── BOSCH Flagship (Schritt 6) ──────────────────────── */
+    .bosch-flagship {
+      background: #1a1a1a;
+      color: #fff;
+      padding: var(--sp-8) 0;
+      overflow: hidden;
+    }
+    .bosch-flagship__inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--sp-6);
+    }
+    .bosch-flagship__logo {
+      flex: 0 0 auto;
+      width: 100%;
+      max-width: 280px;
+      text-align: center;
+    }
+    .bosch-flagship__logo img {
+      width: 100%;
+      height: auto;
+      max-height: 320px;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
+    }
+    .bosch-flagship__content {
+      flex: 1;
+      min-width: 0;
+    }
+    .bosch-flagship__label {
+      font-size: var(--fs-sm);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--accent);
+      margin-bottom: var(--sp-2);
+      font-weight: 600;
+    }
+    .bosch-flagship__content h2 {
+      font-family: var(--ff-head);
+      font-size: clamp(1.5rem, 4vw, 2.25rem);
+      font-weight: 600;
+      line-height: 1.2;
+      color: #fff;
+      margin-bottom: var(--sp-4);
+    }
+    .bosch-flagship__content > p {
+      color: rgba(255, 255, 255, 0.82);
+      font-size: var(--fs-base);
+      line-height: 1.65;
+      margin-bottom: var(--sp-5);
+      max-width: 52ch;
+    }
+    .bosch-flagship__vorteile {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: var(--sp-3);
+    }
+    .bosch-flagship__vorteile li {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: var(--fs-base);
+      line-height: 1.5;
+    }
+    @media (min-width: 768px) {
+      .bosch-flagship__inner {
+        flex-direction: row;
+        align-items: center;
+        gap: var(--sp-7);
+      }
+      .bosch-flagship__logo {
+        flex: 0 0 40%;
+        max-width: none;
+      }
+      .bosch-flagship__content {
+        flex: 0 0 60%;
+      }
+    }
+
+    /* ── Förderungen (Schritt 7) ─────────────────────────── */
+    .foerderung {
+      padding: var(--sp-8) 0;
+      background: var(--bg-alt, #f7f9fc);
+    }
+    .foerderung__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--sp-4);
+      margin-top: var(--sp-6);
+    }
+    @media (min-width: 768px) {
+      .foerderung__grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+    .foerderung-card {
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: var(--sp-5);
+      box-shadow: var(--s-sm);
+      min-width: 0;
+      height: 100%;
+      transition: box-shadow var(--t-fast), transform var(--t-fast);
+    }
+    .foerderung-card:hover {
+      box-shadow: var(--s-md);
+      transform: translateY(-2px);
+    }
+    .foerderung-card__title {
+      font-family: var(--ff-head);
+      font-size: var(--fs-lg);
+      color: var(--primary);
+      margin-bottom: var(--sp-2);
+      font-weight: 600;
+    }
+    .foerderung-card__text {
+      font-size: var(--fs-sm);
+      color: var(--text-light);
+      line-height: 1.6;
+      margin-bottom: var(--sp-3);
+      flex: 1;
+    }
+    .foerderung-card__meta {
+      font-size: var(--fs-xs);
+      color: var(--text-muted);
+      margin-bottom: var(--sp-4);
+    }
+    .foerderung-card__link {
+      font-size: var(--fs-sm);
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .foerderung-card__link:hover {
+      color: var(--accent-hover);
+      text-decoration: underline;
+    }
+    .foerderung__cta-wrap {
+      text-align: center;
+      margin-top: var(--sp-6);
+    }
+    .foerderung__cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      min-height: 52px;
+      padding: .85rem 1.75rem;
+    }
+    @media (max-width: 767px) {
+      .foerderung__cta {
+        width: 100%;
+      }
     }
   </style>
 
@@ -223,35 +438,35 @@
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "[BRANCHE]",
-      "name": "[FIRMENNAME]",
-      "telephone": "[TELEFON]",
-      "email": "[EMAIL]",
+      "@type": "HomeAndConstructionBusiness",
+      "name": "Sascha Grimm Heizung & Sanitär",
+      "telephone": "+4926219474004",
+      "email": "info@grimm-sanitaer.de",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "[STRASSE_NR]",
-        "postalCode": "[PLZ]",
-        "addressLocality": "[ORT]",
+        "streetAddress": "Eulenhorst 38",
+        "postalCode": "56112",
+        "addressLocality": "Lahnstein",
         "addressCountry": "DE"
       },
-      "url": "[DOMAIN]/",
+      "url": "https://www.grimm-sanitaer.de/",
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": "[LAT]",
-        "longitude": "[LNG]"
+        "latitude": "50.3359",
+        "longitude": "7.6077"
       },
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
           "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
-          "opens": "08:00",
-          "closes": "17:00"
+          "opens": "07:30",
+          "closes": "16:30"
         },
         {
           "@type": "OpeningHoursSpecification",
           "dayOfWeek": "Friday",
-          "opens": "08:00",
-          "closes": "13:00"
+          "opens": "07:30",
+          "closes": "13:30"
         }
       ]
     }
@@ -264,10 +479,10 @@
   <!-- ╚════════════════════════════════╝ -->
   <nav class="nav" id="mainNav" aria-label="Hauptnavigation">
     <div class="nav__inner">
-      <a href="#hero" class="nav__wordmark" aria-label="[FIRMENNAME], Startseite">
+      <a href="#hero" class="nav__wordmark" aria-label="Sascha Grimm Heizung &amp; Sanitär, Startseite">
         <picture>
           <source srcset="images/logo-client.webp" type="image/webp">
-          <img class="nav__logo" src="images/logo-client.png" alt="[FIRMENNAME]" data-config-alt="true" width="200" height="42" decoding="async" fetchpriority="high">
+          <img class="nav__logo" src="images/logo-client.png" alt="Sascha Grimm Heizung &amp; Sanitär Meisterbetrieb" data-config-alt="true" width="200" height="42" decoding="async" fetchpriority="high">
         </picture>
       </a>
 
@@ -299,7 +514,7 @@
     <a href="#kontakt">Kontakt</a>
     <a href="#termin" class="btn btn--primary" style="margin-top:1rem">Termin buchen</a>
     <span class="nav__mobile-phone">
-      <a href="tel:#" data-config-href="tel" data-config="telefonDisplay">[TELEFON]</a>
+      <a href="tel:+4926219474004" data-config-href="tel" data-config="telefonDisplay">02621 947 40 04</a>
     </span>
   </div>
 
@@ -319,64 +534,61 @@
           playsinline
           preload="auto"
           poster="images/hero-poster.jpg"
-          data-video-candidates="images/video_hero_section_backround.mp4,images/video_hero_section_background.mp4">
+          data-video-candidates="images/video_hero_section_backround.mp4">
           <source src="images/video_hero_section_backround.mp4" type="video/mp4">
         </video>
         <div class="hero__overlay"></div>
       </div>
 
       <div class="hero__content container">
-        <div class="hero__body">
-          <span class="hero__eyebrow" data-config="heroEyebrow">Meisterbetrieb · [ORT] · seit [GRUENDUNGSJAHR]</span>
-
-          <h1 class="hero__h1">
-            <span class="word">Heizung.</span>
-            <span class="word">Bad.</span>
-            <span class="word">Haustechnik.</span>
-            <span class="word word--accent"><em data-config="nameKurz">Grimm</em></span>
-            <span class="word">—</span>
-            <span class="word">Ihr</span>
-            <span class="word">Partner</span>
-            <span class="word">in</span>
-            <span class="word" data-config="ort">Lahnstein</span>
-            <span class="word">.</span>
-          </h1>
-
-          <p class="hero__sub" data-config="slogan">[SLOGAN]</p>
-
-          <div class="hero__ctas">
-            <a href="#termin" class="btn btn--primary">Termin vereinbaren</a>
-            <a href="referenzen.html" class="btn btn--ghost">Unsere Referenzen</a>
+        <div class="hero__layout">
+          <div class="hero__brand">
+            <span class="hero__eyebrow" data-config="heroEyebrow">SHK-Meisterbetrieb · Lahnstein · seit 1998</span>
+            <picture class="hero__logo-card">
+              <source srcset="images/logo-client.webp" type="image/webp">
+              <img src="images/logo-client.png" alt="Sascha Grimm Heizung &amp; Sanitär" data-config-alt="true" width="420" height="110" decoding="async">
+            </picture>
+            <p class="hero__brand-name" data-config="name">Sascha Grimm Heizung &amp; Sanitär</p>
+            <h1 class="hero__h1">Bad, Heizung und Haustechnik — ehrlich beraten, sauber umgesetzt.</h1>
           </div>
 
-          <a
-            href="#"
-            data-config-href="googleBewertung"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="hero__google-pill"
-            hidden
-            aria-label="Google-Bewertungen ansehen">
-            <span class="hero__google-pill-stars">★★★★★</span>
-            <span class="hero__google-pill-value" data-config="googleBewertungNote">[NOTE]</span>
-            <span class="hero__google-pill-meta"><span data-config="googleBewertungAnzahl">[ANZAHL]</span> Google-Bewertungen</span>
-          </a>
+          <aside class="hero__cta-panel" aria-label="Projekt anfragen">
+            <a href="#termin" class="btn btn--primary hero__primary-cta">Kostenlose Erstberatung anfragen</a>
+            <p class="hero__cta-note">Kostenlos &amp; unverbindlich. Wir melden uns mit einer ehrlichen Einschätzung.</p>
+            <a
+              href="https://www.klimatechniker.net/lahnstein/grimm-heizung-sanitaer-aUPsMi"
+              data-config-href="googleBewertung"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hero__rating"
+              data-rating-proof
+              hidden
+              aria-label="Bewertungen ansehen">
+              <span class="hero__rating-score"><span data-config="googleBewertungNote">4,8</span>/5</span>
+              <span class="hero__rating-stars" aria-hidden="true">★★★★★</span>
+              <span class="hero__rating-meta"><span data-config="googleBewertungAnzahl">32</span> <span data-config="bewertungsMetaLabel">Bewertungen</span></span>
+            </a>
+            <picture class="hero__bosch-badge">
+              <source srcset="images/partner-bosch-premium.webp" type="image/webp">
+              <img src="images/partner-bosch-premium.jpg" alt="BOSCH Premium Partner" width="180" height="270" decoding="async">
+            </picture>
+          </aside>
         </div>
 
-        <div class="hero__trust">
+        <div class="hero__trust" aria-label="Vertrauenskennzahlen">
           <div class="trust-item">
-            <span class="trust-item__value" data-config="jahreErfahrung">[JAHRE]+</span>
-            <span class="trust-item__label">Jahre Erfahrung</span>
+            <span class="trust-item__value"><span data-config="googleBewertungNote">4,8</span>/5</span>
+            <span class="trust-item__label">Bewertungs-Score</span>
           </div>
           <div class="trust-divider"></div>
           <div class="trust-item">
-            <span class="trust-item__value" data-config="teamGroesse">[ANZAHL]</span>
-            <span class="trust-item__label">Fachkräfte im Team</span>
+            <span class="trust-item__value" data-config="projekteAnzahl">500+</span>
+            <span class="trust-item__label">Regionale Projekte</span>
           </div>
           <div class="trust-divider"></div>
           <div class="trust-item">
             <span class="trust-item__value">1</span>
-            <span class="trust-item__label">Ansprechpartner</span>
+            <span class="trust-item__label">Fester Ansprechpartner</span>
           </div>
         </div>
       </div>
@@ -467,8 +679,8 @@
             <svg viewBox="0 0 24 24" focusable="false"><path d="M3 12h18M3 6h18M3 18h18M7 3v18M17 3v18"/></svg>
           </div>
           <div class="leistung-card__num">01</div>
-          <h3 class="leistung-card__title" data-config="leistung1Titel">[LEISTUNG_1_TITEL]</h3>
-          <p class="leistung-card__text" data-config="leistung1Text">[LEISTUNG_1_TEXT]</p>
+          <h3 class="leistung-card__title" data-config="leistung1Titel">Bad</h3>
+          <p class="leistung-card__text" data-config="leistung1Text">Von der Badmodernisierung bis zum barrierefreien Komfortbad — wir planen und realisieren Ihr Traumbad. Inklusive Förderberatung.</p>
         </article>
 
         <article class="leistung-card reveal reveal-delay-2">
@@ -476,8 +688,8 @@
             <svg viewBox="0 0 24 24" focusable="false"><path d="M4 20V8l8-4 8 4v12H4zm4-7h8M8 17h8"/></svg>
           </div>
           <div class="leistung-card__num">02</div>
-          <h3 class="leistung-card__title" data-config="leistung2Titel">[LEISTUNG_2_TITEL]</h3>
-          <p class="leistung-card__text" data-config="leistung2Text">[LEISTUNG_2_TEXT]</p>
+          <h3 class="leistung-card__title" data-config="leistung2Titel">Heizung</h3>
+          <p class="leistung-card__text" data-config="leistung2Text">Heizungsmodernisierung, Wärmepumpen und regenerative Systeme. Als BOSCH Premium Partner mit bevorzugter Ersatzteilversorgung.</p>
         </article>
 
         <article class="leistung-card reveal reveal-delay-3">
@@ -485,8 +697,8 @@
             <svg viewBox="0 0 24 24" focusable="false"><path d="M3 16h18M5 16l2-8h10l2 8M8 8V5m8 3V5"/></svg>
           </div>
           <div class="leistung-card__num">03</div>
-          <h3 class="leistung-card__title" data-config="leistung3Titel">[LEISTUNG_3_TITEL]</h3>
-          <p class="leistung-card__text" data-config="leistung3Text">[LEISTUNG_3_TEXT]</p>
+          <h3 class="leistung-card__title" data-config="leistung3Titel">Haustechnik</h3>
+          <p class="leistung-card__text" data-config="leistung3Text">Trinkwasserhygiene, Rohrinstallation und Haustechnik-Service aus einer Hand. Schnell, sauber, zuverlässig.</p>
         </article>
 
         <article class="leistung-card reveal reveal-delay-4">
@@ -494,8 +706,8 @@
             <svg viewBox="0 0 24 24" focusable="false"><path d="M4 18h16M7 18V6l5-3 5 3v12M9 11h6"/></svg>
           </div>
           <div class="leistung-card__num">04</div>
-          <h3 class="leistung-card__title" data-config="leistung4Titel">[LEISTUNG_4_TITEL]</h3>
-          <p class="leistung-card__text" data-config="leistung4Text">[LEISTUNG_4_TEXT]</p>
+          <h3 class="leistung-card__title" data-config="leistung4Titel">Lüftung</h3>
+          <p class="leistung-card__text" data-config="leistung4Text">Dezentrale und zentrale Wohnraumlüftung sowie Klimaanlagen für Ihr Wohlfühlklima — das ganze Jahr über.</p>
         </article>
       </div>
     </div>
@@ -525,67 +737,73 @@
         <form id="calcForm" class="calc-form" novalidate>
           <section class="calc-panel" data-step="1">
             <h3>1) Projektart wählen</h3>
-            <div class="calc-card-grid">
-              <button type="button" class="calc-choice" data-field="projectType" data-value="bath">
+            <div class="calc-card-grid calc-card-grid--5">
+              <button type="button" class="calc-choice" data-field="projectType" data-value="bad">
                 <span class="calc-choice__title">Badsanierung</span>
-                <span class="calc-choice__desc">Komplettrenovierung aus einer Hand inkl. Staubschutz und Koordination aller Gewerke.</span>
+                <span class="calc-choice__desc">Komplettbad, Modernisierung oder barrierefreie Lösung.</span>
               </button>
-              <button type="button" class="calc-choice" data-field="projectType" data-value="floor">
-                <span class="calc-choice__title">Wohnräume &amp; Küchen</span>
-                <span class="calc-choice__desc">Heizungsmodernisierung und Wärmeverteilung aus einer Hand.</span>
+              <button type="button" class="calc-choice" data-field="projectType" data-value="heizung">
+                <span class="calc-choice__title">Heizungsmodernisierung</span>
+                <span class="calc-choice__desc">Wärmepumpe, Brennwert oder regeneratives Heizen.</span>
               </button>
-              <button type="button" class="calc-choice" data-field="projectType" data-value="terrace">
-                <span class="calc-choice__title">Terrasse &amp; Balkon</span>
-                <span class="calc-choice__desc">Witterungsbeständige, langlebige Verlegung im Außenbereich für Wohlfühloasen.</span>
+              <button type="button" class="calc-choice" data-field="projectType" data-value="haustechnik">
+                <span class="calc-choice__title">Haustechnik / Sanitär</span>
+                <span class="calc-choice__desc">Rohrinstallation, Trinkwasserhygiene, Sanitärarbeiten.</span>
               </button>
-              <button type="button" class="calc-choice" data-field="projectType" data-value="repair">
-                <span class="calc-choice__title">Reparatur &amp; Sanierung</span>
-                <span class="calc-choice__desc">Schneller und fachgerechter Meister-Service für kleinere Schäden und Ausbesserungen.</span>
+              <button type="button" class="calc-choice" data-field="projectType" data-value="lueftung">
+                <span class="calc-choice__title">Lüftung / Klimaanlage</span>
+                <span class="calc-choice__desc">Zentrale oder dezentrale Wohnraumlüftung, Klima.</span>
+              </button>
+              <button type="button" class="calc-choice" data-field="projectType" data-value="reparatur">
+                <span class="calc-choice__title">Reparatur &amp; Wartung</span>
+                <span class="calc-choice__desc">Service, Wartung und schnelle Reparatur vor Ort.</span>
               </button>
             </div>
           </section>
 
           <section class="calc-panel" data-step="2" hidden>
-            <h3>2) Fläche und Material</h3>
-            <div class="calc-grid">
-              <label>Fläche (m²)
-                <input type="number" name="area" min="1" max="500" value="12" required>
-              </label>
+            <h3>2) Projektgröße</h3>
+            <div id="calcSizePanels">
+              <div class="calc-size-panel" data-size-for="bad">
+                <p class="calc-size-label">Badfläche: <strong class="calc-slider-value" id="calcSizeBadOut">8</strong> m²</p>
+                <input type="range" class="calc-slider" id="calcSizeBad" name="sizeBad" min="4" max="20" value="8" step="1" aria-valuemin="4" aria-valuemax="20" aria-valuenow="8">
+              </div>
+              <div class="calc-size-panel" data-size-for="heizung" hidden>
+                <p class="calc-size-label">Wohnfläche: <strong class="calc-slider-value" id="calcSizeHeizungOut">120</strong> m²</p>
+                <input type="range" class="calc-slider" id="calcSizeHeizung" name="sizeHeizung" min="60" max="300" value="120" step="5" aria-valuemin="60" aria-valuemax="300" aria-valuenow="120">
+              </div>
+              <div class="calc-size-panel" data-size-for="haustechnik" hidden>
+                <p class="calc-size-label">Anzahl Räume: <strong class="calc-slider-value" id="calcSizeHaustechnikOut">3</strong></p>
+                <input type="range" class="calc-slider" id="calcSizeHaustechnik" name="sizeHaustechnik" min="1" max="10" value="3" step="1" aria-valuemin="1" aria-valuemax="10" aria-valuenow="3">
+              </div>
+              <div class="calc-size-panel" data-size-for="lueftung" hidden>
+                <p class="calc-size-label">Wohnfläche: <strong class="calc-slider-value" id="calcSizeLueftungOut">120</strong> m²</p>
+                <input type="range" class="calc-slider" id="calcSizeLueftung" name="sizeLueftung" min="60" max="300" value="120" step="5" aria-valuemin="60" aria-valuemax="300" aria-valuenow="120">
+              </div>
+              <div class="calc-size-panel calc-size-panel--static" data-size-for="reparatur" hidden>
+                <p class="calc-size-label">Pauschale — für Reparatur &amp; Wartung ist keine Größenangabe nötig.</p>
+              </div>
             </div>
-            <div class="calc-card-grid calc-card-grid--3">
-              <button type="button" class="calc-choice" data-field="materialClass" data-value="standard">
-                <span class="calc-choice__title">Feinsteinzeug</span>
-                <span class="calc-choice__desc">Standardformat inkl. Verlegung ca. 135 €/m²</span>
-              </button>
-              <button type="button" class="calc-choice" data-field="materialClass" data-value="premium">
-                <span class="calc-choice__title">Premium / Naturstein</span>
-                <span class="calc-choice__desc">Marmor / Schiefer inkl. Verlegung ca. 240 €/m²</span>
-              </button>
-              <button type="button" class="calc-choice" data-field="materialClass" data-value="xl">
-                <span class="calc-choice__title">Großformat</span>
-                <span class="calc-choice__desc">bis 120×260 cm inkl. Verlegung ca. 330 €/m²</span>
-              </button>
-            </div>
-            <p id="calcStep2Error" class="calc-error" hidden>Bitte Fläche eingeben und Material wählen.</p>
+            <p id="calcStep2Error" class="calc-error" hidden>Bitte Projektgröße wählen.</p>
           </section>
 
           <section class="calc-panel" data-step="3" hidden>
-            <h3>3) Zusatzleistungen</h3>
-            <p class="calc-step-sub">Optional – nichts nötig? Einfach weiter.</p>
+            <h3>3) Ausstattung / Qualitätsstufe</h3>
             <div class="calc-card-grid calc-card-grid--3">
-              <button type="button" class="calc-choice" data-extra="debris">
-                <span class="calc-choice__title">Altbelag entfernen</span>
-                <span class="calc-choice__desc">+ ca. 45 €/m²</span>
+              <button type="button" class="calc-choice" data-field="quality" data-value="standard">
+                <span class="calc-choice__title">Standard</span>
+                <span class="calc-choice__desc">Solide, funktional — bewährte Markenprodukte.</span>
               </button>
-              <button type="button" class="calc-choice" data-extra="waterproofing">
-                <span class="calc-choice__title">Abdichtung (Nassbereich)</span>
-                <span class="calc-choice__desc">+ ca. 60 €/m²</span>
+              <button type="button" class="calc-choice" data-field="quality" data-value="komfort">
+                <span class="calc-choice__title">Komfort</span>
+                <span class="calc-choice__desc">Hochwertig, modern — erweiterte Ausstattung.</span>
               </button>
-              <button type="button" class="calc-choice" data-extra="floorHeating">
-                <span class="calc-choice__title">Fußbodenheizung integrieren</span>
-                <span class="calc-choice__desc">+ ca. 28 €/m²</span>
+              <button type="button" class="calc-choice" data-field="quality" data-value="premium">
+                <span class="calc-choice__title">Premium</span>
+                <span class="calc-choice__desc">Design und Markenprodukte der Spitzenklasse.</span>
               </button>
             </div>
+            <p id="calcStep3Error" class="calc-error" hidden>Bitte eine Qualitätsstufe wählen.</p>
           </section>
         </form>
 
@@ -594,47 +812,29 @@
           <div id="calcResult" class="calc-result" hidden>
             <p class="calc-summary" id="calcSummaryText"></p>
             <div class="calc-total-box">
-              <span class="calc-total-label">Geschätzter Preisrahmen:</span>
+              <span class="calc-total-label">Geschätzter Preisrahmen (unverbindlich):</span>
               <p id="calcTotal" class="calc-total-price"></p>
               <div class="calc-total-note calc-disclaimer">
-                <p>Unverbindlich · inkl. Material &amp; Arbeit · Festpreis nach Besichtigung.</p>
-                <p><strong>Wichtiger Hinweis:</strong> Richtwert nach branchenüblichen Mittelwerten. Endpreis nur nach Vor-Ort-Aufmaß möglich.</p>
-                <p>Handwerkerleistungen sind steuerlich absetzbar (§35a EStG).</p>
-              </div>
-            </div>
-
-            <div id="calcResultDetail" class="calc-result-detail">
-              <h4 class="calc-result-detail__title">Detaillierte Kostenaufschlüsselung</h4>
-              <ul id="calcBreakdown" class="calc-breakdown-list"></ul>
-              <div class="calc-actions">
-                <button type="button" id="calcPdfBtn" class="btn btn--secondary">PDF herunterladen</button>
-                <a href="#termin" class="btn btn--primary">Beratungstermin anfragen</a>
+                <p>Unverbindliche Orientierung · Festpreis nach Besichtigung vor Ort.</p>
               </div>
             </div>
 
             <div class="calc-callback calc-callback--prominent">
-              <h4 class="calc-callback__title">Rückruf mit Ihrem Preisrahmen</h4>
-              <p class="calc-callback__intro">Geben Sie Ihre Telefonnummer an – wir rufen Sie mit Ihrem Rechnerergebnis zurück, in der Regel innerhalb von 24&nbsp;Stunden.</p>
-              <form id="calcCallbackForm" class="calc-callback-form" action="https://api.web3forms.com/submit" method="post" novalidate>
-                <input type="hidden" name="access_key" value="">
-                <input type="hidden" name="subject" id="calcCallbackSubject" value="RÜCKRUF Kostenrechner">
-                <label for="calc_callback_phone">Telefonnummer für Rückruf
-                  <input id="calc_callback_phone" name="phone" type="tel" required autocomplete="tel" placeholder="z. B. 0151 12345678">
+              <h4 class="calc-callback__title">Kostenloses Angebot anfordern</h4>
+              <p class="calc-callback__intro">Telefonnummer eingeben — wir öffnen WhatsApp mit Ihren Angaben vorausgefüllt.</p>
+              <form id="calcCallbackForm" class="calc-callback-form" novalidate>
+                <input type="hidden" name="subject" id="calcCallbackSubject" value="Angebot Kostenrechner">
+                <label for="calc_callback_phone">Telefonnummer <span aria-hidden="true">*</span>
+                  <input id="calc_callback_phone" name="phone" type="tel" required autocomplete="tel" placeholder="z. B. 0176 21900432">
                 </label>
-                <label class="kontakt-form__check" for="calc_callback_dsgvo">
-                  <input id="calc_callback_dsgvo" name="dsgvo_consent" type="checkbox" required>
-                  <span>Ich willige in die Verarbeitung meiner Telefonnummer zur Rückruf-Kontaktaufnahme ein (gemäß <a href="datenschutz.html" target="_blank">Datenschutzerklärung</a>).</span>
-                </label>
-                <label class="kontakt-form__honeypot" for="calc_callback_website">
-                  Website
-                  <input id="calc_callback_website" name="website" type="text" tabindex="-1" autocomplete="off">
-                </label>
-                <button type="submit" id="calcCallbackSubmitBtn" class="btn btn--primary calc-callback__submit">Rückruf anfordern</button>
+                <button type="submit" id="calcCallbackSubmitBtn" class="btn btn--wa calc-callback__submit">Kostenloses Angebot anfordern</button>
               </form>
               <p id="calcCallbackResult" class="calc-callback-result" aria-live="polite" hidden></p>
-              <a href="#kontakt" class="calc-callback-kontakt-link">Ausführliche Anfrage im Kontaktformular</a>
             </div>
-            <button type="button" id="calcResetBtn" class="calc-reset" hidden>← Neu berechnen</button>
+
+            <button type="button" id="calcPdfBtn" class="btn btn--secondary" hidden>PDF herunterladen</button>
+            <ul id="calcBreakdown" class="calc-breakdown-list" hidden aria-hidden="true"></ul>
+            <button type="button" id="calcResetBtn" class="calc-reset">← Neu berechnen</button>
           </div>
         </section>
 
@@ -662,41 +862,114 @@
 
         <div>
           <header class="section-header reveal">
-            <span class="section-label" data-config="warumLabel">Warum wir</span>
+            <span class="section-label" data-config="warumLabel">Warum Grimm</span>
             <h2 class="section-h2">Was uns von anderen unterscheidet.</h2>
           </header>
 
-          <ul class="warum-list" style="list-style:none">
+          <ul class="warum-list warum-proof-grid" style="list-style:none">
             <li class="warum-item reveal reveal-delay-1">
-              <div class="warum-item__icon">✓</div>
+              <div class="warum-item__icon">01</div>
               <div>
-                <div class="warum-item__title" data-config="warum1Titel">[USP_1_TITEL]</div>
-                <p class="warum-item__text" data-config="warum1Text">[USP_1_TEXT]</p>
+                <div class="warum-item__title" data-config="warum1Titel">Meisterbetrieb</div>
+                <p class="warum-item__text" data-config="warum1Text">Jede Arbeit wird von einem geprüften SHK-Meister geplant und überwacht. Qualität ohne Kompromisse.</p>
               </div>
             </li>
             <li class="warum-item reveal reveal-delay-2">
-              <div class="warum-item__icon">✓</div>
+              <div class="warum-item__icon">02</div>
               <div>
-                <div class="warum-item__title" data-config="warum2Titel">[USP_2_TITEL]</div>
-                <p class="warum-item__text" data-config="warum2Text">[USP_2_TEXT]</p>
+                <div class="warum-item__title" data-config="warum2Titel">BOSCH Premium Partner</div>
+                <p class="warum-item__text" data-config="warum2Text">Exklusiver Zugang zu BOSCH-Systemen, bevorzugte Lieferzeiten und erweiterte Herstellergarantie.</p>
               </div>
             </li>
             <li class="warum-item reveal reveal-delay-3">
-              <div class="warum-item__icon">✓</div>
+              <div class="warum-item__icon">03</div>
               <div>
-                <div class="warum-item__title" data-config="warum3Titel">[USP_3_TITEL]</div>
-                <p class="warum-item__text" data-config="warum3Text">[USP_3_TEXT]</p>
+                <div class="warum-item__title" data-config="warum3Titel">Transparente Preise</div>
+                <p class="warum-item__text" data-config="warum3Text">Kein versteckter Mehraufwand. Sie erhalten eine detaillierte Kostenaufstellung vor Beginn der Arbeiten.</p>
               </div>
             </li>
             <li class="warum-item reveal reveal-delay-4">
-              <div class="warum-item__icon">✓</div>
+              <div class="warum-item__icon">04</div>
               <div>
-                <div class="warum-item__title" data-config="warum4Titel">[USP_4_TITEL]</div>
-                <p class="warum-item__text" data-config="warum4Text">[USP_4_TEXT]</p>
+                <div class="warum-item__title" data-config="warum4Titel">1 Ansprechpartner</div>
+                <p class="warum-item__text" data-config="warum4Text">Von der Planung bis zur Übergabe haben Sie einen festen Ansprechpartner. Kein Durchstellen, kein Warten.</p>
               </div>
             </li>
           </ul>
         </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ╔════════════════════════════════╗ -->
+  <!-- ║  BOSCH PREMIUM PARTNER         ║ -->
+  <!-- ╚════════════════════════════════╝ -->
+  <section class="bosch-flagship" id="bosch-partner">
+    <div class="container">
+      <div class="bosch-flagship__inner reveal">
+        <div class="bosch-flagship__logo">
+          <picture>
+            <source srcset="images/partner-bosch-premium.webp" type="image/webp">
+            <img src="images/partner-bosch-premium.jpg" alt="BOSCH Premium Partner" width="720" height="1080" loading="lazy" decoding="async">
+          </picture>
+        </div>
+        <div class="bosch-flagship__content">
+          <p class="bosch-flagship__label">Zertifizierte Partnerschaft</p>
+          <h2>BOSCH Premium Partner —<br>Ihr Vorteil.</h2>
+          <p>Als zertifizierter BOSCH Premium Partner erhalten Sie exklusiven Zugang zu den neuesten Heizungssystemen, bevorzugte Lieferzeiten und erweiterte Garantieleistungen — weit über den gesetzlichen Standard hinaus.</p>
+          <ul class="bosch-flagship__vorteile">
+            <li>✓ Erweiterte Herstellergarantie auf alle BOSCH Systeme</li>
+            <li>✓ Bevorzugte Ersatzteil- und Geräteversorgung</li>
+            <li>✓ Zertifizierte Fachinstallation nach BOSCH-Standard</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ╔════════════════════════════════╗ -->
+  <!-- ║  FÖRDERUNGEN                   ║ -->
+  <!-- ╚════════════════════════════════╝ -->
+  <section class="foerderung section--alt" id="foerderung">
+    <div class="container">
+      <header class="section-header section-header--center reveal">
+        <span class="section-label">Förderung &amp; Zuschüsse</span>
+        <h2 class="section-h2">Bis zu 70&nbsp;% Förderung für Ihre neue Heizung.</h2>
+        <p class="section-sub">Wir prüfen Ihre Förderfähigkeit kostenlos — und helfen bei der Antragstellung.</p>
+      </header>
+
+      <div class="foerderung__grid reveal reveal-delay-1">
+        <article class="foerderung-card">
+          <h3 class="foerderung-card__title">BEG — Bundesförderung für effiziente Gebäude</h3>
+          <p class="foerderung-card__text">Bis zu 70&nbsp;% Zuschuss für Wärmepumpen und Pelletheizungen.</p>
+          <p class="foerderung-card__meta">Gefördert durch: Bundesamt für Wirtschaft und Klimaschutz (BAFA)</p>
+          <a class="foerderung-card__link" href="https://www.bafa.de/" target="_blank" rel="noopener noreferrer">Mehr auf bafa.de →</a>
+        </article>
+        <article class="foerderung-card">
+          <h3 class="foerderung-card__title">KfW Heizungsförderung</h3>
+          <p class="foerderung-card__text">Zinsgünstige Kredite und Tilgungszuschüsse für Heizungsmodernisierung.</p>
+          <p class="foerderung-card__meta">Kreditanstalt für Wiederaufbau (KfW)</p>
+          <a class="foerderung-card__link" href="https://www.kfw.de/" target="_blank" rel="noopener noreferrer">Mehr auf kfw.de →</a>
+        </article>
+        <article class="foerderung-card">
+          <h3 class="foerderung-card__title">ISB Rheinland-Pfalz</h3>
+          <p class="foerderung-card__text">Ergänzende Landesförderung für Gebäudeeffizienz in RLP.</p>
+          <p class="foerderung-card__meta">Investitions- und Strukturbank Rheinland-Pfalz</p>
+          <a class="foerderung-card__link" href="https://www.isb.rlp.de/" target="_blank" rel="noopener noreferrer">Mehr auf isb.rlp.de →</a>
+        </article>
+      </div>
+
+      <div class="foerderung__cta-wrap reveal reveal-delay-2">
+        <a
+          href="https://wa.me/4917621900432?text=Ich%20m%C3%B6chte%20meine%20F%C3%B6rderm%C3%B6glichkeiten%20pr%C3%BCfen%20lassen."
+          id="foerderungWaCta"
+          class="btn btn--wa foerderung__cta"
+          target="_blank"
+          rel="noopener noreferrer">
+          Förderung prüfen lassen — kostenlos auf WhatsApp
+        </a>
       </div>
     </div>
   </section>
@@ -713,7 +986,7 @@
             <div class="familie-img-main">
               <picture>
                 <source srcset="images/team-bild.webp" type="image/webp">
-                <img src="images/team-bild.jpg" alt="Das Team von [FIRMENNAME]" width="3590" height="3000" loading="lazy" decoding="async">
+                <img src="images/team-bild.jpg" alt="Das Team von Sascha Grimm Heizung &amp; Sanitär" width="3590" height="3000" loading="lazy" decoding="async">
               </picture>
             </div>
             <span class="familie-img-cta">Unser Team kennenlernen →</span>
@@ -723,7 +996,7 @@
         <div class="familie-text">
           <header class="section-header reveal">
             <span class="section-label">Über uns</span>
-            <h2 class="section-h2">Handwerks&shy;kunst seit <span data-config="gruendungsjahr">[GRUENDUNGSJAHR]</span>.</h2>
+            <h2 class="section-h2">Ein Team aus Lahnstein, das Ihr Projekt wirklich kennt.</h2>
           </header>
 
           <!-- ══════════════════════════════════════════════════════
@@ -732,9 +1005,9 @@
                sichtbar, solange die Werte in config.js nicht gesetzt sind.
                ══════════════════════════════════════════════════════ -->
           <div class="familie-body reveal reveal-delay-1" id="ueberUnsBody">
-            <p>[ÜBER_UNS_ABSATZ_1]</p>
-            <p>[ÜBER_UNS_ABSATZ_2]</p>
-            <p>[ÜBER_UNS_ABSATZ_3]</p>
+            <p>Seit 1998 sind wir Ihr verlässlicher Partner für Heizung, Sanitär und Haustechnik in Lahnstein und der gesamten Region Rhein-Lahn. Was als kleiner Handwerksbetrieb begann, ist heute ein eingespieltes Team aus erfahrenen Fachkräften mit einem klaren Anspruch: saubere Arbeit, transparente Preise, pünktliche Ausführung.</p>
+            <p>Als zertifizierter BOSCH Premium Partner arbeiten wir ausschließlich mit hochwertigen Markenprodukten — von Geberit über Hansgrohe bis Villeroy &amp; Boch. Das gibt Ihnen die Sicherheit, dass Ihre Investition langfristig hält.</p>
+            <p>Ob Komplettbad, neue Wärmepumpe oder dringender Reparaturservice — wir kümmern uns. Sprechen Sie uns an.</p>
           </div>
 
           <div class="familie-badges reveal reveal-delay-2">
@@ -767,17 +1040,30 @@
 
       <div class="partner-strip reveal reveal-delay-4">
         <p class="partner-strip__label">Partner renommierter Hersteller</p>
-        <div class="partner-strip__logos" aria-label="Hersteller-Logos">
-          <img src="images/IP_bosch.webp" alt="Bosch Thermotechnik" width="120" height="48" loading="lazy" decoding="async">
-          <img src="images/IP_geberit.webp" alt="Geberit" width="120" height="48" loading="lazy" decoding="async">
-          <img src="images/IP_viega.webp" alt="Viega" width="120" height="48" loading="lazy" decoding="async">
-          <img src="images/IP_Villeroy.webp" alt="Villeroy &amp; Boch" width="120" height="48" loading="lazy" decoding="async">
-          <img src="images/IP_grohe.webp" alt="Grohe" width="120" height="48" loading="lazy" decoding="async">
-          <img src="images/IP_hansgrohe.webp" alt="hansgrohe" width="120" height="48" loading="lazy" decoding="async">
-          <img src="images/IP_Buderus.webp" alt="Buderus" width="120" height="48" loading="lazy" decoding="async">
-          <img src="images/IP_kermi.webp" alt="Kermi" width="120" height="48" loading="lazy" decoding="async">
-          <img src="images/IP_tece.webp" alt="TECE" width="120" height="48" loading="lazy" decoding="async">
-          <img src="images/IP_weishaupt.webp" alt="Weishaupt" width="120" height="48" loading="lazy" decoding="async">
+        <div class="partner-carousel-wrapper" aria-label="Hersteller-Logos">
+          <div class="partner-track">
+            <a href="https://www.bosch-thermotechnology.com/de/de/wohngebaeude/start/" target="_blank" rel="noopener noreferrer"><img src="images/IP_bosch.webp" alt="Bosch Thermotechnik" width="120" height="48" loading="lazy" decoding="async"></a>
+            <a href="https://www.geberit.de/home/" target="_blank" rel="noopener noreferrer"><img src="images/IP_geberit.webp" alt="Geberit" width="120" height="48" loading="lazy" decoding="async"></a>
+            <a href="https://www.viega.de/de/homepage.html" target="_blank" rel="noopener noreferrer"><img src="images/IP_viega.webp" alt="Viega" width="120" height="48" loading="lazy" decoding="async"></a>
+            <a href="https://www.villeroy-boch.de/" target="_blank" rel="noopener noreferrer"><img src="images/IP_Villeroy.webp" alt="Villeroy &amp; Boch" width="120" height="48" loading="lazy" decoding="async"></a>
+            <a href="https://www.grohe.de/de_de/" target="_blank" rel="noopener noreferrer"><img src="images/IP_grohe.webp" alt="Grohe" width="120" height="48" loading="lazy" decoding="async"></a>
+            <a href="https://www.hansgrohe.de/" target="_blank" rel="noopener noreferrer"><img src="images/IP_hansgrohe.webp" alt="hansgrohe" width="120" height="48" loading="lazy" decoding="async"></a>
+            <a href="https://www.buderus.de/de" target="_blank" rel="noopener noreferrer"><img src="images/IP_Buderus.webp" alt="Buderus" width="120" height="48" loading="lazy" decoding="async"></a>
+            <a href="https://www.kermi.de/" target="_blank" rel="noopener noreferrer"><img src="images/IP_kermi.webp" alt="Kermi" width="120" height="48" loading="lazy" decoding="async"></a>
+            <a href="https://www.tece.com/de" target="_blank" rel="noopener noreferrer"><img src="images/IP_tece.webp" alt="TECE" width="120" height="48" loading="lazy" decoding="async"></a>
+            <a href="https://www.weishaupt.de/" target="_blank" rel="noopener noreferrer"><img src="images/IP_weishaupt.webp" alt="Weishaupt" width="120" height="48" loading="lazy" decoding="async"></a>
+            <!-- Duplikat für nahtlosen Loop -->
+            <a href="https://www.bosch-thermotechnology.com/de/de/wohngebaeude/start/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img src="images/IP_bosch.webp" alt="" width="120" height="48" loading="lazy" decoding="async"></a>
+            <a href="https://www.geberit.de/home/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img src="images/IP_geberit.webp" alt="" width="120" height="48" loading="lazy" decoding="async"></a>
+            <a href="https://www.viega.de/de/homepage.html" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img src="images/IP_viega.webp" alt="" width="120" height="48" loading="lazy" decoding="async"></a>
+            <a href="https://www.villeroy-boch.de/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img src="images/IP_Villeroy.webp" alt="" width="120" height="48" loading="lazy" decoding="async"></a>
+            <a href="https://www.grohe.de/de_de/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img src="images/IP_grohe.webp" alt="" width="120" height="48" loading="lazy" decoding="async"></a>
+            <a href="https://www.hansgrohe.de/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img src="images/IP_hansgrohe.webp" alt="" width="120" height="48" loading="lazy" decoding="async"></a>
+            <a href="https://www.buderus.de/de" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img src="images/IP_Buderus.webp" alt="" width="120" height="48" loading="lazy" decoding="async"></a>
+            <a href="https://www.kermi.de/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img src="images/IP_kermi.webp" alt="" width="120" height="48" loading="lazy" decoding="async"></a>
+            <a href="https://www.tece.com/de" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img src="images/IP_tece.webp" alt="" width="120" height="48" loading="lazy" decoding="async"></a>
+            <a href="https://www.weishaupt.de/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img src="images/IP_weishaupt.webp" alt="" width="120" height="48" loading="lazy" decoding="async"></a>
+          </div>
         </div>
       </div>
     </div>
@@ -795,43 +1081,35 @@
         <p class="section-sub" data-config="referenzenIntro">Auswahl abgeschlossener Projekte aus Lahnstein und Umgebung.</p>
       </header>
 
-      <div class="ref-grid reveal">
-        <div class="ref-item">
-          <picture><source srcset="images/ref_1.webp" type="image/webp"><img src="images/ref_1.jpg" alt="Badezimmer Sanierung mit bodengleicher Dusche und Glasabtrennung" width="350" height="350" loading="lazy" decoding="async"></picture>
-          <div class="ref-item__overlay"><span>Badsanierung</span></div>
-        </div>
-        <div class="ref-item">
-          <picture><source srcset="images/ref_2.webp" type="image/webp"><img src="images/ref_2.jpg" alt="Modernes Badezimmer mit hochwertiger Ausstattung" width="350" height="350" loading="lazy" decoding="async"></picture>
-          <div class="ref-item__overlay"><span>Badmodernisierung</span></div>
-        </div>
-        <div class="ref-item">
-          <picture><source srcset="images/ref_3.webp" type="image/webp"><img src="images/ref_3.jpg" alt="Heizungsinstallation und Wärmeverteilung" width="350" height="350" loading="lazy" decoding="async"></picture>
-          <div class="ref-item__overlay"><span>Heizung</span></div>
-        </div>
-        <div class="ref-item">
-          <picture><source srcset="images/ref_4.webp" type="image/webp"><img src="images/ref_4.jpg" alt="Sanitär- und Haustechnikarbeiten" width="350" height="350" loading="lazy" decoding="async"></picture>
-          <div class="ref-item__overlay"><span>Haustechnik</span></div>
-        </div>
-        <div class="ref-item">
-          <picture><source srcset="images/ref_5.webp" type="image/webp"><img src="images/ref_5.jpg" alt="Wärmepumpe und regeneratives Heizen" width="350" height="350" loading="lazy" decoding="async"></picture>
-          <div class="ref-item__overlay"><span>Wärmepumpe</span></div>
-        </div>
-        <div class="ref-item">
-          <picture><source srcset="images/ref_6.webp" type="image/webp"><img src="images/ref_6.jpg" alt="Barrierefreies Bad" width="350" height="350" loading="lazy" decoding="async"></picture>
-          <div class="ref-item__overlay"><span>Barrierefreies Bad</span></div>
-        </div>
-        <div class="ref-item">
-          <picture><source srcset="images/ref_7.webp" type="image/webp"><img src="images/ref_7.jpg" alt="Bad Design und Sanitär" width="350" height="350" loading="lazy" decoding="async"></picture>
-          <div class="ref-item__overlay"><span>Bad Design</span></div>
-        </div>
-        <div class="ref-item">
-          <picture><source srcset="images/ref_8.webp" type="image/webp"><img src="images/ref_8.jpg" alt="Service und Wartung Haustechnik" width="350" height="350" loading="lazy" decoding="async"></picture>
-          <div class="ref-item__overlay"><span>Service</span></div>
-        </div>
+      <div class="referenzen-preview-grid reveal">
+        <button type="button" class="referenzen-preview-item" data-lightbox>
+          <picture>
+            <source srcset="images/ref_1.webp" type="image/webp">
+            <img src="images/ref_1.jpg" alt="Referenz: Badsanierung mit bodengleicher Dusche" width="350" height="350" loading="lazy" decoding="async">
+          </picture>
+        </button>
+        <button type="button" class="referenzen-preview-item" data-lightbox>
+          <picture>
+            <source srcset="images/ref_2.webp" type="image/webp">
+            <img src="images/ref_2.jpg" alt="Referenz: Modernes Badezimmer" width="350" height="350" loading="lazy" decoding="async">
+          </picture>
+        </button>
+        <button type="button" class="referenzen-preview-item" data-lightbox>
+          <picture>
+            <source srcset="images/ref_3.webp" type="image/webp">
+            <img src="images/ref_3.jpg" alt="Referenz: Heizungsinstallation" width="350" height="350" loading="lazy" decoding="async">
+          </picture>
+        </button>
+        <button type="button" class="referenzen-preview-item" data-lightbox>
+          <picture>
+            <source srcset="images/ref_4.webp" type="image/webp">
+            <img src="images/ref_4.jpg" alt="Referenz: Sanitär- und Haustechnikarbeiten" width="350" height="350" loading="lazy" decoding="async">
+          </picture>
+        </button>
       </div>
 
       <div class="ref-cta reveal">
-        <a href="referenzen.html" class="btn btn--secondary">Alle Projekte ansehen</a>
+        <a href="referenzen.html" class="btn btn--secondary">Alle Projekte ansehen →</a>
       </div>
     </div>
   </section>
@@ -840,97 +1118,39 @@
   <!-- ╔════════════════════════════════╗ -->
   <!-- ║  BEWERTUNGEN                   ║ -->
   <!-- ╚════════════════════════════════╝ -->
-  <section class="section section--dark-mid" id="bewertungen" hidden>
+  <section class="section section--dark-mid reviews-proof" id="bewertungen">
     <div class="container">
-      <header class="section-header section-header--center reveal">
-        <span class="section-label">Was Kunden sagen</span>
-        <h2 class="section-h2"><span data-config="googleBewertungNote">[NOTE]</span> Sterne auf Google.</h2>
-        <p class="section-sub"><span data-config="bewertungenAnzahl">[ANZAHL]</span> Bewertungen. Echt. Unbearbeitet.</p>
-      </header>
+      <div class="reviews-proof__grid">
+        <header class="section-header reveal">
+          <span class="section-label" data-config="bewertungsQuelleLabel">Kundenbewertungen</span>
+          <h2 class="section-h2">Vertrauen entsteht, bevor der erste Handwerker klingelt.</h2>
+          <p class="section-sub">Die öffentliche Bewertung und die typischen Kundenfragen stehen deshalb sichtbar vor der Anfrage.</p>
+          <a href="https://www.klimatechniker.net/lahnstein/grimm-heizung-sanitaer-aUPsMi"
+             data-config-href="googleBewertung"
+             target="_blank"
+             rel="noopener noreferrer"
+             data-rating-proof
+             hidden
+             class="reviews-proof__link">Bewertungsprofil ansehen →</a>
+        </header>
 
-      <div class="bewertungen-carousel-container reveal">
-        <button class="carousel-btn carousel-btn--prev" aria-label="Vorherige Bewertung" id="reviewsPrev">
-          <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-        </button>
-
-        <div class="carousel-track-container">
-          <div class="carousel-track" id="reviewsTrack">
-            <article class="bewertung-card">
-              <div class="bewertung-card__header">
-                <div class="bewertung-card__avatar avatar--c1">[I]</div>
-                <div class="bewertung-card__meta">
-                  <div class="bewertung-card__author">[BEWERTUNG_1_VORNAME_NACHNAME]</div>
-                  <div class="bewertung-card__stars">★★★★★</div>
-                </div>
-              </div>
-              <p class="bewertung-card__text">„[BEWERTUNG_1_TEXT — echtes Zitat aus Google-Profil, unverändert übernehmen]"</p>
-              <a class="bewertung-card__more" href="#" data-config-href="googleBewertung" target="_blank" rel="noopener noreferrer">Vollständige Bewertung auf Google</a>
-            </article>
-
-            <article class="bewertung-card">
-              <div class="bewertung-card__header">
-                <div class="bewertung-card__avatar avatar--c2">[I]</div>
-                <div class="bewertung-card__meta">
-                  <div class="bewertung-card__author">[BEWERTUNG_2_VORNAME_NACHNAME]</div>
-                  <div class="bewertung-card__stars">★★★★★</div>
-                </div>
-              </div>
-              <p class="bewertung-card__text">„[BEWERTUNG_2_TEXT — echtes Zitat aus Google-Profil, unverändert übernehmen]"</p>
-              <a class="bewertung-card__more" href="#" data-config-href="googleBewertung" target="_blank" rel="noopener noreferrer">Vollständige Bewertung auf Google</a>
-            </article>
-
-            <article class="bewertung-card">
-              <div class="bewertung-card__header">
-                <div class="bewertung-card__avatar avatar--c3">[I]</div>
-                <div class="bewertung-card__meta">
-                  <div class="bewertung-card__author">[BEWERTUNG_3_VORNAME_NACHNAME]</div>
-                  <div class="bewertung-card__stars">★★★★★</div>
-                </div>
-              </div>
-              <p class="bewertung-card__text">„[BEWERTUNG_3_TEXT — echtes Zitat aus Google-Profil, unverändert übernehmen]"</p>
-              <a class="bewertung-card__more" href="#" data-config-href="googleBewertung" target="_blank" rel="noopener noreferrer">Vollständige Bewertung auf Google</a>
-            </article>
-
-            <article class="bewertung-card">
-              <div class="bewertung-card__header">
-                <div class="bewertung-card__avatar avatar--c4">[I]</div>
-                <div class="bewertung-card__meta">
-                  <div class="bewertung-card__author">[BEWERTUNG_4_VORNAME_NACHNAME]</div>
-                  <div class="bewertung-card__stars">★★★★★</div>
-                </div>
-              </div>
-              <p class="bewertung-card__text">„[BEWERTUNG_4_TEXT — echtes Zitat aus Google-Profil, unverändert übernehmen]"</p>
-              <a class="bewertung-card__more" href="#" data-config-href="googleBewertung" target="_blank" rel="noopener noreferrer">Vollständige Bewertung auf Google</a>
-            </article>
-
-            <article class="bewertung-card">
-              <div class="bewertung-card__header">
-                <div class="bewertung-card__avatar avatar--c5">[I]</div>
-                <div class="bewertung-card__meta">
-                  <div class="bewertung-card__author">[BEWERTUNG_5_VORNAME_NACHNAME]</div>
-                  <div class="bewertung-card__stars">★★★★★</div>
-                </div>
-              </div>
-              <p class="bewertung-card__text">„[BEWERTUNG_5_TEXT — echtes Zitat aus Google-Profil, unverändert übernehmen]"</p>
-              <a class="bewertung-card__more" href="#" data-config-href="googleBewertung" target="_blank" rel="noopener noreferrer">Vollständige Bewertung auf Google</a>
-            </article>
+        <div class="reviews-proof__summary reveal reveal-delay-1" data-rating-proof hidden>
+          <div class="reviews-proof__score">
+            <span data-config="googleBewertungNote">4,8</span>
+            <small>/ 5</small>
           </div>
+          <div class="reviews-proof__stars" aria-hidden="true">★★★★★</div>
+          <p><strong><span data-config="googleBewertungAnzahl">32</span> <span data-config="bewertungsMetaLabel">Bewertungen</span></strong> als öffentlicher Vertrauensanker für Kunden aus Lahnstein und Umgebung.</p>
         </div>
-
-        <button class="carousel-btn carousel-btn--next" aria-label="Nächste Bewertung" id="reviewsNext">
-          <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-        </button>
       </div>
 
-      <div class="carousel-dots" id="reviewsDots"></div>
-
-      <p class="reviews-cta-wrap reveal">
-        <a href="#"
-           data-config-href="googleBewertung"
-           target="_blank"
-           rel="noopener noreferrer"
-           class="reviews-google-link">Google-Bewertung schreiben</a>
-      </p>
+      <div class="reviews-proof__cards reveal reveal-delay-2" id="reviewsProofCards">
+        <article class="review-proof-card">
+          <span class="review-proof-card__num">01</span>
+          <h3>Zuverlässigkeit</h3>
+          <p>Termine, Rückrufe und Absprachen werden für Kunden greifbar, bevor sie ihr Projekt anfragen.</p>
+        </article>
+      </div>
     </div>
   </section>
 
@@ -969,22 +1189,18 @@
         <div class="consent-gate reveal" id="termin-consent">
           <h3 class="consent-gate__title">Online-Terminbuchung (Cal.com) nach Einwilligung</h3>
           <p class="consent-gate__text">
-            Die Terminbuchung nutzt einen externen Dienst. Aktivierung erst nach Ihrer Einwilligung.
+            Die Terminbuchung nutzt Cal.com. Mit Aktivierung willigen Sie in die Datenübertragung an Cal.com ein.
             Details stehen in der <a class="inline-link" href="datenschutz.html">Datenschutzerklärung</a>.
           </p>
           <div>
-            <button type="button" class="btn btn--primary btn--sm" id="enableBookingConsent">Terminbereich freischalten</button>
+            <button type="button" class="btn btn--primary btn--sm" id="enableBookingConsent">Terminkalender laden (Cal.com)</button>
             <button type="button" class="btn btn--ghost btn--sm" id="withdrawBookingConsent">Einwilligung widerrufen</button>
           </div>
           <p class="consent-gate__status" id="bookingConsentStatus"></p>
           <div class="booking-embed-placeholder" id="bookingEmbed" hidden>
-            <a href="#"
-               data-config-href="calcom"
-               target="_blank"
-               rel="noopener noreferrer"
-               class="btn btn--primary">
-              Termin direkt buchen
-            </a>
+            <div id="cal-embed-wrapper" class="cal-embed-wrapper">
+              <div id="calEmbedContainer" data-cal-embed-url="https://cal.com/ritzaisolutions/15min?embed=true&amp;theme=dark"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -1049,7 +1265,7 @@
 
       <p class="termin-fallback reveal">
         Oder direkt anrufen:
-        <a href="tel:#" data-config-href="tel" data-config="telefonDisplay">[TELEFON]</a>
+        <a href="tel:+4926219474004" data-config-href="tel" data-config="telefonDisplay">02621 947 40 04</a>
         &nbsp;·&nbsp; <span data-config="oeffZeitenKurz">Mo–Do 08–17 Uhr, Fr 08–13 Uhr</span>
       </p>
     </div>
@@ -1070,17 +1286,17 @@
           <div class="kontakt-block">
             <div class="kontakt-block__label">Adresse</div>
             <p>
-              <span data-config="name">[FIRMENNAME]</span><br>
-              <span data-config="strasse">[STRASSE_NR]</span><br>
-              <span data-config="plz">[PLZ]</span> <span data-config="ort">[ORT]</span>
+              <span data-config="name">Sascha Grimm Heizung &amp; Sanitär</span><br>
+              <span data-config="strasse">Eulenhorst 38</span><br>
+              <span data-config="plz">56112</span> <span data-config="ort">Lahnstein</span>
             </p>
           </div>
 
           <div class="kontakt-block">
             <div class="kontakt-block__label">Kontakt</div>
             <p>
-              <a href="tel:#" data-config-href="tel" data-config="telefonDisplay">[TELEFON]</a><br>
-              <a href="mailto:#" data-config-href="mailto" data-config="email">[EMAIL]</a>
+              <a href="tel:+4926219474004" data-config-href="tel" data-config="telefonDisplay">02621 947 40 04</a><br>
+              <a href="mailto:info@grimm-sanitaer.de" data-config-href="mailto" data-config="email">info@grimm-sanitaer.de</a>
             </p>
             <!-- WhatsApp-Link: wird von config-apply.js ein-/ausgeblendet (CLIENT.whatsapp) -->
             <div class="kontakt-wa-wrap" data-wa-wrap hidden>
@@ -1094,8 +1310,8 @@
           <div class="kontakt-block">
             <div class="kontakt-block__label">Öffnungszeiten</div>
             <dl class="kontakt-hours">
-              <dt>Mo – Do</dt><dd data-config="oeffMoDoBis">[MO-DO ZEITEN]</dd>
-              <dt>Freitag</dt><dd data-config="oeffFrBis">[FR ZEITEN]</dd>
+              <dt>Mo – Do</dt><dd data-config="oeffMoDoBis">07:30 – 16:30 Uhr</dd>
+              <dt>Freitag</dt><dd data-config="oeffFrBis">07:30 – 13:30 Uhr</dd>
               <dt>Sa &amp; So</dt><dd>Geschlossen</dd>
             </dl>
           </div>
@@ -1181,10 +1397,10 @@
     <div class="container">
       <div class="footer__inner">
         <div class="footer__brand">
-          <div class="footer__wordmark-name" data-config="name">[FIRMENNAME]</div>
-          <div class="footer__wordmark-sub" data-config="unternehmenstyp">[UNTERNEHMENSTYP]</div>
+          <div class="footer__wordmark-name" data-config="name">Sascha Grimm Heizung &amp; Sanitär</div>
+          <div class="footer__wordmark-sub" data-config="unternehmenstyp">Meisterbetrieb</div>
           <p class="footer__brand-claim">Ihr Partner für Heizung &amp; Sanitär in <span data-config="ort">Lahnstein</span>. Seit <span data-config="gruendungsjahr">1998</span>.</p>
-          <p class="footer__brand-member" style="margin-bottom: 1.2rem;">Mitglied: <span data-config="fachverband">[FACHVERBAND]</span></p>
+          <p class="footer__brand-member" style="margin-bottom: 1.2rem;">Mitglied: <span data-config="fachverband">SHK-Innung Rhein-Lahn</span></p>
           <div class="footer__socials" style="display: flex; gap: 1rem;">
             <a href="#" data-config-href="facebook" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook" style="color: rgba(255,255,255,0.6); transition: color var(--t-fast); display: inline-flex;">
               <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
@@ -1218,16 +1434,16 @@
         <div>
           <div class="footer__col-title">Kontakt</div>
           <ul class="footer__col-links">
-            <li><span data-config="strasse">[STRASSE]</span>, <span data-config="plz">[PLZ]</span> <span data-config="ort">[ORT]</span></li>
-            <li><a href="tel:#" data-config-href="tel" data-config="telefonDisplay">[TELEFON]</a></li>
-            <li><a href="mailto:#" data-config-href="mailto" data-config="email">[EMAIL]</a></li>
+            <li><span data-config="strasse">Eulenhorst 38</span>, <span data-config="plz">56112</span> <span data-config="ort">Lahnstein</span></li>
+            <li><a href="tel:+4926219474004" data-config-href="tel" data-config="telefonDisplay">02621 947 40 04</a></li>
+            <li><a href="mailto:info@grimm-sanitaer.de" data-config-href="mailto" data-config="email">info@grimm-sanitaer.de</a></li>
             <li style="margin-top:.5rem;color:rgba(255,255,255,.35);font-size:.7rem" data-config="oeffZeitenKurz">Mo–Do 08–17 · Fr 08–13 Uhr</li>
           </ul>
         </div>
       </div>
 
       <div class="footer__bottom">
-        <span class="footer__copy" data-config="copyright">© [JAHR] [FIRMENNAME], [ORT]</span>
+        <span class="footer__copy" data-config="copyright">© 2025 Sascha Grimm Heizung &amp; Sanitär, Lahnstein</span>
         <nav class="footer__legal" aria-label="Rechtliches">
           <a href="impressum.html">Impressum</a>
           <a href="datenschutz.html">Datenschutz</a>
@@ -1243,17 +1459,13 @@
   <!-- Sichtbarkeit gesteuert durch config-apply.js (CLIENT.whatsapp) -->
   <a
     id="waFab"
-    href="#"
-    class="wa-fab"
+    href="https://wa.me/4917621900432?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Beratung."
+    class="whatsapp-float"
     target="_blank"
     rel="noopener noreferrer"
-    aria-label="WhatsApp: Direkt schreiben"
-    hidden>
-    <span class="wa-fab__ring" aria-hidden="true"></span>
-    <svg width="30" height="30" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-      <path d="M20.4054 3.4875C18.1607 1.2375 15.1714 0 11.9946 0C5.4375 0 0.101786 5.335 0.101786 11.8929C0.101786 13.9875 0.648214 16.0339 1.6875 17.8393L0 24L6.30536 22.3446C8.04107 23.2929 9.99643 23.7911 11.9893 23.7911H11.9946C18.5464 23.7911 24 18.4561 24 11.8982C24 8.72143 22.65 5.7375 20.4054 3.4875ZM11.9946 21.7875C10.2107 21.7875 8.46429 21.3107 6.93214 20.4107L6.57321 20.1964L2.84464 21.1714L3.83571 17.5286L3.60107 17.1536C2.60893 15.5625 2.08929 13.7518 2.08929 11.8929C2.08929 6.43393 6.53571 1.9875 12 1.9875C14.6464 1.9875 17.1321 3.02143 18.9857 4.88036C20.8393 6.73929 21.9161 9.225 21.9107 11.8982C21.9107 17.3625 17.4536 21.7875 11.9946 21.7875ZM17.4268 14.3839C17.1321 14.2339 15.6589 13.5107 15.3857 13.4143C15.1125 13.3125 14.9143 13.2643 14.7161 13.5643C14.5179 13.8643 13.9446 14.5339 13.7679 14.7375C13.5964 14.9357 13.4196 14.9625 13.125 14.8125C11.3786 13.9393 10.2268 13.2536 9.07018 11.2768C8.76429 10.7411 9.38036 10.7786 9.95357 9.63214C10.05 9.43393 10.0018 9.2625 9.92679 9.1125C9.85179 8.9625 9.25714 7.48929 9.01071 6.89464C8.76964 6.31607 8.525 6.39643 8.34107 6.38571C8.16964 6.375 7.97143 6.375 7.77321 6.375C7.575 6.375 7.25357 6.45 6.98036 6.74464C6.70714 7.04464 5.94643 7.75714 5.94643 9.23036C5.94643 10.7036 7.00714 12.1286 7.15179 12.3268C7.30179 12.525 9.24643 15.5304 12.2357 16.8375C14.1375 17.6679 14.8875 17.7375 15.8357 17.5982C16.4143 17.5125 17.6036 16.8911 17.85 16.2054C18.0964 15.5196 18.0964 14.9304 18.0214 14.8071C17.9518 14.6732 17.7214 14.5982 17.4268 14.3839Z"/>
-    </svg>
-  </a>
+    aria-label="WhatsApp schreiben"
+    data-config-href="whatsapp"
+    hidden>💬</a>
 
   <div id="klaro"></div>
 

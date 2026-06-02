@@ -35,10 +35,12 @@
   if (hamburger && mobileMenu) {
     hamburger.addEventListener('click', () => {
       mobileMenu.classList.add('open');
+      hamburger.setAttribute('aria-expanded', 'true');
       document.body.style.overflow = 'hidden';
     });
     const closeMenu = () => {
       mobileMenu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
     };
     if (mobileClose) mobileClose.addEventListener('click', closeMenu);
@@ -69,10 +71,13 @@
 
     const resetHeroFx = () => {
       heroSection.style.setProperty('--hero-scale', '1');
-      heroSection.style.setProperty('--hero-radius', '0px');
+      heroSection.style.setProperty('--hero-radius', '0px 0px 0px 0px');
       heroSection.style.setProperty('--hero-overlay-opacity', '1');
       heroSection.style.setProperty('--hero-content-y', '0px');
       heroSection.style.setProperty('--hero-content-opacity', '1');
+      heroSection.style.setProperty('--hero-panel-y', '0px');
+      heroSection.style.setProperty('--hero-panel-opacity', '1');
+      heroSection.style.setProperty('--hero-clip', '0%');
     };
 
     const heroFxEnabled = () => !heroFxMobileMq.matches && !heroFxReducedMq.matches;
@@ -87,17 +92,27 @@
       const total = Math.max(1, rect.height - window.innerHeight);
       const progress = clamp(-rect.top / total, 0, 1);
 
-      const scale = lerp(1, 0.82, progress);
-      const radius = lerp(0, 28, progress);
-      const overlayOpacity = lerp(1, 0.5, progress);
-      const contentY = lerp(0, -72, clamp(progress / 0.42, 0, 1));
-      const contentOpacity = progress < 0.35 ? lerp(1, 0, clamp(progress / 0.35, 0, 1)) : 0;
+      const holdProgress = clamp((progress - 0.12) / 0.88, 0, 1);
+      const closingProgress = clamp((progress - 0.42) / 0.58, 0, 1);
+      const easedClose = closingProgress * closingProgress * (3 - 2 * closingProgress);
+
+      const scale = lerp(1, 0.9, easedClose);
+      const radius = lerp(0, 34, easedClose);
+      const clip = lerp(0, 18, easedClose);
+      const overlayOpacity = lerp(1, 0.72, easedClose);
+      const contentY = lerp(0, -36, holdProgress);
+      const contentOpacity = lerp(1, 0.08, easedClose);
+      const panelY = lerp(0, 64, easedClose);
+      const panelOpacity = lerp(1, 0, clamp((progress - 0.5) / 0.36, 0, 1));
 
       heroSection.style.setProperty('--hero-scale', String(scale));
-      heroSection.style.setProperty('--hero-radius', `${radius}px`);
+      heroSection.style.setProperty('--hero-radius', `0px 0px ${radius}px ${radius}px`);
       heroSection.style.setProperty('--hero-overlay-opacity', String(overlayOpacity));
       heroSection.style.setProperty('--hero-content-y', `${contentY}px`);
       heroSection.style.setProperty('--hero-content-opacity', String(contentOpacity));
+      heroSection.style.setProperty('--hero-panel-y', `${panelY}px`);
+      heroSection.style.setProperty('--hero-panel-opacity', String(panelOpacity));
+      heroSection.style.setProperty('--hero-clip', `${clip}%`);
     };
 
     let heroFxScrollBound = false;
@@ -274,14 +289,53 @@
   const bookingStatus = document.getElementById('bookingConsentStatus');
   const bookingEmbed = document.getElementById('bookingEmbed');
   const bookingBtn = document.getElementById('enableBookingConsent');
+  const calEmbedContainer = document.getElementById('calEmbedContainer');
+
+  const getCalEmbedUrl = () => {
+    if (calEmbedContainer?.dataset.calEmbedUrl) return calEmbedContainer.dataset.calEmbedUrl;
+    if (typeof CLIENT !== 'undefined' && CLIENT.calcomLink && !CLIENT.calcomLink.startsWith('[')) {
+      const base = CLIENT.calcomLink;
+      return base.includes('?') ? `${base}&embed=true&theme=dark` : `${base}?embed=true&theme=dark`;
+    }
+    return '';
+  };
+
+  const getCalIframeTitle = () => {
+    if (typeof CLIENT !== 'undefined' && CLIENT.name && !CLIENT.name.startsWith('[')) {
+      return `Termin buchen bei ${CLIENT.name}`;
+    }
+    return 'Termin buchen bei Sascha Grimm Heizung & Sanitär';
+  };
+
+  const mountCalIframe = () => {
+    if (!calEmbedContainer || calEmbedContainer.querySelector('iframe')) return;
+    const embedUrl = getCalEmbedUrl();
+    if (!embedUrl) return;
+    const iframe = document.createElement('iframe');
+    iframe.src = embedUrl;
+    iframe.title = getCalIframeTitle();
+    iframe.loading = 'lazy';
+    iframe.width = '100%';
+    iframe.height = '700';
+    iframe.setAttribute('frameborder', '0');
+    calEmbedContainer.appendChild(iframe);
+  };
+
+  const unmountCalIframe = () => {
+    if (!calEmbedContainer) return;
+    calEmbedContainer.innerHTML = '';
+  };
+
   const renderBookingState = () => {
     const allowed = getConsent('booking');
     if (bookingStatus) {
       bookingStatus.textContent = allowed
-        ? 'Einwilligung aktiv. Der Terminbereich ist freigeschaltet.'
-        : 'Einwilligung fehlt. Externe Terminbuchung bleibt blockiert.';
+        ? 'Einwilligung aktiv. Der Cal.com-Terminkalender ist geladen.'
+        : 'Einwilligung fehlt. Der Terminkalender wird erst nach Aktivierung geladen.';
     }
     if (bookingEmbed) bookingEmbed.hidden = !allowed;
+    if (allowed) mountCalIframe();
+    else unmountCalIframe();
   };
 
   /* === GOOGLE MAPS DSGVO GATE === */
@@ -354,16 +408,34 @@
 
   if (bookingBtn) {
     bookingBtn.addEventListener('click', () => {
-      if (window.klaro && typeof window.klaro.show === 'function') {
-        window.klaro.show();
+      if (window.klaro && typeof window.klaro.getManager === 'function') {
+        const manager = window.klaro.getManager();
+        if (manager) {
+          manager.updateConsent('booking', true);
+          manager.saveAndApplyConsents();
+          return;
+        }
+      }
+      if (bookingEmbed) bookingEmbed.hidden = false;
+      mountCalIframe();
+      if (bookingStatus) {
+        bookingStatus.textContent = 'Terminkalender geladen.';
       }
     });
   }
 
   document.getElementById('withdrawBookingConsent')?.addEventListener('click', () => {
-    if (window.klaro && typeof window.klaro.show === 'function') {
-      window.klaro.show();
+    if (window.klaro && typeof window.klaro.getManager === 'function') {
+      const manager = window.klaro.getManager();
+      if (manager) {
+        manager.updateConsent('booking', false);
+        manager.saveAndApplyConsents();
+        return;
+      }
     }
+    unmountCalIframe();
+    if (bookingEmbed) bookingEmbed.hidden = true;
+    renderBookingState();
   });
 
   window.klaroConfig = window.klaroConfig || {};
@@ -423,14 +495,14 @@
   }
 
   /* === FAMILIE DOCUMENT LIGHTBOX === */
-  const lightboxTargets = Array.from(document.querySelectorAll('[data-lightbox], .familie-doc img'));
+  const lightboxTargets = Array.from(document.querySelectorAll('[data-lightbox], .familie-doc img, .referenzen-preview-item'));
   if (lightboxTargets.length) {
     const lightbox = document.createElement('div');
     lightbox.className = 'lightbox';
     lightbox.hidden = true;
     lightbox.setAttribute('aria-hidden', 'true');
     lightbox.innerHTML = `
-      <div class="lightbox__content" role="dialog" aria-modal="true" aria-label="Dokumentvorschau">
+      <div class="lightbox__content" role="dialog" aria-modal="true" aria-label="Bildvorschau">
         <button type="button" class="lightbox__close" aria-label="Vorschau schließen">×</button>
         <img class="lightbox__img" src="" alt="">
       </div>
@@ -452,7 +524,7 @@
       if (!lightboxImg) return;
       lastTrigger = trigger;
       lightboxImg.src = src;
-      lightboxImg.alt = alt || 'Dokumentvorschau';
+      lightboxImg.alt = alt || 'Bildvorschau';
       lightbox.hidden = false;
       lightbox.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';

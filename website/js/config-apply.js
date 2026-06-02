@@ -42,11 +42,12 @@
       const el = document.querySelector(selector);
       if (el) el.setAttribute('content', value);
     };
-    setMeta('meta[property="og:title"]',       CLIENT.name);
+    const seoTitle = CLIENT.seoTitle || CLIENT.name;
+    setMeta('meta[property="og:title"]',       seoTitle);
     setMeta('meta[property="og:site_name"]',    CLIENT.name);
     setMeta('meta[property="og:url"]',          CLIENT.domain + '/');
     setMeta('meta[property="og:image"]',        CLIENT.domain + '/images/og-image.jpg');
-    setMeta('meta[name="twitter:title"]',       CLIENT.name);
+    setMeta('meta[name="twitter:title"]',       seoTitle);
     setMeta('meta[name="twitter:image"]',       CLIENT.domain + '/images/og-image.jpg');
     const canonical = document.querySelector('link[rel="canonical"]');
     if (canonical && CLIENT.domain && !CLIENT.domain.startsWith('[')) {
@@ -122,6 +123,16 @@
       if (CLIENT.name && !CLIENT.name.startsWith('[')) {
         mapContainer.dataset.mapsTitle = `Standort ${CLIENT.name} – ${CLIENT.strasse}, ${CLIENT.plz} ${CLIENT.ort}`;
       }
+    }
+
+    // ── 10b. CAL.COM EMBED URL ─────────────────────────────
+    const calEmbedContainer = document.getElementById('calEmbedContainer');
+    if (calEmbedContainer && CLIENT.calcomLink && !CLIENT.calcomLink.startsWith('[')) {
+      const base = CLIENT.calcomLink;
+      const embedUrl = base.includes('?')
+        ? `${base}&embed=true&theme=dark`
+        : `${base}?embed=true&theme=dark`;
+      calEmbedContainer.dataset.calEmbedUrl = embedUrl;
     }
 
     // ── 11. ÖFFNUNGSZEITEN ────────────────────────────────
@@ -291,6 +302,48 @@
         if (wrapper) wrapper.setAttribute('hidden', '');
       }
     });
+
+    const foerderungWaCta = document.getElementById('foerderungWaCta');
+    const foerderungWaHref = buildWaHref(CLIENT.whatsappFoerderung || 'Ich möchte meine Fördermöglichkeiten prüfen lassen.');
+    if (foerderungWaCta && foerderungWaHref) {
+      foerderungWaCta.href = foerderungWaHref;
+    }
+
+    // ── 18b. BEWERTUNGS-PROOF (nur wenn vollständig konfiguriert) ───────
+    const hasRatingProof = Boolean(
+      CLIENT.googleBewertungsLink &&
+      CLIENT.googleBewertungNote &&
+      CLIENT.googleBewertungAnzahl &&
+      !String(CLIENT.googleBewertungsLink).startsWith('[') &&
+      !String(CLIENT.googleBewertungNote).startsWith('[') &&
+      !String(CLIENT.googleBewertungAnzahl).startsWith('[')
+    );
+    document.querySelectorAll('[data-rating-proof]').forEach((el) => {
+      if (hasRatingProof) {
+        el.removeAttribute('hidden');
+      } else {
+        el.setAttribute('hidden', '');
+      }
+    });
+
+    const reviewsProofCards = document.getElementById('reviewsProofCards');
+    if (reviewsProofCards && Array.isArray(CLIENT.bewertungenCards) && CLIENT.bewertungenCards.length > 0) {
+      const cards = CLIENT.bewertungenCards.filter((card) => {
+        if (!card) return false;
+        const title = String(card.titel || '');
+        const text = String(card.text || '');
+        return title && text && !title.startsWith('[') && !text.startsWith('[');
+      });
+      if (cards.length > 0) {
+        reviewsProofCards.innerHTML = cards.map((card, idx) => `
+          <article class="review-proof-card">
+            <span class="review-proof-card__num">${String(idx + 1).padStart(2, '0')}</span>
+            <h3>${card.titel}</h3>
+            <p>${card.text}</p>
+          </article>
+        `).join('\n');
+      }
+    }
 
     // ── 19. TERMIN VARIANTE ───────────────────────────────
     const terminVariante = CLIENT.terminVariante || 'calcom';

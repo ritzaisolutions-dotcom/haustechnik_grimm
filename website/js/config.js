@@ -6,12 +6,13 @@ const CLIENT = {
   // ── FIRMA ──────────────────────────────────────────────────
   name:                 "Sascha Grimm Heizung & Sanitär",
   nameKurz:             "Grimm",
-  unternehmenstyp:      "Heizung & Sanitär",
+  seoTitle:             "Sascha Grimm Heizung & Sanitär | SHK-Meisterbetrieb Lahnstein",
+  unternehmenstyp:      "Meisterbetrieb",
   handwerksbezeichnung: "SHK-Fachbetrieb",
   berufsbezeichnung:    "Heizungs- und Sanitärinstallateur",
   gruendungsjahr:       "1998",
-  slogan:               "Bäder zum Wohlfühlen, Heizung modernisieren und profitieren — Ihr Partner in Lahnstein und Umgebung.",
-  heroEyebrow:          "BOSCH Premium Partner · Lahnstein · Ihr Badexperte",
+  slogan:               "Sauber geplant. Transparent kalkuliert. Persönlich umgesetzt.",
+  heroEyebrow:          "SHK-Meisterbetrieb · Lahnstein · seit 1998",
   leistungenKurz:       "Bad, Heizung, Haustechnik und Lüftung aus einer Hand",
 
   // ── KONTAKT & ADRESSE ──────────────────────────────────────
@@ -19,29 +20,50 @@ const CLIENT = {
   plz:            "56112",
   ort:            "Lahnstein",
   telefon:        "+4926219474004",
-  telefonDisplay: "+49 (0)2621 947 40 04",
+  telefonDisplay: "02621 947 40 04",
   fax:            "",
   faxDisplay:     "",
   email:          "info@grimm-sanitaer.de",
 
   // ── ONLINE ─────────────────────────────────────────────────
   domain:        "https://www.grimm-sanitaer.de",
-  calcomLink:    "https://cal.com/demo/grimm-beratung",
+  calcomLink:    "https://cal.com/ritzaisolutions/15min",
   web3formsKey:  "demo-key-nicht-aktiv",
   pdfSlug:       "kalkulation",
 
   // ── WHATSAPP ───────────────────────────────────────────────
   whatsapp:            "+4917621900432",
-  whatsappVornachricht: "Hallo, ich interessiere mich für Ihre Leistungen bei Grimm Heizung & Sanitär und würde gerne mehr erfahren.",
+  whatsappVornachricht: "Hallo, ich interessiere mich für eine Beratung.",
+  whatsappFoerderung:   "Ich möchte meine Fördermöglichkeiten prüfen lassen.",
 
   // ── TERMINBUCHUNG VARIANTE ─────────────────────────────────
   terminVariante: "calcom",
 
   // ── GOOGLE ─────────────────────────────────────────────────
   googleMapsEmbedUrl:    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2538.8!2d7.6077!3d50.3359!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47859c2f8c8c8c8d%3A0x0!2sEulenhorst%2038%2C%2056112%20Lahnstein!5e0!3m2!1sde!2sde!4v1717000000000!5m2!1sde!2sde",
-  googleBewertungsLink:  "",
-  googleBewertungAnzahl: "",
-  googleBewertungNote:   "",
+  googleBewertungsLink:  "https://www.klimatechniker.net/lahnstein/grimm-heizung-sanitaer-aUPsMi",
+  googleBewertungAnzahl: "32",
+  googleBewertungNote:   "4,8",
+  bewertungsQuelleLabel: "Kundenbewertungen",
+  bewertungsMetaLabel:   "Bewertungen",
+  bewertungenCards: [
+    {
+      titel: "Zuverlässigkeit",
+      text: "Termine, Rückrufe und Absprachen werden für Kunden greifbar, bevor sie ihr Projekt anfragen."
+    },
+    {
+      titel: "Saubere Baustelle",
+      text: "Gerade bei Bad und Heizung zählt nicht nur das Ergebnis, sondern auch ein ordentlicher Ablauf im eigenen Zuhause."
+    },
+    {
+      titel: "Klare Kommunikation",
+      text: "Ein fester Ansprechpartner reduziert Unsicherheit, Nachfragen und das Gefühl, an mehrere Stellen verwiesen zu werden."
+    },
+    {
+      titel: "Qualität der Arbeit",
+      text: "Meisterbetrieb, Markenprodukte und BOSCH Premium Partnerschaft stützen die Entscheidung für langlebige Lösungen."
+    }
+  ],
 
   // ── ÖFFNUNGSZEITEN ─────────────────────────────────────────
   oeffnungszeiten: {
@@ -53,33 +75,33 @@ const CLIENT = {
 
   // ── LEISTUNGEN (Startseite, 4 Karten) ──────────────────────
   leistung1Titel: "Bad",
-  leistung1Text:  "Badmodernisierung, barrierefreie Bäder und individuelle Planung — von der Beratung bis zur fertigen Wohlfühloase.",
+  leistung1Text:  "Von der Badmodernisierung bis zum barrierefreien Komfortbad — wir planen und realisieren Ihr Traumbad. Inklusive Förderberatung.",
   leistung2Titel: "Heizung",
-  leistung2Text:  "Öl- und Gasheizung, Wärmepumpen, Heizungsmodernisierung und Wartung — effizient und zukunftssicher.",
+  leistung2Text:  "Heizungsmodernisierung, Wärmepumpen und regenerative Systeme. Als BOSCH Premium Partner mit bevorzugter Ersatzteilversorgung.",
   leistung3Titel: "Haustechnik",
-  leistung3Text:  "Trinkwasser, Service und zuverlässige Haustechnik für Ihren Komfort im Alltag.",
+  leistung3Text:  "Trinkwasserhygiene, Rohrinstallation und Haustechnik-Service aus einer Hand. Schnell, sauber, zuverlässig.",
   leistung4Titel: "Lüftung",
-  leistung4Text:  "Dezentrale und zentrale Wohnraumlüftung sowie Raumklimatisierung für gesundes Raumklima.",
+  leistung4Text:  "Dezentrale und zentrale Wohnraumlüftung sowie Klimaanlagen für Ihr Wohlfühlklima — das ganze Jahr über.",
 
   // ── WARUM-WIR (Startseite, 4 Punkte) ───────────────────────
   warumLabel:  "Warum Grimm",
-  warum1Titel: "Verlässlichkeit",
-  warum1Text:  "Ihr Projekt begleiten wir von der Planung bis zur Umsetzung — termingerecht und verbindlich.",
-  warum2Titel: "Individuelle Beratung",
-  warum2Text:  "Wir nehmen uns Zeit, hören zu und beraten Sie umfassend zu allen Möglichkeiten.",
-  warum3Titel: "Transparenz",
-  warum3Text:  "Detaillierte Planung und transparente Kostenaufstellung — ohne versteckte Überraschungen.",
-  warum4Titel: "Starke Partner",
-  warum4Text:  "BOSCH Premium Partner mit renommierten Herstellern wie Geberit, Viega und Villeroy & Boch.",
+  warum1Titel: "Keine Überraschungen",
+  warum1Text:  "Sie erhalten vor Beginn eine transparente Kostenaufstellung und eine ehrliche Einschätzung, was wirklich sinnvoll ist.",
+  warum2Titel: "Kein Durchreichen",
+  warum2Text:  "Von der ersten Anfrage bis zur Übergabe haben Sie einen festen Ansprechpartner und klare Absprachen.",
+  warum3Titel: "Keine Billiglösung",
+  warum3Text:  "Als SHK-Meisterbetrieb und BOSCH Premium Partner setzen wir auf langlebige Markentechnik statt schnelle Kompromisse.",
+  warum4Titel: "Keine Baustellenhektik",
+  warum4Text:  "Wir planen sauber, arbeiten ordentlich und stimmen Termine so ab, dass Ihr Alltag möglichst wenig gestört wird.",
 
   // ── REFERENZEN ─────────────────────────────────────────────
-  referenzenIntro: "Auswahl abgeschlossener Projekte aus Lahnstein, Miellen, Frücht, Rhens und Umgebung.",
+  referenzenIntro: "Auswahl abgeschlossener Projekte aus Lahnstein und Umgebung.",
 
   // ── ÜBER UNS TEXT ──────────────────────────────────────────
   ueberUns: [
-    "Als <strong>Sascha Grimm Heizung & Sanitär</strong> sind wir Ihr Badexperte in Lahnstein. Ob moderne Badgestaltung, Heizungsmodernisierung oder zuverlässiger Service — wir verbinden Handwerksqualität mit persönlicher Betreuung.",
-    "Unser Team betreut Privat- und Gewerbekunden in Lahnstein, Miellen, Frücht, Rhens und der gesamten Region. Als <strong>BOSCH Premium Partner</strong> setzen wir auf hochwertige Produkte und langfristige Lösungen.",
-    "Verlässlichkeit, Transparenz und eine partnerschaftliche Zusammenarbeit in allen Projektphasen — dafür steht unser Name. So entstehen Bäder zum Wohlfühlen und Heizsysteme, die sich rechnen."
+    "Seit 1998 ist Sascha Grimm Heizung & Sanitär in Lahnstein und der Rhein-Lahn-Region zu Hause. Was Kunden an uns schätzen: ein eingespieltes Team, klare Absprachen und handwerklich saubere Arbeit ohne Umwege.",
+    "Wir sind kein anonymer Großbetrieb. Sie sprechen mit Menschen, die Ihr Projekt kennen — vom ersten Gespräch über die Planung bis zur fertigen Umsetzung. Deshalb gibt es bei uns transparente Angebote, verlässliche Termine und einen festen Ansprechpartner.",
+    "Als SHK-Meisterbetrieb und BOSCH Premium Partner verbinden wir regionales Handwerk mit zuverlässiger Markentechnik. Ob Komplettbad, neue Heizung, Klimaanlage oder Service: Wir sagen ehrlich, was sinnvoll ist, und setzen es ordentlich um."
   ],
 
   // ── DOKUMENT-BILDER (Über-uns-Sektion) ─────────────────────
@@ -99,7 +121,16 @@ const CLIENT = {
   team3Init:  "",
 
   // ── KOSTENRECHNER ──────────────────────────────────────────
-  kostenrechnerAktiv: false,
+  kostenrechnerAktiv: true,
+
+  // SHK-Kostenrechner (Schritt 3 — implementation_plan2)
+  calcShkPreise: {
+    bad:         { standard: 550,  komfort: 750,  premium: 1100 },
+    heizung:     { standard: 8000, komfort: 12000, premium: 18000 },
+    haustechnik: { standard: 800,  komfort: 1200, premium: 1800 },
+    lueftung:    { standard: 6000, komfort: 9000, premium: 14000 },
+    reparatur:   { standard: 150,  komfort: 150,  premium: 150 }
+  },
 
   preise: {
     standard:           135,
@@ -167,9 +198,10 @@ const CLIENT = {
   aufsichtsbehoerdeUrl: "https://www.datenschutz.rlp.de",
 
   // ── TEAM & STATS ───────────────────────────────────────────
-  jahreErfahrung:    "25+",
+  jahreErfahrung:    "25",
   teamGroesse:       "8",
-  bewertungenAnzahl: "",
+  bewertungenAnzahl: "32",
+  projekteAnzahl:    "500+",
 
   // ── INTERN ─────────────────────────────────────────────────
   klaroStorageName: "grimm-consent-v1"

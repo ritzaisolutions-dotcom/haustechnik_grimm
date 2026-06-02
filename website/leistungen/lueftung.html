@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lüftung | Sascha Grimm Heizung &amp; Sanitär</title>
-  <meta name="description" content="Wohnraumlüftung und Raumklimatisierung — Grimm Heizung &amp; Sanitär in Lahnstein.">
+  <title>Lüftung | Sascha Grimm Heizung &amp; Sanitär | SHK-Meisterbetrieb Lahnstein</title>
+  <meta name="description" content="Dezentrale und zentrale Wohnraumlüftung, Klimaanlagen — BOSCH Split-Klima Profi in Lahnstein.">
   <meta name="robots" content="index, follow">
   <link rel="icon" type="image/png" href="../images/favicon-client.png">
+  <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
   <link rel="stylesheet" href="../css/variables.css">
   <link rel="stylesheet" href="../css/style.css">
   <script src="../js/config.js"></script>
@@ -21,20 +23,70 @@
           <img class="nav__logo" src="../images/logo-client.png" alt="Grimm Heizung &amp; Sanitär" data-config-alt="true" width="200" height="42" decoding="async">
         </picture>
       </a>
+      <ul class="nav__links" role="list">
+        <li><a href="../index.html#leistungen">Leistungen</a></li>
+        <li><a href="../referenzen.html">Referenzen</a></li>
+        <li><a href="../index.html#kontakt">Kontakt</a></li>
+      </ul>
+      <a href="../index.html#termin" class="btn btn--primary btn--sm nav__cta">Termin buchen</a>
+      <button class="nav__hamburger" id="navHamburger" aria-label="Menü öffnen" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 
+  <div class="nav__mobile" id="navMobile" role="dialog" aria-label="Navigation">
+    <button class="nav__mobile-close" id="navMobileClose" aria-label="Menü schließen">✕</button>
+    <a href="../index.html#leistungen">Leistungen</a>
+    <a href="../referenzen.html">Referenzen</a>
+    <a href="../index.html#kontakt">Kontakt</a>
+    <a href="../index.html#termin" class="btn btn--primary" style="margin-top:1rem">Termin buchen</a>
+    <span class="nav__mobile-phone">
+      <a href="tel:+4926219474004" data-config-href="tel" data-config="telefonDisplay">02621 947 40 04</a>
+    </span>
+  </div>
+
   <main class="subpage-main container">
-    <header class="subpage-hero"><h1>Wohlfühlklima für Ihr Zuhause</h1></header>
+    <p class="subpage-back"><a href="../index.html">← Zur Startseite</a></p>
+
+    <header class="subpage-hero">
+      <h1>Wohlfühlklima für Ihr Zuhause</h1>
+      <p>Frische Luft, weniger Schimmelrisiko und angenehme Temperaturen — dezentrale und zentrale Lüftungslösungen sowie Klimatisierung für Wohngebäude.</p>
+    </header>
+
+    <div class="subpage-badge">
+      <picture>
+        <source srcset="../images/partner-bosch-split.webp" type="image/webp">
+        <img src="../images/partner-bosch-split.jpg" alt="BOSCH Split-Klima zertifizierter Profi" width="120" height="60" loading="lazy" decoding="async">
+      </picture>
+      <p><strong>BOSCH Split-Klima zertifizierter Profi</strong> — fachgerechter Einbau, Wartung und Service für Ihre Klimaanlage.</p>
+    </div>
+
     <section class="subpage-card">
-      <p>Frische Luft und angenehmes Raumklima — dezentrale und zentrale Lüftungslösungen für Wohngebäude.</p>
-      <ul class="subpage-list">
-        <li>Dezentrale Wohnraumlüftung</li>
-        <li>Zentrale Wohnraumlüftung mit Wärmerückgewinnung</li>
-        <li>Raumklimatisierung und Split-Klimageräte</li>
-        <li>Planung, Einbau und Wartung aus einer Hand</li>
-      </ul>
-      <a class="btn btn--primary" href="../index.html#termin">Beratung buchen</a>
+      <h2>Unsere Lüftungs-Leistungen</h2>
+      <div class="subpage-leistungen">
+        <article class="subpage-leistung">
+          <h3>Dezentrale Lüftung</h3>
+          <p>Einzelraumlösungen mit Wärmerückgewinnung — ideal für Sanierung und Nachrüstung ohne großen Rohrleitungsaufwand.</p>
+        </article>
+        <article class="subpage-leistung">
+          <h3>Zentrale Lüftung</h3>
+          <p>Kontrollierte Wohnraumlüftung mit Wärmerückgewinnung für Neubau und Kernsanierung — effizient und leise.</p>
+        </article>
+        <article class="subpage-leistung">
+          <h3>Klimaanlage</h3>
+          <p>Split-Klimageräte für Kühlung und Heizen — Planung, Montage und Wartung als BOSCH-zertifizierter Betrieb.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="subpage-card">
+      <h2>Beratung buchen</h2>
+      <p>Wir analysieren Ihren Luftwechselbedarf und empfehlen die passende Lösung für Ihr Gebäude.</p>
+      <div class="subpage-ctas">
+        <a class="btn btn--primary" href="#" data-config-href="calcom" target="_blank" rel="noopener noreferrer">Termin buchen (Cal.com)</a>
+        <a class="btn btn--wa" href="#" data-config-href="whatsapp" target="_blank" rel="noopener noreferrer">💬 WhatsApp schreiben</a>
+      </div>
     </section>
   </main>
 
