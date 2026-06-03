@@ -50,7 +50,6 @@ async function auditPage(page, url, viewportName) {
       const overlay = document.querySelector('.hero__overlay');
       const heroCta = document.querySelector('.hero__primary-cta');
       const boschBadge = document.querySelector('.hero__bosch-badge img');
-      const heroWaCta = document.querySelector('.hero__wa-cta');
       const waFab = document.querySelector('.whatsapp-float');
       const h1Size = h1 ? parseFloat(getComputedStyle(h1).fontSize) : 0;
       const overlayOpacity = overlay ? getComputedStyle(overlay).opacity : null;
@@ -82,8 +81,6 @@ async function auditPage(page, url, viewportName) {
         heroCtaHref: heroCta ? heroCta.getAttribute('href') : null,
         heroCtaCount: document.querySelectorAll('.hero__primary-cta').length,
         boschBadgeVisible: boschBadge ? boschBadge.offsetParent !== null : false,
-        heroWaCtaVisible: heroWaCta ? heroWaCta.offsetParent !== null : false,
-        heroWaCtaHref: heroWaCta ? heroWaCta.getAttribute('href') : null,
         waFabVisible: waFab ? getComputedStyle(waFab).display !== 'none' : false,
         leistungenCols,
         foerderungCols,
@@ -102,8 +99,6 @@ async function auditPage(page, url, viewportName) {
       && !!(hero.heroCtaHref && hero.heroCtaHref.startsWith('tel:'));
     checks.heroTelCta = !!(hero.heroCtaHref && hero.heroCtaHref.startsWith('tel:'));
     checks.heroBoschBadge = hero.boschBadgeVisible;
-    checks.heroWaCta = hero.heroWaCtaVisible
-      && !!(hero.heroWaCtaHref && hero.heroWaCtaHref.includes('wa.me'));
     checks.waFabMobile = viewportName === 'mobile' ? hero.waFabVisible : !hero.waFabVisible;
     checks.leistungenSingleCol = hero.leistungenCols.split(' ').length <= 1 || hero.leistungenCols.includes('1fr');
     checks.foerderungSingleCol = viewportName === 'mobile'
@@ -137,7 +132,6 @@ async function auditPage(page, url, viewportName) {
     if (!checks.heroPrimaryCta) issues.push(`Hero primary CTA invalid (count=${hero.heroCtaCount}, href=${hero.heroCtaHref || 'none'})`);
     if (!checks.heroTelCta) issues.push(`Hero primary CTA is not tel: (${hero.heroCtaHref || 'missing'})`);
     if (!checks.heroBoschBadge) issues.push('Hero BOSCH badge not visible');
-    if (!checks.heroWaCta) issues.push(`Hero WhatsApp CTA invalid (visible=${hero.heroWaCtaVisible}, href=${hero.heroWaCtaHref || 'none'})`);
     if (!checks.waFabMobile) issues.push('WhatsApp float visibility wrong for viewport');
     if (viewportName === 'mobile' && !checks.leistungenSingleCol) issues.push(`Leistungen not 1-col: ${hero.leistungenCols}`);
     if (viewportName === 'mobile' && !checks.foerderungSingleCol) issues.push(`Förderung not 1-col: ${hero.foerderungCols}`);

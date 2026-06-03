@@ -602,13 +602,11 @@ body:has(#hero) .nav:not(.nav--scrolled) .nav__wordmark {
 
 .hero__cta-panel {
   justify-self: end;
-  width: min(100%, 360px);
-  padding: var(--sp-5);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: calc(var(--r-lg) + 8px);
-  background: rgba(255, 255, 255, 0.12);
-  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.26);
-  backdrop-filter: blur(18px) saturate(130%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-4);
+  width: min(100%, 280px);
   animation: fadeUp 0.7s var(--ease) 0.5s both;
 }
 
@@ -624,13 +622,6 @@ body:has(#hero) .nav:not(.nav--scrolled) .nav__wordmark {
   width: 100%;
   justify-content: center;
   min-height: 56px;
-}
-
-.hero__wa-cta {
-  width: 100%;
-  justify-content: center;
-  min-height: 52px;
-  margin-top: var(--sp-3);
 }
 
 .hero__cta-note {
@@ -683,7 +674,7 @@ body:has(#hero) .nav:not(.nav--scrolled) .nav__wordmark {
 .hero__bosch-badge {
   display: flex;
   justify-content: center;
-  margin-top: var(--sp-4);
+  margin: 0;
 }
 
 .hero__bosch-badge img {
@@ -3499,7 +3490,6 @@ body:has(#hero) .nav:not(.nav--scrolled) .nav__wordmark {
   .hero__cta-panel {
     justify-self: stretch;
     width: 100%;
-    padding: var(--sp-4);
     transform: none;
     opacity: 1;
   }
