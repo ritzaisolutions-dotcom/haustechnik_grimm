@@ -368,7 +368,15 @@ body:has(#hero) .nav:not(.nav--scrolled) .nav__wordmark {
   color: #fff;
 }
 
-.nav__cta { margin-left: var(--sp-3); }
+.nav__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  margin-left: var(--sp-3);
+  flex-shrink: 0;
+}
+.nav__cta { margin-left: 0; }
+.nav__wa { /* compact, same height as btn--sm */ }
 
 .nav__mobile-group {
   display: flex;
@@ -451,7 +459,7 @@ body:has(#hero) .nav:not(.nav--scrolled) .nav__wordmark {
 
 @media (max-width: 900px) {
   .nav__links,
-  .nav__cta { display: none; }
+  .nav__actions { display: none; }
   .nav__hamburger { display: flex; flex-shrink: 0; }
   .nav__logo { height: 42px; max-width: min(240px, 58vw); }
   .nav--scrolled .nav__logo { height: 38px; }
@@ -1524,8 +1532,8 @@ body:has(#hero) .nav:not(.nav--scrolled) .nav__wordmark {
 .familie-inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--sp-8);
-  align-items: start;
+  gap: clamp(var(--sp-6), 4vw, var(--sp-10));
+  align-items: center;
 }
 .familie-imgs {
   display: block;
@@ -1539,7 +1547,7 @@ body:has(#hero) .nav:not(.nav--scrolled) .nav__wordmark {
 
 .familie-img-link:hover .familie-img-main img {
   filter: saturate(1);
-  transform: scale(1.02);
+  transform: scale(1.03);
 }
 
 .familie-img-link:hover .familie-img-cta {
@@ -1548,7 +1556,7 @@ body:has(#hero) .nav:not(.nav--scrolled) .nav__wordmark {
 
 .familie-img-cta {
   display: inline-block;
-  margin-top: var(--sp-3);
+  margin-top: var(--sp-4);
   font-size: var(--fs-sm);
   font-weight: 500;
   color: var(--accent);
@@ -1559,31 +1567,29 @@ body:has(#hero) .nav:not(.nav--scrolled) .nav__wordmark {
 .familie-img-main {
   border-radius: var(--r-lg);
   overflow: hidden;
-  aspect-ratio: 1.2 / 1;
-  background:
-    linear-gradient(135deg, rgba(26, 43, 76, 0.08), rgba(41, 128, 185, 0.08)),
-    #f4f7fb;
-  padding: clamp(0.75rem, 2vw, 1.25rem);
+  aspect-ratio: 5 / 4;
+  background: var(--primary);
   border: 1px solid var(--border);
 }
 .familie-img-main img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  object-position: center center;
-  filter: saturate(0.9);
+  object-fit: cover;
+  object-position: center 20%;
+  filter: saturate(0.92);
   transition: filter var(--t-base), transform var(--t-base);
 }
 
-.familie-text .section-h2 { margin-bottom: var(--sp-4); }
+.familie-text .section-h2 { margin-bottom: var(--sp-5); }
 
 .familie-body {
   font-size: var(--fs-base);
   color: var(--text-light);
-  line-height: 1.75;
-  margin-bottom: var(--sp-5);
+  line-height: 1.85;
+  margin-bottom: var(--sp-6);
+  max-width: 36rem;
 }
-.familie-body p + p { margin-top: var(--sp-3); }
+.familie-body p + p { margin-top: var(--sp-4); }
 
 .familie-todo {
   font-size: var(--fs-xs);
@@ -1600,7 +1606,6 @@ body:has(#hero) .nav:not(.nav--scrolled) .nav__wordmark {
   display: flex;
   gap: var(--sp-3);
   flex-wrap: wrap;
-  margin-bottom: var(--sp-5);
 }
 .familie-badge {
   padding: 8px 16px;
@@ -1612,23 +1617,50 @@ body:has(#hero) .nav:not(.nav--scrolled) .nav__wordmark {
   color: var(--primary);
 }
 
+.familie-certs {
+  margin-top: clamp(var(--sp-6), 4vw, var(--sp-10));
+  padding-top: var(--sp-6);
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+.familie-certs__label {
+  margin: 0 0 var(--sp-4);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
 .familie-docs {
   display: flex;
-  gap: var(--sp-3);
+  gap: var(--sp-5);
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-end;
 }
 .familie-doc {
-  width: 80px;
+  flex: 0 1 auto;
+  max-width: 140px;
   border-radius: var(--r-md);
   overflow: hidden;
   border: 1px solid var(--border);
-  filter: saturate(0);
-  opacity: 0.7;
+  background: #fff;
+  box-shadow: var(--s-sm);
+  filter: saturate(0.85);
+  opacity: 0.9;
   transition: filter var(--t-base), opacity var(--t-base), transform var(--t-base);
   cursor: pointer;
 }
-.familie-doc:hover { filter: saturate(0.5); opacity: 1; transform: scale(1.04); }
-.familie-doc img { width: 100%; height: 100px; object-fit: cover; }
+.familie-doc:hover { filter: saturate(1); opacity: 1; transform: translateY(-2px); }
+.familie-doc img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: 120px;
+  margin: 0 auto;
+  object-fit: contain;
+}
 
 .familie-doc:focus-visible {
   outline: 2px solid var(--accent);
@@ -3630,22 +3662,26 @@ body:has(#hero) .nav:not(.nav--scrolled) .nav__wordmark {
   }
 }
 
-/* Issue 9: Familie docs — horizontal scroll strip on mobile */
+/* Issue 9: Familie certs — horizontal scroll on small screens */
 @media (max-width: 640px) {
+  .familie-certs {
+    text-align: left;
+  }
   .familie-docs {
     flex-wrap: nowrap;
+    justify-content: flex-start;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     padding-bottom: var(--sp-2);
   }
   .familie-doc {
-    min-width: 140px;
+    min-width: 120px;
     flex-shrink: 0;
     scroll-snap-align: start;
-    width: 140px;
+    max-width: 120px;
   }
-  .familie-doc img { height: 190px; }
+  .familie-doc img { height: 140px; }
 }
 
 /* Issue 12: Referenzen overlay — always visible on touch devices */
@@ -3796,9 +3832,6 @@ body:has(#hero) .nav:not(.nav--scrolled) .nav__wordmark {
 
 /* ── Partner Carousel ──────────────────────────────────────── */
 .partner-strip {
-  margin-top: var(--sp-7);
-  padding-top: var(--sp-6);
-  border-top: 1px solid var(--border);
   text-align: center;
   overflow: hidden;
   min-width: 0;

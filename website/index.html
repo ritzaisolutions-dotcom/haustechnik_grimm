@@ -127,7 +127,10 @@
 
       <ul class="nav__links" data-nav-desktop role="list"></ul>
 
-      <a href="tel:+4926219474004" class="btn btn--primary btn--sm nav__cta" data-nav-cta data-config-href="tel">Anrufen</a>
+      <div class="nav__actions">
+        <a href="#" class="btn btn--wa btn--sm nav__wa" data-nav-wa data-config-href="whatsapp" target="_blank" rel="noopener noreferrer" hidden aria-label="WhatsApp schreiben">WhatsApp</a>
+        <a href="tel:+4926219474004" class="btn btn--primary btn--sm nav__cta" data-nav-cta data-config-href="tel">Anrufen</a>
+      </div>
 
       <button class="nav__hamburger" id="navHamburger" aria-label="Menü öffnen" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -208,67 +211,6 @@
       <div class="scroll-indicator" id="scrollIndicator" aria-hidden="true">
         <span>Scroll</span>
         <div class="scroll-indicator__arrow">↓</div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ╔════════════════════════════════╗ -->
-  <!-- ║  VORHER / NACHHER              ║ -->
-  <!-- ╚════════════════════════════════╝ -->
-  <section class="vn-section" id="vorher-nachher">
-    <div class="container">
-      <header class="section-header section-header--center reveal">
-        <span class="section-label">Unsere Arbeit</span>
-        <h2 class="section-h2">Sehen Sie den Unterschied selbst.</h2>
-        <p class="section-sub vn-sub--desktop">Ziehen Sie den Regler und sehen Sie den Unterschied von alt zu neu.</p>
-        <p class="section-sub vn-sub--mobile">Wählen Sie Vorher oder Nachher – derselbe Badezimmer-Ausbau.</p>
-      </header>
-
-      <p class="vn-hint vn-hint--desktop reveal reveal-delay-1">◁ Regler ziehen ▷</p>
-
-      <div class="vn-mobile-toggle reveal reveal-delay-1" role="group" aria-label="Vorher oder Nachher anzeigen">
-        <button type="button" class="btn btn--sm btn--secondary is-active" data-vn-view="before" aria-pressed="true">Vorher</button>
-        <button type="button" class="btn btn--sm btn--secondary" data-vn-view="after" aria-pressed="false">Nachher</button>
-      </div>
-
-      <!-- TODO LIVE (B3): Bei zweitem Bildpaar vn-tabs wieder einblenden -->
-      <div class="vn-tabs vn-tabs--hidden" role="tablist" aria-label="Vorher-Nachher Projektwahl" hidden>
-        <button type="button" class="btn btn--sm btn--secondary" data-vn-set="dusche" aria-selected="true">Dusche</button>
-      </div>
-
-      <div
-        class="vn-slider reveal reveal-delay-2"
-        id="vnSlider"
-        role="region"
-        aria-label="Vorher-Nachher Vergleich: Dusche"
-        tabindex="0">
-
-        <div class="vn-img vn-before">
-          <picture>
-            <source srcset="images/ref_6.webp" type="image/webp">
-            <img src="images/ref_6.jpg" alt="Bad vor der Sanierung" width="1024" height="571" decoding="async">
-          </picture>
-          <span class="vn-label vn-label-before">Vorher</span>
-        </div>
-
-        <div class="vn-img vn-after">
-          <picture>
-            <source srcset="images/ref_1.webp" type="image/webp">
-            <img src="images/ref_1.jpg" alt="Bad nach der Sanierung" width="1024" height="571" decoding="async">
-          </picture>
-          <span class="vn-label vn-label-after">Nachher</span>
-        </div>
-
-        <div class="vn-divider" id="vnDivider">
-          <div class="vn-handle" aria-hidden="true">
-            <span class="vn-handle-icon">◁▷</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="vn-cta reveal reveal-delay-3">
-        <a href="#termin" class="btn btn--primary">Ihr Projekt besprechen</a>
       </div>
     </div>
   </section>
@@ -467,8 +409,8 @@
       <div class="warum-inner">
         <div class="warum-img-wrap reveal">
           <picture>
-            <source srcset="images/bild-haus.webp" type="image/webp">
-            <img src="images/bild-haus.jpg" alt="SHK-Fachbetrieb Grimm Heizung und Sanitär bei der Arbeit" width="1200" height="900" loading="lazy" decoding="async">
+            <source srcset="images/ref_3.webp" type="image/webp">
+            <img src="images/ref_3.jpg" alt="Modernes Bad aus Meisterhand, geplant und umgesetzt von Grimm Heizung &amp; Sanitär" width="350" height="350" loading="lazy" decoding="async">
           </picture>
         </div>
 
@@ -515,6 +457,43 @@
 
 
   <!-- ╔════════════════════════════════╗ -->
+  <!-- ║  PARTNER (Industrie-Logos)     ║ -->
+  <!-- ╚════════════════════════════════╝ -->
+  <section class="section section--alt" id="partner">
+    <div class="container">
+      <div class="partner-strip reveal">
+        <p class="partner-strip__label">Unsere Partner in der Industrie</p>
+        <div class="partner-carousel-wrapper" aria-label="Hersteller-Logos">
+          <div class="partner-track">
+            <a href="https://www.bosch-thermotechnology.com/de/de/wohngebaeude/start/" target="_blank" rel="noopener noreferrer"><img src="images/IP_bosch.webp" alt="Bosch Thermotechnik" width="120" height="48" loading="lazy" decoding="async"></a>
+            <a href="https://www.geberit.de/home/" target="_blank" rel="noopener noreferrer"><img src="images/IP_geberit.webp" alt="Geberit" width="120" height="48" loading="lazy" decoding="async"></a>
+            <a href="https://www.viega.de/de/homepage.html" target="_blank" rel="noopener noreferrer"><img src="images/IP_viega.webp" alt="Viega" width="120" height="48" loading="lazy" decoding="async"></a>
+            <a href="https://www.villeroy-boch.de/" target="_blank" rel="noopener noreferrer"><img src="images/IP_Villeroy.webp" alt="Villeroy &amp; Boch" width="120" height="48" loading="lazy" decoding="async"></a>
+            <a href="https://www.grohe.de/de_de/" target="_blank" rel="noopener noreferrer"><img src="images/IP_grohe.webp" alt="Grohe" width="120" height="48" loading="lazy" decoding="async"></a>
+            <a href="https://www.hansgrohe.de/" target="_blank" rel="noopener noreferrer"><img src="images/IP_hansgrohe.webp" alt="hansgrohe" width="120" height="48" loading="lazy" decoding="async"></a>
+            <a href="https://www.buderus.de/de" target="_blank" rel="noopener noreferrer"><img src="images/IP_Buderus.webp" alt="Buderus" width="120" height="48" loading="lazy" decoding="async"></a>
+            <a href="https://www.kermi.de/" target="_blank" rel="noopener noreferrer"><img src="images/IP_kermi.webp" alt="Kermi" width="120" height="48" loading="lazy" decoding="async"></a>
+            <a href="https://www.tece.com/de" target="_blank" rel="noopener noreferrer"><img src="images/IP_tece.webp" alt="TECE" width="120" height="48" loading="lazy" decoding="async"></a>
+            <a href="https://www.weishaupt.de/" target="_blank" rel="noopener noreferrer"><img src="images/IP_weishaupt.webp" alt="Weishaupt" width="120" height="48" loading="lazy" decoding="async"></a>
+            <!-- Duplikat für nahtlosen Loop -->
+            <a href="https://www.bosch-thermotechnology.com/de/de/wohngebaeude/start/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img src="images/IP_bosch.webp" alt="" width="120" height="48" loading="lazy" decoding="async"></a>
+            <a href="https://www.geberit.de/home/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img src="images/IP_geberit.webp" alt="" width="120" height="48" loading="lazy" decoding="async"></a>
+            <a href="https://www.viega.de/de/homepage.html" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img src="images/IP_viega.webp" alt="" width="120" height="48" loading="lazy" decoding="async"></a>
+            <a href="https://www.villeroy-boch.de/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img src="images/IP_Villeroy.webp" alt="" width="120" height="48" loading="lazy" decoding="async"></a>
+            <a href="https://www.grohe.de/de_de/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img src="images/IP_grohe.webp" alt="" width="120" height="48" loading="lazy" decoding="async"></a>
+            <a href="https://www.hansgrohe.de/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img src="images/IP_hansgrohe.webp" alt="" width="120" height="48" loading="lazy" decoding="async"></a>
+            <a href="https://www.buderus.de/de" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img src="images/IP_Buderus.webp" alt="" width="120" height="48" loading="lazy" decoding="async"></a>
+            <a href="https://www.kermi.de/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img src="images/IP_kermi.webp" alt="" width="120" height="48" loading="lazy" decoding="async"></a>
+            <a href="https://www.tece.com/de" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img src="images/IP_tece.webp" alt="" width="120" height="48" loading="lazy" decoding="async"></a>
+            <a href="https://www.weishaupt.de/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img src="images/IP_weishaupt.webp" alt="" width="120" height="48" loading="lazy" decoding="async"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ╔════════════════════════════════╗ -->
   <!-- ║  FAMILIE / ÜBER UNS            ║ -->
   <!-- ╚════════════════════════════════╝ -->
   <section class="section" id="familie">
@@ -545,8 +524,8 @@
                ══════════════════════════════════════════════════════ -->
           <div class="familie-body reveal reveal-delay-1" id="ueberUnsBody">
             <p>Seit 1998 sind wir Ihr verlässlicher Partner für Heizung, Sanitär und Haustechnik in Lahnstein und der gesamten Region Rhein-Lahn. Was als kleiner Handwerksbetrieb begann, ist heute ein eingespieltes Team aus erfahrenen Fachkräften mit einem klaren Anspruch: saubere Arbeit, transparente Preise, pünktliche Ausführung.</p>
-            <p>Als zertifizierter BOSCH Premium Partner arbeiten wir ausschließlich mit hochwertigen Markenprodukten — von Geberit über Hansgrohe bis Villeroy &amp; Boch. Das gibt Ihnen die Sicherheit, dass Ihre Investition langfristig hält.</p>
-            <p>Ob Komplettbad, neue Wärmepumpe oder dringender Reparaturservice — wir kümmern uns. Sprechen Sie uns an.</p>
+            <p>Als zertifizierter BOSCH Premium Partner arbeiten wir ausschließlich mit hochwertigen Markenprodukten von Geberit über Hansgrohe bis Villeroy &amp; Boch. Das gibt Ihnen die Sicherheit, dass Ihre Investition langfristig hält.</p>
+            <p>Ob Komplettbad, neue Wärmepumpe oder dringender Reparaturservice: Wir kümmern uns. Sprechen Sie uns an.</p>
           </div>
 
           <div class="familie-badges reveal reveal-delay-2">
@@ -554,57 +533,31 @@
             <span class="familie-badge">Gegründet <span data-config="gruendungsjahr">1998</span></span>
             <span class="familie-badge" data-config="fachverband">SHK-Innung Rhein-Lahn</span>
           </div>
-
-          <!-- ══════════════════════════════════════════════════════
-               Dokument-Bilder: gesteuert über CLIENT.dokBild1/2/3
-               Leerer String ("") in config.js → Bild wird ausgeblendet.
-               ══════════════════════════════════════════════════════ -->
-          <div class="familie-docs reveal reveal-delay-3">
-            <div class="familie-doc" id="dokBild1">
-              <picture>
-                <source srcset="images/partner-bosch-premium.webp" type="image/webp">
-                <img src="images/partner-bosch-premium.jpg" alt="BOSCH Premium Partner" width="720" height="1080" loading="lazy" decoding="async">
-              </picture>
-            </div>
-            <div class="familie-doc" id="dokBild2">
-              <picture>
-                <source srcset="images/partner-bosch-split.webp" type="image/webp">
-                <img src="images/partner-bosch-split.jpg" alt="BOSCH zertifizierter Profi Split-Klimageräte" width="469" height="700" loading="lazy" decoding="async">
-              </picture>
-            </div>
-            <div class="familie-doc" id="dokBild3" hidden></div>
-          </div>
         </div>
       </div>
 
-      <div class="partner-strip reveal reveal-delay-4">
-        <p class="partner-strip__label">Partner renommierter Hersteller</p>
-        <div class="partner-carousel-wrapper" aria-label="Hersteller-Logos">
-          <div class="partner-track">
-            <a href="https://www.bosch-thermotechnology.com/de/de/wohngebaeude/start/" target="_blank" rel="noopener noreferrer"><img src="images/IP_bosch.webp" alt="Bosch Thermotechnik" width="120" height="48" loading="lazy" decoding="async"></a>
-            <a href="https://www.geberit.de/home/" target="_blank" rel="noopener noreferrer"><img src="images/IP_geberit.webp" alt="Geberit" width="120" height="48" loading="lazy" decoding="async"></a>
-            <a href="https://www.viega.de/de/homepage.html" target="_blank" rel="noopener noreferrer"><img src="images/IP_viega.webp" alt="Viega" width="120" height="48" loading="lazy" decoding="async"></a>
-            <a href="https://www.villeroy-boch.de/" target="_blank" rel="noopener noreferrer"><img src="images/IP_Villeroy.webp" alt="Villeroy &amp; Boch" width="120" height="48" loading="lazy" decoding="async"></a>
-            <a href="https://www.grohe.de/de_de/" target="_blank" rel="noopener noreferrer"><img src="images/IP_grohe.webp" alt="Grohe" width="120" height="48" loading="lazy" decoding="async"></a>
-            <a href="https://www.hansgrohe.de/" target="_blank" rel="noopener noreferrer"><img src="images/IP_hansgrohe.webp" alt="hansgrohe" width="120" height="48" loading="lazy" decoding="async"></a>
-            <a href="https://www.buderus.de/de" target="_blank" rel="noopener noreferrer"><img src="images/IP_Buderus.webp" alt="Buderus" width="120" height="48" loading="lazy" decoding="async"></a>
-            <a href="https://www.kermi.de/" target="_blank" rel="noopener noreferrer"><img src="images/IP_kermi.webp" alt="Kermi" width="120" height="48" loading="lazy" decoding="async"></a>
-            <a href="https://www.tece.com/de" target="_blank" rel="noopener noreferrer"><img src="images/IP_tece.webp" alt="TECE" width="120" height="48" loading="lazy" decoding="async"></a>
-            <a href="https://www.weishaupt.de/" target="_blank" rel="noopener noreferrer"><img src="images/IP_weishaupt.webp" alt="Weishaupt" width="120" height="48" loading="lazy" decoding="async"></a>
-            <!-- Duplikat für nahtlosen Loop -->
-            <a href="https://www.bosch-thermotechnology.com/de/de/wohngebaeude/start/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img src="images/IP_bosch.webp" alt="" width="120" height="48" loading="lazy" decoding="async"></a>
-            <a href="https://www.geberit.de/home/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img src="images/IP_geberit.webp" alt="" width="120" height="48" loading="lazy" decoding="async"></a>
-            <a href="https://www.viega.de/de/homepage.html" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img src="images/IP_viega.webp" alt="" width="120" height="48" loading="lazy" decoding="async"></a>
-            <a href="https://www.villeroy-boch.de/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img src="images/IP_Villeroy.webp" alt="" width="120" height="48" loading="lazy" decoding="async"></a>
-            <a href="https://www.grohe.de/de_de/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img src="images/IP_grohe.webp" alt="" width="120" height="48" loading="lazy" decoding="async"></a>
-            <a href="https://www.hansgrohe.de/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img src="images/IP_hansgrohe.webp" alt="" width="120" height="48" loading="lazy" decoding="async"></a>
-            <a href="https://www.buderus.de/de" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img src="images/IP_Buderus.webp" alt="" width="120" height="48" loading="lazy" decoding="async"></a>
-            <a href="https://www.kermi.de/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img src="images/IP_kermi.webp" alt="" width="120" height="48" loading="lazy" decoding="async"></a>
-            <a href="https://www.tece.com/de" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img src="images/IP_tece.webp" alt="" width="120" height="48" loading="lazy" decoding="async"></a>
-            <a href="https://www.weishaupt.de/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><img src="images/IP_weishaupt.webp" alt="" width="120" height="48" loading="lazy" decoding="async"></a>
+      <!-- ══════════════════════════════════════════════════════
+           Partner-Zertifikate: gesteuert über CLIENT.dokBild1/2/3
+           Leerer String ("") in config.js → Bild wird ausgeblendet.
+           ══════════════════════════════════════════════════════ -->
+      <aside class="familie-certs reveal reveal-delay-3" aria-label="Partner-Zertifizierungen">
+        <p class="familie-certs__label">Offizielle Partnerschaften</p>
+        <div class="familie-docs">
+          <div class="familie-doc" id="dokBild1">
+            <picture>
+              <source srcset="images/partner-bosch-premium.webp" type="image/webp">
+              <img src="images/partner-bosch-premium.jpg" alt="BOSCH Premium Partner" width="720" height="1080" loading="lazy" decoding="async">
+            </picture>
           </div>
+          <div class="familie-doc" id="dokBild2">
+            <picture>
+              <source srcset="images/partner-bosch-split.webp" type="image/webp">
+              <img src="images/partner-bosch-split.jpg" alt="BOSCH zertifizierter Profi Split-Klimageräte" width="469" height="700" loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <div class="familie-doc" id="dokBild3" hidden></div>
         </div>
-      </div>
+      </aside>
     </div>
   </section>
 
@@ -715,26 +668,26 @@
       <div class="referenzen-preview-grid reveal">
         <button type="button" class="referenzen-preview-item" data-lightbox>
           <picture>
-            <source srcset="images/ref_1.webp" type="image/webp">
-            <img src="images/ref_1.jpg" alt="Referenz: Badsanierung mit bodengleicher Dusche" width="350" height="350" loading="lazy" decoding="async">
-          </picture>
-        </button>
-        <button type="button" class="referenzen-preview-item" data-lightbox>
-          <picture>
-            <source srcset="images/ref_2.webp" type="image/webp">
-            <img src="images/ref_2.jpg" alt="Referenz: Modernes Badezimmer" width="350" height="350" loading="lazy" decoding="async">
-          </picture>
-        </button>
-        <button type="button" class="referenzen-preview-item" data-lightbox>
-          <picture>
             <source srcset="images/ref_3.webp" type="image/webp">
-            <img src="images/ref_3.jpg" alt="Referenz: Heizungsinstallation" width="350" height="350" loading="lazy" decoding="async">
+            <img src="images/ref_3.jpg" alt="Referenz: Fertiggestelltes Badezimmer — Badplanung und Sanitär" width="350" height="350" loading="lazy" decoding="async">
           </picture>
         </button>
         <button type="button" class="referenzen-preview-item" data-lightbox>
           <picture>
-            <source srcset="images/ref_4.webp" type="image/webp">
-            <img src="images/ref_4.jpg" alt="Referenz: Sanitär- und Haustechnikarbeiten" width="350" height="350" loading="lazy" decoding="async">
+            <source srcset="images/bosch-gas-brennwerttherme.webp" type="image/webp">
+            <img src="images/bosch-gas-brennwerttherme.webp" alt="Referenz: BOSCH Gas-Brennwerttherme — Heizungsinstallation" width="640" height="480" loading="lazy" decoding="async">
+          </picture>
+        </button>
+        <button type="button" class="referenzen-preview-item" data-lightbox>
+          <picture>
+            <source srcset="images/bosch-klimaanlage.webp" type="image/webp">
+            <img src="images/bosch-klimaanlage.webp" alt="Referenz: BOSCH Split-Klimaanlage — Lüftung und Klimatisierung" width="640" height="480" loading="lazy" decoding="async">
+          </picture>
+        </button>
+        <button type="button" class="referenzen-preview-item" data-lightbox>
+          <picture>
+            <source srcset="images/ref_8.webp" type="image/webp">
+            <img src="images/ref_8.jpg" alt="Referenz: Professionelle Werkzeugwand — Haustechnik und Service" width="350" height="350" loading="lazy" decoding="async">
           </picture>
         </button>
       </div>

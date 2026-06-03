@@ -155,7 +155,7 @@ const CLIENT = {
   // ── ÜBER UNS TEXT ──────────────────────────────────────────
   ueberUns: [
     "Seit 1998 ist Sascha Grimm Heizung & Sanitär in Lahnstein und der Rhein-Lahn-Region zu Hause. Was Kunden an uns schätzen: ein eingespieltes Team, klare Absprachen und handwerklich saubere Arbeit ohne Umwege.",
-    "Wir sind kein anonymer Großbetrieb. Sie sprechen mit Menschen, die Ihr Projekt kennen — vom ersten Gespräch über die Planung bis zur fertigen Umsetzung. Deshalb gibt es bei uns transparente Angebote, verlässliche Termine und einen festen Ansprechpartner.",
+    "Wir sind kein anonymer Großbetrieb. Sie sprechen mit Menschen, die Ihr Projekt kennen: vom ersten Gespräch über die Planung bis zur fertigen Umsetzung. Deshalb gibt es bei uns transparente Angebote, verlässliche Termine und einen festen Ansprechpartner.",
     "Als SHK-Meisterbetrieb und BOSCH Premium Partner verbinden wir regionales Handwerk mit zuverlässiger Markentechnik. Ob Komplettbad, neue Heizung, Klimaanlage oder Service: Wir sagen ehrlich, was sinnvoll ist, und setzen es ordentlich um."
   ],
 

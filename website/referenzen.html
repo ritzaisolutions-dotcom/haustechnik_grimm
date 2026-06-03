@@ -23,7 +23,10 @@
         </picture>
       </a>
       <ul class="nav__links" data-nav-desktop role="list"></ul>
-      <a href="tel:+4926219474004" class="btn btn--primary btn--sm nav__cta" data-nav-cta data-config-href="tel">Anrufen</a>
+      <div class="nav__actions">
+        <a href="#" class="btn btn--wa btn--sm nav__wa" data-nav-wa data-config-href="whatsapp" target="_blank" rel="noopener noreferrer" hidden aria-label="WhatsApp schreiben">WhatsApp</a>
+        <a href="tel:+4926219474004" class="btn btn--primary btn--sm nav__cta" data-nav-cta data-config-href="tel">Anrufen</a>
+      </div>
       <button class="nav__hamburger" id="navHamburger" aria-label="Menü öffnen" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -46,41 +49,34 @@
         <button class="btn btn--sm btn--secondary is-active" type="button" data-filter="all">Alle</button>
         <button class="btn btn--sm btn--secondary" type="button" data-filter="bad">Bad</button>
         <button class="btn btn--sm btn--secondary" type="button" data-filter="heizung">Heizung</button>
+        <button class="btn btn--sm btn--secondary" type="button" data-filter="lueftung">Lüftung</button>
         <button class="btn btn--sm btn--secondary" type="button" data-filter="haustechnik">Haustechnik</button>
         <button class="btn btn--sm btn--secondary" type="button" data-filter="service">Service</button>
       </div>
 
       <div class="ref-gallery ref-gallery--masonry">
         <article class="ref-card" data-category="bad">
-          <picture><source srcset="images/ref_1.webp" type="image/webp"><img data-lightbox src="images/ref_1.jpg" alt="Badsanierung mit bodengleicher Dusche" width="350" height="350" loading="lazy" decoding="async"></picture>
-          <span class="ref-card__tag">Bad</span>
-        </article>
-        <article class="ref-card" data-category="bad">
-          <picture><source srcset="images/ref_2.webp" type="image/webp"><img data-lightbox src="images/ref_2.jpg" alt="Modernes Badezimmer" width="350" height="350" loading="lazy" decoding="async"></picture>
+          <picture><source srcset="images/ref_3.webp" type="image/webp"><img data-lightbox src="images/ref_3.jpg" alt="Fertiggestelltes Badezimmer — Badplanung und Sanitär" width="350" height="350" loading="lazy" decoding="async"></picture>
           <span class="ref-card__tag">Bad</span>
         </article>
         <article class="ref-card" data-category="heizung">
-          <picture><source srcset="images/ref_3.webp" type="image/webp"><img data-lightbox src="images/ref_3.jpg" alt="Heizungsinstallation" width="350" height="350" loading="lazy" decoding="async"></picture>
+          <picture><source srcset="images/bosch-gas-brennwerttherme.webp" type="image/webp"><img data-lightbox src="images/bosch-gas-brennwerttherme.webp" alt="BOSCH Gas-Brennwerttherme — Heizungsinstallation und Wartung" width="640" height="480" loading="lazy" decoding="async"></picture>
           <span class="ref-card__tag">Heizung</span>
+        </article>
+        <article class="ref-card" data-category="lueftung">
+          <picture><source srcset="images/bosch-klimaanlage.webp" type="image/webp"><img data-lightbox src="images/bosch-klimaanlage.webp" alt="BOSCH Split-Klimaanlage — Montage Indoor- und Outdoor-Gerät" width="640" height="480" loading="lazy" decoding="async"></picture>
+          <span class="ref-card__tag">Lüftung</span>
+        </article>
+        <article class="ref-card" data-category="lueftung">
+          <picture><source srcset="images/bosch-klima-vergleich.webp" type="image/webp"><img data-lightbox src="images/bosch-klima-vergleich.webp" alt="BOSCH Climate Klimageräte im Vergleich — Beratung und Auswahl" width="1200" height="700" loading="lazy" decoding="async"></picture>
+          <span class="ref-card__tag">Lüftung</span>
         </article>
         <article class="ref-card" data-category="haustechnik">
-          <picture><source srcset="images/ref_4.webp" type="image/webp"><img data-lightbox src="images/ref_4.jpg" alt="Sanitär- und Haustechnikarbeiten" width="350" height="350" loading="lazy" decoding="async"></picture>
+          <picture><source srcset="images/ref_8.webp" type="image/webp"><img data-lightbox src="images/ref_8.jpg" alt="Professionelle Werkzeugwand — Haustechnik und SHK-Service" width="350" height="350" loading="lazy" decoding="async"></picture>
           <span class="ref-card__tag">Haustechnik</span>
         </article>
-        <article class="ref-card" data-category="heizung">
-          <picture><source srcset="images/ref_5.webp" type="image/webp"><img data-lightbox src="images/ref_5.jpg" alt="Wärmepumpe und regeneratives Heizen" width="350" height="350" loading="lazy" decoding="async"></picture>
-          <span class="ref-card__tag">Heizung</span>
-        </article>
-        <article class="ref-card" data-category="bad">
-          <picture><source srcset="images/ref_6.webp" type="image/webp"><img data-lightbox src="images/ref_6.jpg" alt="Barrierefreies Bad" width="350" height="350" loading="lazy" decoding="async"></picture>
-          <span class="ref-card__tag">Bad</span>
-        </article>
-        <article class="ref-card" data-category="bad">
-          <picture><source srcset="images/ref_7.webp" type="image/webp"><img data-lightbox src="images/ref_7.jpg" alt="Bad Design und Sanitär" width="350" height="350" loading="lazy" decoding="async"></picture>
-          <span class="ref-card__tag">Bad</span>
-        </article>
         <article class="ref-card" data-category="service">
-          <picture><source srcset="images/ref_8.webp" type="image/webp"><img data-lightbox src="images/ref_8.jpg" alt="Service und Wartung Haustechnik" width="350" height="350" loading="lazy" decoding="async"></picture>
+          <picture><source srcset="images/ref-handwerk.webp" type="image/webp"><img data-lightbox src="images/ref-handwerk.webp" alt="Handwerker und Kunde — persönlicher Service und Vertrauen" width="640" height="480" loading="lazy" decoding="async"></picture>
           <span class="ref-card__tag">Service</span>
         </article>
       </div>

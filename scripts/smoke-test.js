@@ -47,7 +47,6 @@ async function checkIndexIntegrity() {
     'id="calcPdfBtn"',
     'id="calcCallbackForm"',
     'id="calc_callback_phone"',
-    'id="vnSlider"',
     'js/calc.js',
     'js/pdf.js'
   ];
