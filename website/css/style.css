@@ -166,6 +166,7 @@ button { cursor: pointer; font-family: inherit; border: none; background: none; 
 .btn--full { width: 100%; justify-content: center; }
 
 .btn--sm { padding: 10px 20px; font-size: var(--fs-xs); }
+.btn--lg { padding: 16px 36px; font-size: var(--fs-base); min-height: 56px; }
 
 /* ============================================================
    REVEAL (IntersectionObserver)
@@ -615,6 +616,13 @@ body:has(#hero) .nav:not(.nav--scrolled) .nav__wordmark {
   width: 100%;
   justify-content: center;
   min-height: 56px;
+}
+
+.hero__wa-cta {
+  width: 100%;
+  justify-content: center;
+  min-height: 52px;
+  margin-top: var(--sp-3);
 }
 
 .hero__cta-note {
@@ -3657,5 +3665,364 @@ body:has(#hero) .nav:not(.nav--scrolled) .nav__wordmark {
   select,
   textarea {
     font-size: 16px !important;
+  }
+}
+
+/* ============================================================
+   TEMPLATE-ERWEITERUNGEN
+   WhatsApp FAB · Cal.com Embed · Termin-Varianten
+   Partner-Carousel · BOSCH Flagship · Förderungen
+   ============================================================ */
+
+/* ── WhatsApp Float (Mobile only) ─────────────────────────── */
+.whatsapp-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #25D366;
+  color: white;
+  border-radius: 50px;
+  padding: 14px 20px;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  line-height: 1;
+  transition: transform var(--t-fast), box-shadow var(--t-fast);
+}
+.whatsapp-float:hover,
+.whatsapp-float:focus {
+  transform: scale(1.05);
+  color: #fff;
+  outline: 3px solid #25D366;
+  outline-offset: 3px;
+}
+@media (min-width: 768px) {
+  .whatsapp-float { display: none !important; }
+}
+
+/* ── Cal.com Embed ─────────────────────────────────────────── */
+.cal-embed-wrapper {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  border-radius: var(--r-md);
+  background: rgba(0, 0, 0, 0.2);
+}
+.cal-embed-wrapper iframe {
+  display: block;
+  width: 100%;
+  min-height: 520px;
+  height: 65vh;
+  max-height: 700px;
+  border: 0;
+}
+@media (min-width: 768px) {
+  .cal-embed-wrapper iframe {
+    min-height: 620px;
+    height: 700px;
+  }
+}
+
+/* ── Termin-Variante: WhatsApp ─────────────────────────────── */
+.termin-wa-box {
+  max-width: 560px;
+  margin: 2.5rem auto 0;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: var(--r-lg);
+  padding: var(--sp-5) var(--sp-5) var(--sp-6);
+  text-align: center;
+}
+.termin-wa-box__icon { font-size: 3rem; line-height: 1; margin-bottom: 1rem; }
+.termin-wa-box h3 {
+  font-size: var(--fs-xl);
+  color: #fff;
+  margin-bottom: .6rem;
+  font-family: var(--ff-head);
+  font-weight: 600;
+}
+.termin-wa-box p { color: rgba(255,255,255,.65); margin-bottom: var(--sp-4); font-size: var(--fs-base); }
+
+/* ── Termin-Variante: Formular ─────────────────────────────── */
+.termin-form-box {
+  max-width: 640px;
+  margin: 2.5rem auto 0;
+  background: var(--bg);
+  border-radius: var(--r-lg);
+  padding: var(--sp-5) var(--sp-5) var(--sp-6);
+  box-shadow: var(--s-lg);
+}
+.termin-form-box label { color: var(--text); }
+.termin-form-box input,
+.termin-form-box textarea,
+.termin-form-box select { color: var(--text); background: var(--bg); }
+#terminFormResult { margin-top: .75rem; font-size: var(--fs-sm); font-weight: 600; }
+
+/* ── WhatsApp Button (universell) ──────────────────────────── */
+.btn--wa {
+  background: var(--wa-green);
+  color: #fff;
+  border: 2px solid var(--wa-green);
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  font-weight: 600;
+}
+.btn--wa:hover, .btn--wa:focus {
+  background: var(--wa-green-hover);
+  border-color: var(--wa-green-hover);
+  color: #fff;
+}
+.btn--wa svg { flex-shrink: 0; }
+
+/* ── WhatsApp im Kontaktbereich ────────────────────────────── */
+.kontakt-wa-wrap { margin-top: 1rem; }
+.kontakt-wa-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  color: var(--wa-green);
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  text-decoration: none;
+  transition: color var(--t-fast);
+}
+.kontakt-wa-link:hover { color: var(--wa-green-hover); }
+.kontakt-wa-link svg   { flex-shrink: 0; }
+
+/* ── Partner Carousel ──────────────────────────────────────── */
+.partner-strip {
+  margin-top: var(--sp-7);
+  padding-top: var(--sp-6);
+  border-top: 1px solid var(--border);
+  text-align: center;
+  overflow: hidden;
+  min-width: 0;
+}
+.partner-strip__label {
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-bottom: var(--sp-4);
+}
+.partner-carousel-wrapper {
+  overflow: hidden;
+  width: 100%;
+  padding: 20px 0;
+  max-width: 100%;
+}
+.partner-track {
+  display: flex;
+  gap: 48px;
+  align-items: center;
+  width: max-content;
+  animation: scroll-partners 72s linear infinite;
+}
+.partner-carousel-wrapper:hover .partner-track,
+.partner-carousel-wrapper:focus-within .partner-track,
+.partner-track:hover {
+  animation-play-state: paused;
+}
+.partner-track a {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+.partner-track img {
+  height: 40px;
+  width: auto;
+  max-width: 120px;
+  object-fit: contain;
+  opacity: 1;
+  transition: transform 0.3s ease;
+}
+.partner-track a:hover img {
+  transform: scale(1.05);
+}
+@keyframes scroll-partners {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@media (max-width: 767px) {
+  .partner-track {
+    gap: 32px;
+    animation-duration: 56s;
+  }
+  .partner-track img {
+    height: 30px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .partner-track {
+    animation: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    gap: var(--sp-4);
+  }
+}
+
+/* ── BOSCH Flagship ────────────────────────────────────────── */
+.bosch-flagship {
+  background: #1a1a1a;
+  color: #fff;
+  padding: var(--sp-8) 0;
+  overflow: hidden;
+}
+.bosch-flagship__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-6);
+}
+.bosch-flagship__logo {
+  flex: 0 0 auto;
+  width: 100%;
+  max-width: 280px;
+  text-align: center;
+}
+.bosch-flagship__logo img {
+  width: 100%;
+  height: auto;
+  max-height: 320px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+.bosch-flagship__content {
+  flex: 1;
+  min-width: 0;
+}
+.bosch-flagship__label {
+  font-size: var(--fs-sm);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--accent);
+  margin-bottom: var(--sp-2);
+  font-weight: 600;
+}
+.bosch-flagship__content h2 {
+  font-family: var(--ff-head);
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  font-weight: 600;
+  line-height: 1.2;
+  color: #fff;
+  margin-bottom: var(--sp-4);
+}
+.bosch-flagship__content > p {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: var(--fs-base);
+  line-height: 1.65;
+  margin-bottom: var(--sp-5);
+  max-width: 52ch;
+}
+.bosch-flagship__vorteile {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: var(--sp-3);
+}
+.bosch-flagship__vorteile li {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: var(--fs-base);
+  line-height: 1.5;
+}
+@media (min-width: 768px) {
+  .bosch-flagship__inner {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--sp-7);
+  }
+  .bosch-flagship__logo {
+    flex: 0 0 40%;
+    max-width: none;
+  }
+  .bosch-flagship__content {
+    flex: 0 0 60%;
+  }
+}
+
+/* ── Förderungen ───────────────────────────────────────────── */
+.foerderung {
+  padding: var(--sp-8) 0;
+  background: var(--bg-alt, #f7f9fc);
+}
+.foerderung__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-4);
+  margin-top: var(--sp-6);
+}
+@media (min-width: 768px) {
+  .foerderung__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+.foerderung-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: var(--sp-5);
+  box-shadow: var(--s-sm);
+  min-width: 0;
+  height: 100%;
+  transition: box-shadow var(--t-fast), transform var(--t-fast);
+}
+.foerderung-card:hover {
+  box-shadow: var(--s-md);
+  transform: translateY(-2px);
+}
+.foerderung-card__title {
+  font-family: var(--ff-head);
+  font-size: var(--fs-lg);
+  color: var(--primary);
+  margin-bottom: var(--sp-2);
+  font-weight: 600;
+}
+.foerderung-card__text {
+  font-size: var(--fs-sm);
+  color: var(--text-light);
+  line-height: 1.6;
+  margin-bottom: var(--sp-3);
+  flex: 1;
+}
+.foerderung-card__meta {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  margin-bottom: var(--sp-4);
+}
+.foerderung-card__link {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+}
+.foerderung-card__link:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+.foerderung__cta-wrap {
+  text-align: center;
+  margin-top: var(--sp-6);
+}
+.foerderung__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  min-height: 52px;
+  padding: .85rem 1.75rem;
+}
+@media (max-width: 767px) {
+  .foerderung__cta {
+    width: 100%;
   }
 }
